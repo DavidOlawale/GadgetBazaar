@@ -6,26 +6,27 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
 import { ProductsDisplayComponent } from './products-display/products-display.component';
-import { DeviceDisplayComponent } from './device-display/device-display.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
     ProductsDisplayComponent,
-    DeviceDisplayComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductDetailsComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' }
+      { path: '', component: ProductsDisplayComponent },
+      {path: './detail/:id', component: ProductDetailsComponent  },
     ])
   ],
   providers: [],
