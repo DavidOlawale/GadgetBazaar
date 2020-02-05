@@ -1,0 +1,11 @@
+<div class="product">
+    <h4>{{product.model}}</h4>
+    <p class="text-center">{{product.price}}</p>
+    <button *ngIf="!isInCart" (click)="addToCart()" class="btn btn-primary w-100">Add to cart</button>
+    <div *ngIf="isInCart" class="d-flex justify-content-between">
+        <button class="btn" (click)="decreaseInCart()" >-</button>
+        <span class="font-weight-bold">{{numberInCart}}</span>
+        <button class="btn" (click)="increaseInCart()" >+</button>
+    </div>    
+
+</div>

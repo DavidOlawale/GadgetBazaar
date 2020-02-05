@@ -1,3 +1,5 @@
+import { OrderItemsService } from './Services/order-items.service';
+import { ProductsService } from './Services/products-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +12,7 @@ import { ProductsDisplayComponent } from './products-display/products-display.co
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductDisplayComponent } from './product-display/product-display.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
     ProductsDisplayComponent,
     ProductsComponent,
     ProductDetailsComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductDisplayComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,7 +33,10 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
       {path: './detail/:id', component: ProductDetailsComponent  },
     ])
   ],
-  providers: [],
+  providers: [
+    ProductsService,
+    OrderItemsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
