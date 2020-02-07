@@ -13,15 +13,23 @@ export class ProductDisplayComponent implements OnInit {
   constructor(private orderItemsService: OrderItemsService) { }
   private isInCart: boolean
   private numberInCart
+
   ngOnInit() {
     this.isInCart = this.orderItemsService.containsProduct(this.product)
     this.numberInCart = this.orderItemsService.numberInCart(this.product)
-
-    this.orderItemsService.orderItemAdded.subscribe(() => {      
+    
+    this.orderItemsService.orderItemAdded.subscribe((product) => {      
+      if (product != this.product)
+        return
       this.isInCart = this.orderItemsService.containsProduct(this.product)
       this.numberInCart = this.orderItemsService.numberInCart(this.product)
     })
 
+    this.orderItemsService.orderItemQuantityAltered.subscribe(product =>{      
+      if (product != this.product)
+        return
+        this.numberInCart = this.orderItemsService.numberInCart(this.product)
+    })
   }
   increaseInCart(){
     this.orderItemsService.increaseNumberInCart(this.product)
@@ -29,7 +37,6 @@ export class ProductDisplayComponent implements OnInit {
   decreaseInCart(){
     this.orderItemsService.decreaseNumberInCart(this.product)
   }
-
   addToCart(){
     this.orderItemsService.addOrderItem(this.product)
   }
