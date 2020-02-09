@@ -15,3 +15,9 @@
 .quantity-control span{
     
 }
+
+@media screen and (max-width:  500px){
+    .quantity-control button{
+        padding: 3px 5px;
+    }
+}

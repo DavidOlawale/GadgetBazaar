@@ -13,6 +13,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductDisplayComponent } from './product-display/product-display.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductDisplayComponent } from './product-display/product-display.compo
     ProductsComponent,
     ProductDetailsComponent,
     ProductFilterComponent,
-    ProductDisplayComponent
+    ProductDisplayComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,7 +32,8 @@ import { ProductDisplayComponent } from './product-display/product-display.compo
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductsDisplayComponent },
-      {path: './detail/:id', component: ProductDetailsComponent  },
+      { path: './detail/:id', component: ProductDetailsComponent  },
+      { path: 'cart', component: CartComponent}
     ])
   ],
   providers: [
