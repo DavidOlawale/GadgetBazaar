@@ -1,0 +1,12 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+    <tr *ngFor="let orderItem of orderItems">
+        <td>{{orderItem.product.model}}</td>
+        <td>{{orderItem.product.price}}</td>
+        <td>{{orderItem.quantity}}</td>
+    </tr>
+</table>
