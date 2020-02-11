@@ -11,5 +11,16 @@ export class ProductsDisplayComponent implements OnInit {
 
   ngOnInit() {
   }
+  onBrandChanged(){
+    console.log('brand changed') 
+  }
+
+  onMinPriceChanged(){
+    console.log('min price changed')
+  }
+  
+  onMaxPriceChanged(){
+    console.log('max price changed')
+  }
 
 }
