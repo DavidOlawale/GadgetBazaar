@@ -8,10 +8,11 @@ import { Brand } from '../Model/brand';
 })
 export class BrandService {
 
-  constructor(private http: HttpClient) {   }
+  constructor(private http: HttpClient){}
 
    getBrands(): Observable<Brand[]>{
-     return this.http.get<Brand[]>('/api/brands/getbrands')
+     
+     return this.http.get<Brand[]>('/api/brands')
    }
 
 }
