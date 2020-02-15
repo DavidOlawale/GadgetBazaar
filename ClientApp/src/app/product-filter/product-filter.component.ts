@@ -10,7 +10,7 @@ import { BrandService } from '../Services/brand.service';
 export class ProductFilterComponent implements OnInit {
 private brands: Brand[]
   constructor(private brandService: BrandService) { }
-  @Output() brandChanged = new EventEmitter<any>()
+  @Output() brandChanged = new EventEmitter<string>()
   @Output() minPriceChanged = new EventEmitter<number>()
   @Output() maxPriceChanged = new EventEmitter<number>()
 
@@ -18,7 +18,7 @@ private brands: Brand[]
     this.brandService.getBrands().subscribe(brands => this.brands = brands)
   }
 
-  onBrandChange = (brand: Brand) => this.brandChanged.emit(brand)
+  onBrandChange = (brandId) => this.brandChanged.emit(brandId)
 
   onMinPriceChange = (price: number) => this.minPriceChanged.emit(price)
   onMaxPriceChange = (price: number) =>this.maxPriceChanged.emit(price)

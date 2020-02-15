@@ -12,9 +12,6 @@
     font-size: large;
     padding: 5px 10px;
 }
-.quantity-control span{
-    
-}
 
 @media screen and (max-width:  500px){
     .quantity-control button{
