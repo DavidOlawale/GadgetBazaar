@@ -8,5 +8,6 @@ namespace MobileStoreApp.Models
         public string Model { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+        public int Price { get; set; }
     }
 }
