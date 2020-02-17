@@ -10,7 +10,14 @@
       <tr *ngFor="let orderItem of orderItems">
         <td>{{ orderItem.product.model }}</td>
         <td>{{ orderItem.product.price }}</td>
-        <td>{{ orderItem.quantity }}</td>
+        <td>
+          <input
+          #quantity
+          type="number"
+          [value]="orderItem.quantity"
+          (change)="quantityChanged({productId: orderItem.productId, quantity: quantity.value})" 
+          >
+        </td>
       </tr>
     </table>
     <div class="d-flex mt-5">

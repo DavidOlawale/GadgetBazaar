@@ -10,6 +10,9 @@ export class OrderItemsService {
   private orderItems: OrderItem[] = []
   public orderItemAdded: EventEmitter<Product> = new EventEmitter<Product>()
   public orderItemQuantityAltered: EventEmitter<Product> = new EventEmitter<Product>()
+
+  constructor() { }
+
   getOrderItems(): OrderItem[] {
     return this.orderItems
   }
@@ -37,6 +40,11 @@ export class OrderItemsService {
       return 0
     return itemInCart.quantity
   }
+  setQuantity(arg: {productId, quantity: number}){
+    let item = this.orderItems.find(item => item.productId == arg.productId)
+    item.quantity = arg.quantity
+    this.orderItemQuantityAltered.emit(item.product)
+  }
   increaseNumberInCart(product: Product){
     this.orderItems.find(item => item.productId == product.id).quantity += 1
     this.orderItemQuantityAltered.emit(product)
@@ -45,5 +53,4 @@ export class OrderItemsService {
     this.orderItems.find(item => item.productId == product.id).quantity -= 1
     this.orderItemQuantityAltered.emit(product)
   }
-  constructor() { }
 }

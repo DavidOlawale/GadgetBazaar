@@ -18,7 +18,9 @@ export class CartComponent implements OnInit {
   }
   placeOrder(){
     console.log(this.orderItems)
-    
+  }
+  quantityChanged(arg){
+    this.orderItemsService.setQuantity(arg)
   }
   ngOnInit() {
 
