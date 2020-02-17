@@ -18,6 +18,7 @@
     <label for="min">Min price</label>
     <input type="number"
     step="1000"
+    min="0"
     class="form-control"
     #minPriceInput
     (change)="onMinPriceChange(minPriceInput.value)"
@@ -28,6 +29,7 @@
     <label for="max">Max price</label>
     <input type="number"
     step="1000"
+    min="0"
     class="form-control"
     #maxPriceInput
     (change)="onMaxPriceChange(maxPriceInput.value)"

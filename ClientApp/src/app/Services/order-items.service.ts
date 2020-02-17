@@ -24,9 +24,7 @@ export class OrderItemsService {
     orderItem.productId = product.id
     orderItem.product = product
     orderItem.quantity = 1
-    this.orderItems.push(orderItem)
-    console.log(this.orderItems);
-    
+    this.orderItems.push(orderItem)    
     this.orderItemAdded.emit(product)
   }
 

@@ -1,12 +1,23 @@
-<table class="table table-bordered">
-    <tr>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1>Shopping Cart</h1>
+    <table class="table table-bordered">
+      <tr>
         <th>Name</th>
         <th>Price</th>
         <th>Quantity</th>
-    </tr>
-    <tr *ngFor="let orderItem of orderItems">
-        <td>{{orderItem.product.model}}</td>
-        <td>{{orderItem.product.price}}</td>
-        <td>{{orderItem.quantity}}</td>
-    </tr>
-</table>
+      </tr>
+      <tr *ngFor="let orderItem of orderItems">
+        <td>{{ orderItem.product.model }}</td>
+        <td>{{ orderItem.product.price }}</td>
+        <td>{{ orderItem.quantity }}</td>
+      </tr>
+    </table>
+    <div class="d-flex mt-5">
+        <button
+        class="btn order-btn m-auto text-bold"
+        (click)="placeOrder()"
+        >Place Order</button>
+    </div>
+  </div >
+</div>
