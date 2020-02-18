@@ -31,7 +31,8 @@ import { CartComponent } from './cart/cart.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProductsDisplayComponent },
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
+      {path: 'products', component: ProductsDisplayComponent},
       { path: './detail/:id', component: ProductDetailsComponent  },
       { path: 'cart', component: CartComponent}
     ])
