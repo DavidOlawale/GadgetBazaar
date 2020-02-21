@@ -8,7 +8,7 @@ import { error } from '@angular/compiler/src/util';
 })
 export class OrderItemsService {
   private orderItems: OrderItem[] = []
-  public orderItemAdded: EventEmitter<Product> = new EventEmitter<Product>()
+  public orderItemsAltered: EventEmitter<Product> = new EventEmitter<Product>()
   public orderItemQuantityAltered: EventEmitter<Product> = new EventEmitter<Product>()
 
   constructor() { }
@@ -28,7 +28,7 @@ export class OrderItemsService {
     orderItem.product = product
     orderItem.quantity = 1
     this.orderItems.push(orderItem)    
-    this.orderItemAdded.emit(product)
+    this.orderItemsAltered.emit(product)
   }
 
   containsProduct(product: Product): boolean{
@@ -52,5 +52,11 @@ export class OrderItemsService {
   decreaseNumberInCart(product: Product){
     this.orderItems.find(item => item.productId == product.id).quantity -= 1
     this.orderItemQuantityAltered.emit(product)
+  }
+  remove(productId: number){
+    this.orderItems =  this.orderItems.filter(item => item.productId != productId)
+    this.orderItems
+    this.orderItemsAltered.emit()
+
   }
 }

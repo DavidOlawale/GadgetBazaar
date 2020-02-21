@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   constructor(private orderItemsService: OrderItemsService) { 
     this.orderItems = orderItemsService.getOrderItems()
     
-    orderItemsService.orderItemAdded.subscribe(item => this.orderItems = orderItemsService.getOrderItems() )
+    orderItemsService.orderItemsAltered.subscribe(item => this.orderItems = orderItemsService.getOrderItems() )
     orderItemsService.orderItemQuantityAltered.subscribe()
   }
   placeOrder(){

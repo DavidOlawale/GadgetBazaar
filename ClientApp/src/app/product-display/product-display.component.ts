@@ -10,7 +10,9 @@ import { OrderItem } from '../Model/order-item';
 })
 export class ProductDisplayComponent implements OnInit {
   @Input() product: Product
-  constructor(private orderItemsService: OrderItemsService) { }
+  constructor(private orderItemsService: OrderItemsService) { 
+    orderItemsService.orderItemsAltered.subscribe(data => this.isInCart = orderItemsService.containsProduct(this.product))
+  }
   private isInCart: boolean
   private numberInCart
 
@@ -18,7 +20,7 @@ export class ProductDisplayComponent implements OnInit {
     this.isInCart = this.orderItemsService.containsProduct(this.product)
     this.numberInCart = this.orderItemsService.numberInCart(this.product)
     
-    this.orderItemsService.orderItemAdded.subscribe((product) => {      
+    this.orderItemsService.orderItemsAltered.subscribe((product) => {      
       if (product != this.product)
         return
       this.isInCart = this.orderItemsService.containsProduct(this.product)
@@ -37,8 +39,8 @@ export class ProductDisplayComponent implements OnInit {
   decreaseInCart(){
     this.orderItemsService.decreaseNumberInCart(this.product)
   }
-  addToCart(){
-    this.orderItemsService.addOrderItem(this.product)
-  }
+  addToCart =() => this.orderItemsService.addOrderItem(this.product)
+  
+  removeFromCart = () => this.orderItemsService.remove(this.product.id)
   
 }
