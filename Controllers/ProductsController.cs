@@ -25,7 +25,7 @@ namespace MobileStoreApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Devices.ToListAsync();
+            return await _context.Devices.Include(d => d.Brand).ToListAsync();
         }
 
         // GET: api/Products/5
