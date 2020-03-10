@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { CartComponent } from './cart/cart.component';
+import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CartComponent } from './cart/cart.component';
     ProductDetailsComponent,
     ProductFilterComponent,
     ProductDisplayComponent,
-    CartComponent
+    CartComponent,
+    AlterInCartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,7 +35,7 @@ import { CartComponent } from './cart/cart.component';
     RouterModule.forRoot([
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       {path: 'products', component: ProductsDisplayComponent},
-      { path: './detail/:id', component: ProductDetailsComponent  },
+      { path: 'details/:id', component: ProductDetailsComponent  },
       { path: 'cart', component: CartComponent}
     ])
   ],

@@ -21,18 +21,26 @@
       >
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/']">Products</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/']">Login</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/cart']">
-              <img
-                src="../../assets/shopping-cart.svg"
-                height="20px"
-              />
-              <span class="pl-2" >My Cart</span>
+              <img src="../../assets/shopping-cart.svg" height="20px" />
+              <span class="pl-2"
+                >My Cart
+                <span
+                  *ngIf="orderItemsNumber > 0"
+                  class="badge badge-primary"
+                  >{{ orderItemsNumber }}</span
+                ></span
+              >
             </a>
           </li>
         </ul>
+
       </div>
     </div>
   </nav>

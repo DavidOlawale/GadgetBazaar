@@ -1,1 +1,11 @@
-<p>product-details works!</p>
+<div class="row">
+  <div class="col-md-6 b-radius">
+    <img src="../../assets/iphone 3 dynamic.png" width="100%" alt="" />
+  </div>
+  <div class="col-md-6 p-5">
+    <h2 class="pt-4 text-center font-weight-bold">{{ product.model }}</h2>
+    <p>Brand</p>
+    <h3>{{ product.brand.name }}</h3>
+    <app-alter-in-cart [product]="product" *ngIf="product"></app-alter-in-cart>
+  </div>
+</div>

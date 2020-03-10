@@ -1,3 +1,4 @@
+import { OrderItemsService } from './../Services/order-items.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  orderItemsNumber: number
+
+  constructor(private orderItemsService: OrderItemsService) {
+    this.orderItemsNumber = orderItemsService.getOrderItems.length
+    orderItemsService.orderItemsAltered.subscribe(() => this.orderItemsNumber = this.orderItemsService.getOrderItems().length)
+  }
 
   collapse() {
     this.isExpanded = false;
