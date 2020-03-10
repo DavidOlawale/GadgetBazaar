@@ -1,0 +1,28 @@
+<div
+    *ngIf="isInCart; else add"
+    class="d-flex justify-content-between quantity-control font-weight-bold"
+  >
+    <button
+      *ngIf="numberInCart > 1"
+      class="btn btn-sm btn-secondary"
+      (click)="decreaseInCart()"
+    >
+      <i class="fa fa-minus"></i>
+    </button>
+    <button
+      *ngIf="numberInCart == 1"
+      class="btn btn-sm btn-secondary"
+      (click)="removeFromCart()"
+    >
+      <i class=" fa fa-times"></i>
+    </button>
+    <span class="m-auto">{{ numberInCart }}</span>
+    <button class="btn btn-sm btn-secondary" (click)="increaseInCart()">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+  <ng-template #add>
+    <button (click)="addToCart()" class="btn btn-sm btn-secondary w-100">
+      Add to cart
+    </button>
+  </ng-template>

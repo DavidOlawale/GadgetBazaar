@@ -1,21 +1,8 @@
-<div class="product">
-    <img src="../../assets/iphone 3 dynamic.png" width="100%" alt="">
-    <h4 class="text-center">{{product.model}}</h4>
-    <p class="text-center">{{product.price}}</p>
-    <div *ngIf="isInCart; else add" class="d-flex justify-content-between quantity-control font-weight-bold">
-        <button *ngIf="numberInCart > 1" class="btn btn-secondary" (click)="decreaseInCart()" >
-            <i class="fa fa-minus"></i>
-        </button>
-        <button *ngIf="numberInCart == 1" class="btn btn-secondary" (click)="removeFromCart()" >
-            <i class=" fa fa-times"></i>
-        </button>
-        <span class="m-auto">{{numberInCart}}</span>
-        <button class="btn btn-secondary" (click)="increaseInCart()" >
-            <i class="fa fa-plus"></i>
-        </button>
-    </div>  
-    <ng-template #add>
-        <button  (click)="addToCart()" class="btn btn-secondary w-100">Add to cart</button>
-  </ng-template>  
-
+<div class="b-radius">
+  <div class="product" (click)="productClicked()">
+    <img src="../../assets/iphone 3 dynamic.png" width="100%" alt="" />
+    <h4 class="text-center">{{ product.model }}</h4>
+    <p class="text-center">{{ product.price }}</p>
+  </div>
+  <app-alter-in-cart [product]="product"></app-alter-in-cart>
 </div>

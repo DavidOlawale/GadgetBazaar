@@ -53,10 +53,8 @@ export class OrderItemsService {
     this.orderItems.find(item => item.productId == product.id).quantity -= 1
     this.orderItemQuantityAltered.emit(product)
   }
-  remove(productId: number){
-    this.orderItems =  this.orderItems.filter(item => item.productId != productId)
-    this.orderItems
-    this.orderItemsAltered.emit()
-
+  remove(product: Product){
+    this.orderItems =  this.orderItems.filter(item => item.productId != product.id)
+    this.orderItemsAltered.emit(product)
   }
 }
