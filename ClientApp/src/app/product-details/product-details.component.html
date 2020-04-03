@@ -8,4 +8,24 @@
     <h3>{{ product.brand.name }}</h3>
     <app-alter-in-cart [product]="product" *ngIf="product"></app-alter-in-cart>
   </div>
+  <div class="col-12 col-md-10 offset-md-1 bg-white mt-4 p-3">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="nav-item">
+        <a class="nav-link active" href="#description" >Description</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" >Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" >Link</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane container active" id="description">
+        <h1>working</h1>
+      </div>
+      <div class="tab-pane container fade" id="menu1">...</div>
+      <div class="tab-pane container fade" id="menu2">...</div>
+    </div>
+  </div>
 </div>

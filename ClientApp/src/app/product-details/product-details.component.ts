@@ -11,7 +11,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
   private product: Product
 
-  constructor(private route: ActivatedRoute, private productService: ProductsService) {
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService) {
   }
 
   ngOnInit() {
