@@ -9,5 +9,10 @@ namespace MobileStoreApp.Models
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
         public int Price { get; set; }
+        public string BatteryCapacity { get; set; }
+        public string ChargingTime { get; set; }
+        public string StandByTime { get; set; }
+        public string Color { get; set; }
+        public double SizeInGram { get; set; }
     }
 }
