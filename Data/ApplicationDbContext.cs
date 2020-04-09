@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MobileStoreApp.Models;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MobileStoreApp.Data
 {
-    public class ApplicationDbContext: IdentityDbContext
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
