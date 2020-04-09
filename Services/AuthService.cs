@@ -50,10 +50,10 @@ namespace MobileStoreApp.Services
                 return result;
             }
 
-            var LoginResult = await signInManager.PasswordSignInAsync(username, password, false, false);
-            if (LoginResult.Succeeded)
+            var signInResult = await signInManager.PasswordSignInAsync(username, password, false, false);
+            if (signInResult.Succeeded)
                 result.LoginSuccessfull = true;
-
+            
             var role = (await userManager.GetRolesAsync(user))[0];
             var key = Encoding.UTF8.GetBytes(configuration["jwt:key"]);
             var tokenDescriptor = new SecurityTokenDescriptor

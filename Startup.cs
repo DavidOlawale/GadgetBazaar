@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MobileStoreApp.Data;
 using MobileStoreApp.Models;
+using MobileStoreApp.Services;
 
 namespace MobileStoreApp
 {
@@ -31,7 +32,12 @@ namespace MobileStoreApp
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             var key = System.Text.UTF8Encoding.UTF8.GetBytes(Configuration["jwt:key"]);
@@ -59,9 +65,15 @@ namespace MobileStoreApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddScoped<AuthService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            ApplicationDbContext dbContext,
+            RoleManager<IdentityRole> roleManager,
+            AuthService authService)
         {
             if (env.IsDevelopment())
             {
@@ -74,6 +86,7 @@ namespace MobileStoreApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            DbInitializer.SeedDatabaseAsync(dbContext, roleManager, authService).Wait();
 
             app.UseAuthentication();
 
