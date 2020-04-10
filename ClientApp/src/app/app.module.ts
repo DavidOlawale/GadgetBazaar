@@ -1,5 +1,7 @@
+import { AuthService } from './Services/Auth.service';
 import { OrderItemsService } from './Services/order-items.service';
 import { ProductsService } from './Services/products-service.service';
+import { ServerService} from './Services/server.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +17,7 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { CartComponent } from './cart/cart.component';
 import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
     ProductFilterComponent,
     ProductDisplayComponent,
     CartComponent,
-    AlterInCartComponent
+    AlterInCartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,12 +40,15 @@ import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       {path: 'products', component: ProductsDisplayComponent},
       { path: 'details/:id', component: ProductDetailsComponent  },
-      { path: 'cart', component: CartComponent}
+      { path: 'cart', component: CartComponent },
+      { path: 'login', component: LoginComponent }
     ])
   ],
   providers: [
+    AuthService,
     ProductsService,
-    OrderItemsService
+    OrderItemsService,
+    ServerService
   ],
   bootstrap: [AppComponent]
 })
