@@ -11,5 +11,8 @@ namespace MobileStoreApp.Models
         [Required]
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+
+        [EmailAddress]
+        public override string UserName { get; set; }
     }
 }

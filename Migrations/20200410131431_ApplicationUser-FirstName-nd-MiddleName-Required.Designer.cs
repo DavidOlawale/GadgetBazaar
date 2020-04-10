@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MobileStoreApp.Data;
 
 namespace MobileStoreApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200410131431_ApplicationUser-FirstName-nd-MiddleName-Required")]
+    partial class ApplicationUserFirstNamendMiddleNameRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,16 +256,10 @@ namespace MobileStoreApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustoerId")
-                        .IsRequired()
+                    b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -275,6 +271,12 @@ namespace MobileStoreApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CustoerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
@@ -285,6 +287,8 @@ namespace MobileStoreApp.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("OrderId");
 
@@ -400,16 +404,13 @@ namespace MobileStoreApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MobileStoreApp.Models.Order", b =>
+            modelBuilder.Entity("MobileStoreApp.Models.OrderItem", b =>
                 {
                     b.HasOne("MobileStoreApp.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
-                });
 
-            modelBuilder.Entity("MobileStoreApp.Models.OrderItem", b =>
-                {
-                    b.HasOne("MobileStoreApp.Models.Order", "Order")
+                    b.HasOne("MobileStoreApp.Models.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)

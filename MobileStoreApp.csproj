@@ -44,10 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200214075325_aaa.cs" />
-    <Compile Remove="Migrations\20200214075325_aaa.Designer.cs" />
-    <Compile Remove="Migrations\20200215161625_adw.cs" />
-    <Compile Remove="Migrations\20200215161625_adw.Designer.cs" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
