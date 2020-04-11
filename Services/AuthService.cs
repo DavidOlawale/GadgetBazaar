@@ -61,8 +61,8 @@ namespace MobileStoreApp.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id),
-                    new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(ClaimTypes.Role, role),
+                    new Claim(ClaimTypes.Email, user.Email),
                     new Claim("AspNet.Identity.SecurityStamp", user.SecurityStamp)
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),

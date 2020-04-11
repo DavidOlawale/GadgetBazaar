@@ -18,6 +18,11 @@ namespace MobileStoreApp.Controllers
         private readonly ApplicationDbContext _context;
         private readonly AuthService authService;
 
+        public class LoginData
+        {
+            public string UserName { get; set; }
+            public string Password { get; set; }
+        }
         public IdentityController(ApplicationDbContext context, AuthService authService)
         {
             _context = context;
@@ -25,13 +30,13 @@ namespace MobileStoreApp.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> LoginAsync(string username, string password)
+        public async Task<IActionResult> LoginAsync(LoginData loginData)
         {
-            var loginResult = await authService.Login(username, password);
+            var loginResult = await authService.Login(loginData.UserName, loginData.Password);
             if (!loginResult.UserExists || !loginResult.LoginSuccessfull)
                 return BadRequest("Incorrect User name or password");
 
-            return Ok(loginResult.Token);
+            return Ok(new { message = "Login Succesfull", Token = loginResult.Token });
 
         }
 
