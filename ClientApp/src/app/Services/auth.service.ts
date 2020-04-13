@@ -9,20 +9,37 @@ export class AuthService {
 
   private role: string
   public email: string
-  public loggedIn: EventEmitter<any>
-  public loggedOut: EventEmitter<any>
-  constructor(private server: ServerService, private router: Router) {
+  public isLoggedIn: boolean
+  public alterLogin: EventEmitter<any> = new EventEmitter<any>()
 
+  constructor(private server: ServerService, private router: Router) {
+    let token = localStorage.getItem('token')
+    if (token) {
+      server.token = token
+      let UserClaims = jwt(token)
+      this.role = UserClaims.role
+      this.email = UserClaims.email
+      this.isLoggedIn = true
+      console.log(this.email)
+    }
   }
 
-  async login(email: string, password: string) {
+  async logIn(email: string, password: string) {
     var result = await this.server.post<string>('/identity/login', { username: email, password: password }).toPromise()
     localStorage.setItem('token', result.token)
     this.server.token = result.token
     let decripted = jwt(result.token)
     this.email = decripted.email
     this.role = decripted.role
-    this.loggedIn.emit()
+    this.isLoggedIn = true
+    this.alterLogin.emit()
     this.router.navigateByUrl('/')
+  }
+
+  logOut() {
+    localStorage.removeItem('token')
+    delete this.server.token
+    this.isLoggedIn = false
+    this.alterLogin.emit()
   }
 }
