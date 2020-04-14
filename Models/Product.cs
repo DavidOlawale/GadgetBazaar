@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace MobileStoreApp.Models
 {
@@ -14,5 +15,6 @@ namespace MobileStoreApp.Models
         public string StandByTime { get; set; }
         public string Color { get; set; }
         public double SizeInGram { get; set; }
+        public IEnumerable<Image> Images { get; set; }
     }
 }
