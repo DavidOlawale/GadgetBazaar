@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MobileStoreApp.Data;
@@ -15,13 +17,16 @@ namespace MobileStoreApp.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public OrdersController(ApplicationDbContext context)
+        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            this._userManager = userManager;
         }
 
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
             return await _context.Orders.ToListAsync();
@@ -38,8 +43,17 @@ namespace MobileStoreApp.Controllers
             return order;
         }
 
+        //Get orders for a particular user
+        [HttpGet("MyOrder")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetMyOrders()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            return _context.Orders.Where(order => order.CustoerId == user.Id).ToList();
+        }
+
 
         [HttpPut("{id}")]
+        [Authorize("Customer")]
         public async Task<IActionResult> PutOrder(int id, Order order)
         {
             if (id != order.Id)
@@ -63,6 +77,7 @@ namespace MobileStoreApp.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles ="Customer")]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
             _context.Orders.Add(order);
@@ -72,6 +87,7 @@ namespace MobileStoreApp.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles ="Admin, Customer")]
         public async Task<ActionResult<Order>> DeleteOrder(int id)
         {
             var order = await _context.Orders.FindAsync(id);
