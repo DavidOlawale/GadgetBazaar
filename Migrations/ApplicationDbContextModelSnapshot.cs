@@ -247,26 +247,6 @@ namespace MobileStoreApp.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("MobileStoreApp.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Image");
-                });
-
             modelBuilder.Entity("MobileStoreApp.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -416,15 +396,6 @@ namespace MobileStoreApp.Migrations
                     b.HasOne("MobileStoreApp.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MobileStoreApp.Models.Image", b =>
-                {
-                    b.HasOne("MobileStoreApp.Models.Product", null)
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

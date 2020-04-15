@@ -15,6 +15,6 @@ namespace MobileStoreApp.Models
         public string StandByTime { get; set; }
         public string Color { get; set; }
         public double SizeInGram { get; set; }
-        public IEnumerable<Image> Images { get; set; }
+        public IEnumerable<ProductImage> ProductImages { get; set; }
     }
 }
