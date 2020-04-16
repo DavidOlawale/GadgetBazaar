@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { ProductsDisplayComponent } from './products-display/products-display.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
@@ -23,7 +22,6 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    ProductsDisplayComponent,
     ProductsComponent,
     ProductDetailsComponent,
     ProductFilterComponent,
@@ -38,7 +36,7 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'products', pathMatch: 'full' },
-      {path: 'products', component: ProductsDisplayComponent},
+      { path: 'products', component: ProductsComponent },
       { path: 'details/:id', component: ProductDetailsComponent  },
       { path: 'cart', component: CartComponent },
       { path: 'login', component: LoginComponent }

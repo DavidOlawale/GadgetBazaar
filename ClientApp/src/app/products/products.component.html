@@ -1,4 +1,38 @@
-<div class="row">
-    <app-product-display *ngFor="let product of products" [product]="product" class="col-6 col-sm-4 mb-4">
-    </app-product-display>
+<div *ngIf="auth.isAdmin; else nonAdmin">
+  <h1>Products</h1>
+  <a class="btn btn-primary mt-2">New Product</a>
+  <div class="d-flex flex-column mt-5">
+    <table class="table table-bordered m-auto col-10 col-md-6">
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      <tr *ngFor="let product of products">
+        <td></td>
+        <td> <a href="">{{product.model}}</a> </td>
+        <td>{{product.price}} </td>
+      </tr>
+    </table>
+  </div>
 </div>
+
+
+
+
+<ng-template #nonAdmin>
+  <div class="row">
+    <div class="col-sm-3">
+      <app-product-filter (brandChanged)="onBrandChanged($event)"
+                          (minPriceChanged)="onMinPriceChanged($event)"
+                          (maxPriceChanged)="onMaxPriceChanged($event)"></app-product-filter>
+    </div>
+    <div class="col-sm-9 products p-3">
+      <div class="row">
+        <app-product-display *ngFor="let product of products" [product]="product" class="col-6 col-sm-4 mb-4">
+        </app-product-display>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

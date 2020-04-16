@@ -20,7 +20,6 @@ export class AuthService {
       this.role = UserClaims.role
       this.email = UserClaims.email
       this.isLoggedIn = true
-      console.log(this.email)
     }
   }
 
@@ -41,5 +40,13 @@ export class AuthService {
     delete this.server.token
     this.isLoggedIn = false
     this.alterLogin.emit()
+  }
+
+  get isAdmin(): boolean {
+    return this.role == "Admin"
+  }
+
+  get isCustomer() {
+    return this.role == "Customer"
   }
 }
