@@ -42,7 +42,9 @@ import { CustomerModule } from './customer/customer.module';
       { path: 'details/:id', component: ProductDetailsComponent  },
       { path: 'cart', component: CartComponent },
       { path: 'login', component: LoginComponent }
-    ])
+    ]),
+    AdminModule,
+    CustomerModule
   ],
   providers: [
     AuthService,
