@@ -17,6 +17,8 @@ import { ProductDisplayComponent } from './product-display/product-display.compo
 import { CartComponent } from './cart/cart.component';
 import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
 import { LoginComponent } from './login/login.component';
+import { AdminModule } from './admin/admin.module';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
