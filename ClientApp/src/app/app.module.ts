@@ -9,13 +9,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CartComponent } from './customer/cart/cart.component'
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProductsComponent } from './products/products.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './customer/product-details/product-details.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { ProductDisplayComponent } from './product-display/product-display.component';
-import { CartComponent } from './cart/cart.component';
-import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
@@ -25,11 +24,8 @@ import { CustomerModule } from './customer/customer.module';
     AppComponent,
     NavMenuComponent,
     ProductsComponent,
-    ProductDetailsComponent,
     ProductFilterComponent,
     ProductDisplayComponent,
-    CartComponent,
-    AlterInCartComponent,
     LoginComponent
   ],
   imports: [

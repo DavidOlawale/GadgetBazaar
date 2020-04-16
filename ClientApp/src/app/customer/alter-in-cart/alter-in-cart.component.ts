@@ -1,6 +1,6 @@
-import { OrderItemsService } from './../Services/order-items.service';
+import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../Model/product';
+import { Product } from '../../Model/product';
 
 @Component({
   selector: 'app-alter-in-cart',
