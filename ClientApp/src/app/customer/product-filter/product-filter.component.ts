@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Brand } from '../Model/brand';
-import { BrandService } from '../Services/brand.service';
+import { Brand } from '../../Model/brand';
+import { BrandService } from '../../Services/brand.service';
 
 @Component({
   selector: 'app-product-filter',

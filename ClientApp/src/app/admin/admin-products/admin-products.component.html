@@ -1,1 +1,16 @@
-<p>admin-products works!</p>
+<h1>Products</h1>
+<a class="btn btn-primary mt-2">New Product</a>
+<div class="d-flex flex-column mt-5">
+  <table class="table table-bordered m-auto col-10 col-md-6">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td></td>
+      <td> <a href="">{{product.model}}</a> </td>
+      <td>{{product.price}} </td>
+    </tr>
+  </table>
+</div>

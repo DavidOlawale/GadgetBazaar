@@ -13,8 +13,6 @@ import { CartComponent } from './customer/cart/cart.component'
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './customer/product-details/product-details.component';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
-import { ProductDisplayComponent } from './product-display/product-display.component';
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
@@ -24,8 +22,6 @@ import { CustomerModule } from './customer/customer.module';
     AppComponent,
     NavMenuComponent,
     ProductsComponent,
-    ProductFilterComponent,
-    ProductDisplayComponent,
     LoginComponent
   ],
   imports: [

@@ -1,7 +1,7 @@
-import { OrderItemsService } from './../Services/order-items.service';
+import { OrderItemsService } from '.././../Services/order-items.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../Model/product';
-import { OrderItem } from '../Model/order-item';
+import { Product } from '../../Model/product';
+import { OrderItem } from '../../Model/order-item';
 import { Router } from '@angular/router';
 
 @Component({

@@ -5,10 +5,14 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 
 
 @NgModule({
-  declarations: [AdminProductsComponent],
+  declarations: [
+    AdminProductsComponent
+  ],
   imports: [
     CommonModule
   ],
-  exports: [AdminProductsComponent]
+  exports: [
+    AdminProductsComponent
+  ]
 })
 export class AdminModule { }
