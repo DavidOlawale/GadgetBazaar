@@ -6,11 +6,14 @@
       <th></th>
       <th>Name</th>
       <th>Price</th>
+      <th>Brand</th>
     </tr>
     <tr *ngFor="let product of products">
-      <td></td>
+      <td>
+      <img  class="img-thumbnail" src="../images/products/{{product.productImages[0].name}}" alt="no default image" /></td>
       <td> <a href="">{{product.model}}</a> </td>
       <td>{{product.price}} </td>
+      <td>{{product.brand.name}}</td>
     </tr>
   </table>
 </div>

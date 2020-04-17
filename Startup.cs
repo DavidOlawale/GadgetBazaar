@@ -94,7 +94,6 @@ namespace MobileStoreApp
             {
                 app.UseSpaStaticFiles();
             }
-
             app.UseRouting();
             app.UseAuthorization();
 
