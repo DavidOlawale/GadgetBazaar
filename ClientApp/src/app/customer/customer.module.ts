@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
 import { AlterInCartComponent } from './alter-in-cart/alter-in-cart.component';
 import { CustomerProductsComponent } from './customer-products/customer-products.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CustomerProductDetailsComponent } from './customer-product-details/customer-product-details.component';
 import { ProductDisplayComponent} from './product-display/product-display.component'
 import {ProductFilterComponent } from './product-filter/product-filter.component'
 
@@ -13,7 +13,7 @@ import {ProductFilterComponent } from './product-filter/product-filter.component
     AlterInCartComponent,
     CartComponent,
     CustomerProductsComponent,
-    ProductDetailsComponent,
+    CustomerProductDetailsComponent,
     ProductDisplayComponent,
     ProductFilterComponent,
 
@@ -25,7 +25,7 @@ import {ProductFilterComponent } from './product-filter/product-filter.component
     AlterInCartComponent,
     CartComponent,
     CustomerProductsComponent,
-    ProductDetailsComponent,
+    CustomerProductDetailsComponent,
     ProductDisplayComponent,
     ProductFilterComponent
   ],

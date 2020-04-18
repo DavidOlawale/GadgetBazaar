@@ -4,14 +4,17 @@
   <table class="table table-bordered m-auto col-10 col-md-6">
     <tr>
       <th></th>
-      <th>Name</th>
+      <th>Model</th>
       <th>Price</th>
       <th>Brand</th>
     </tr>
     <tr *ngFor="let product of products">
+
       <td>
       <img  class="img-thumbnail" src="../images/products/{{product.productImages[0].name}}" alt="no default image" /></td>
-      <td> <a href="">{{product.model}}</a> </td>
+      <td>
+        <a [routerLink]="['/products', product.id]" >{{product.model}}</a>
+      </td>
       <td>{{product.price}} </td>
       <td>{{product.brand.name}}</td>
     </tr>

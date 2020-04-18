@@ -12,17 +12,19 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './customer/cart/cart.component'
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProductsComponent } from './products/products.component';
-import { ProductDetailsComponent } from './customer/product-details/product-details.component';
+import { CustomerProductDetailsComponent } from './customer/customer-product-details/customer-product-details.component';
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     ProductsComponent,
-    LoginComponent
+    LoginComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,7 @@ import { CustomerModule } from './customer/customer.module';
     RouterModule.forRoot([
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
-      { path: 'details/:id', component: ProductDetailsComponent  },
+      { path: 'products/:id', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
       { path: 'login', component: LoginComponent }
     ]),

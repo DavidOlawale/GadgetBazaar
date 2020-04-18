@@ -15,7 +15,7 @@ export class ProductDisplayComponent implements OnInit {
   }
   ngOnInit(){}
   productClicked(){
-    this.router.navigate(['/details', this.product.id])
+    this.router.navigate(['/products', this.product.id])
   }
   
 }

@@ -4,11 +4,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: 'app-customer-product-details',
+  templateUrl: './customer-product-details.component.html',
+  styleUrls: ['./customer-product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class CustomerProductDetailsComponent implements OnInit {
   private product: Product
 
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService) {
