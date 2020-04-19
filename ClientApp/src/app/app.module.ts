@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { EditProductComponent } from './admin/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'products/:id/edit', component: EditProductComponent },
+      { path: 'product/:id/edit', component: EditProductComponent }
     ]),
     AdminModule,
     CustomerModule
