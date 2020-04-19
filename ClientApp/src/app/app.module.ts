@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CartComponent } from './customer/cart/cart.component'
@@ -18,6 +17,7 @@ import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -31,15 +31,7 @@ import { EditProductComponent } from './admin/edit-product/edit-product.componen
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'products', pathMatch: 'full' },
-      { path: 'products', component: ProductsComponent },
-      { path: 'products/:id', component: ProductDetailsComponent },
-      { path: 'cart', component: CartComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'products/:id/edit', component: EditProductComponent },
-      { path: 'product/:id/edit', component: EditProductComponent }
-    ]),
+    AppRoutingModule,
     AdminModule,
     CustomerModule
   ],
