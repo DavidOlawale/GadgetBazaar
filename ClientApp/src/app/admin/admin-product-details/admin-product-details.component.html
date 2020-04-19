@@ -1,1 +1,18 @@
-<p>admin-product-details works!</p>
+<p>{{product | json}}</p>
+
+<div class="d-flex flex-column">
+  <div class="m-auto">
+    <ul class="list-group">
+      <li class="list-group-item">Id: {{product.id}}</li>
+      <li class="list-group-item">Model: {{product.model}}</li>
+      <li class="list-group-item">Brand: {{product.brand.name}}</li>
+      <li class="list-group-item">Price: {{product.price}}</li>
+      <li class="list-group-item">Battery Capacity: {{product.batteryCapacity}}</li>
+      <li class="list-group-item">Charging Time: {{product.chargingTime}}</li>
+      <li class="list-group-item">StandBy Time: {{product.standByTime}}</li>
+      <li class="list-group-item">Color: {{product.color}}</li>
+      <li class="list-group-item">Gram In Size: {{product.sizeInGram}}</li>
+    </ul>
+    <a [routerLink]="['/products/', product.id, 'edit']" class="btn btn-primary mt-4">Edit</a>
+  </div>
+</div>
