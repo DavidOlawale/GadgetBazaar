@@ -15,11 +15,9 @@ export class CustomerProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(param => {
-      let productId = Number(param.get('id'))
-      this.productService.getProducts().subscribe( (products: Product[]) => {
-        this.product = products.find(product => product.id == productId)                
-      })  
+    let productId = this.route.snapshot.paramMap.get('id')
+    this.productService.getProducts().then((products: Product[]) => {
+      this.product = products.find(product => product.id == +productId)
     })
   }
 
