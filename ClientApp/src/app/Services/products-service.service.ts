@@ -9,10 +9,17 @@ import { ServerService } from './server.service';
   providedIn: 'root'
 })
 export class ProductsService {
+
+  products: Product[]
   constructor(private server: ServerService) {
   }
 
-  getProducts(): Observable<Product[]>{
-    return this.server.get('/products')
+  async getProducts(): Promise<Product[]>{
+    return this.products ? this.products : await this.loadProducts()
+  }
+
+  async loadProducts(): Promise<Product[]> {
+    this.products = await this.server.get('/products').toPromise()
+    return this.products
   }
 }

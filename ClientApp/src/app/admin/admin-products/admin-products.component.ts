@@ -10,7 +10,7 @@ import { Product } from '../../Model/product';
 export class AdminProductsComponent implements OnInit {
   products: Product[] = []
   constructor(private productsService: ProductsService) {
-    productsService.getProducts().subscribe((products: Product[]) => {
+    productsService.getProducts().then((products: Product[]) => {
 
       // sets the default image for products without any image
       for (let product of products) {

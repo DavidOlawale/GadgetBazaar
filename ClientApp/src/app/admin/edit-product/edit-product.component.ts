@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRouteSnapshot } from '@angular/router';
+import { Product } from '../../Model/product';
+import { ProductsService } from '../../Services/products-service.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProductComponent implements OnInit {
 
-  constructor() { }
+  product: Product
+  constructor(private route: ActivatedRouteSnapshot, private productService: ProductsService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    let productId = this.route.paramMap.get('id')
+      this.product = (await this.productService.getProducts()).find(p => p.id == +productId)
   }
 
 }
