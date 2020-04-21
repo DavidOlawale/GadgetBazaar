@@ -4,6 +4,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminProductDetailsComponent } from './admin-product-details/admin-product-details.component';
 import { RouterModule } from '@angular/router';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     AdminProductsComponent,
