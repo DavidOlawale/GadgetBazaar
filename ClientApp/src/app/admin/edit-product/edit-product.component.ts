@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../Model/product';
 import { ProductsService } from '../../Services/products-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ServerService } from '../../Services/server.service';
 
@@ -13,7 +13,11 @@ import { ServerService } from '../../Services/server.service';
 export class EditProductComponent implements OnInit {
 
   product: Product
-  constructor(private route: ActivatedRoute, private productService: ProductsService, private server: ServerService) { }
+  constructor(private route: ActivatedRoute,
+    private productService: ProductsService,
+    private server: ServerService,
+    private router: Router
+  ) { }
 
   async ngOnInit() {
     let productId = this.route.snapshot.paramMap.get('id')
@@ -22,7 +26,7 @@ export class EditProductComponent implements OnInit {
 
   submit(form: NgForm) {
     this.server.put(`/products/${this.product.id}`, this.product).subscribe(res => {
-      console.log("res", res)
+      this.router.navigate(['/products', this.product.id])
     })
   }
 
