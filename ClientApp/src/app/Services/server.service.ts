@@ -20,16 +20,16 @@ export class ServerService {
   }
   get(uri: string): Observable<any> {
     if (this.token)
-      this.headers['Authentication'] = `Bearer ${this.token}`
+      this.headers['Authorization'] = `Bearer ${this.token}`
 
     return this.http.get(`${this.origin}/api${uri}`, {
-      headers: this.token ? {"Authentication": `Bearer ${this.token}`} : null
+      headers: this.token ? {"Authorization": `Bearer ${this.token}`} : null
     })
   }
 
   post<T>(uri: string, data: any): Observable<any> {
     if (this.token)
-      this.headers['Authentication'] = `Bearer ${this.token}`
+      this.headers['Authorization'] = `Bearer ${this.token}`
     return this.http.post<T>(`${this.origin}/api${uri}`, data, {
       headers: this.headers
     })
@@ -37,7 +37,7 @@ export class ServerService {
 
   put(uri: string, data: any): Observable<any> {
     if (this.token)
-      this.headers['Authentication'] = `Bearer ${this.token}`
+      this.headers['Authorization'] = `Bearer ${this.token}`
 
     return this.http.put(`${this.origin}/api${uri}`, data, {
       headers: this.headers
@@ -46,7 +46,7 @@ export class ServerService {
 
   delete(uri: string): Observable<any> {
     if (this.token)
-      this.headers['Authentication'] = `Bearer ${this.token}`
+      this.headers['Authorization'] = `Bearer ${this.token}`
 
     return this.http.delete(`${this.origin}/api${uri}`, {
       headers: this.headers
