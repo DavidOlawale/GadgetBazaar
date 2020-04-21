@@ -16,7 +16,7 @@ export class CustomerProductsComponent implements OnInit {
   maxPrice: number
 
   constructor(private productsService: ProductsService, private auth: AuthService) {
-    productsService.getProducts().subscribe(products => {
+    productsService.getProducts().then(products => {
       this.products = products
     })
   }
