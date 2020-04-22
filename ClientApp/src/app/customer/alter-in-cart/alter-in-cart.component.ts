@@ -1,7 +1,7 @@
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../Model/product';
-
+import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-alter-in-cart',
   templateUrl: './alter-in-cart.component.html',
@@ -12,6 +12,11 @@ export class AlterInCartComponent implements OnInit {
   @Input() public product: Product
   private isInCart: boolean
   private numberInCart: Number
+  private icons = {
+    plus: faPlus,
+    minus: faMinus,
+    times: faTimes
+  }
 
   constructor(private orderItemsService: OrderItemsService) {
    }

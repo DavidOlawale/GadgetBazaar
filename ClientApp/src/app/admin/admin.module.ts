@@ -5,6 +5,7 @@ import { AdminProductDetailsComponent } from './admin-product-details/admin-prod
 import { RouterModule } from '@angular/router';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
+import { NewProductComponent } from './new-product/new-product.component';
 
 
 
@@ -12,7 +13,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AdminProductsComponent,
     AdminProductDetailsComponent,
-    EditProductComponent
+    EditProductComponent,
+    NewProductComponent,
+    NewProductComponent
   ],
   imports: [
     CommonModule,

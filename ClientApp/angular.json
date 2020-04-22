@@ -23,9 +23,6 @@
             "assets": ["src/assets"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/fontawesome/css/fontawesome.css",
-              "src/assets/fontawesome/css/solid.css",
-              "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

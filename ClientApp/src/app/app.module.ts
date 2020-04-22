@@ -18,6 +18,7 @@ import { CustomerModule } from './customer/customer.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule,
     AdminModule,
-    CustomerModule
+    CustomerModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthService,
