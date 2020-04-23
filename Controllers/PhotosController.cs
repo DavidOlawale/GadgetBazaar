@@ -12,7 +12,7 @@ using MobileStoreApp.Models;
 
 namespace MobileStoreApp.Controllers
 {
-    [Route("api/")]
+    [Route("api/products")]
     [ApiController]
     public class PhotosController : ControllerBase
     {
@@ -26,7 +26,7 @@ namespace MobileStoreApp.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost("products/{productId}/photos")]
+        [HttpPost("{productId}/photos")]
         public ActionResult PostProductImage(int productId, IFormFile photo)
         {
             // wwwwroot/images
@@ -46,6 +46,12 @@ namespace MobileStoreApp.Controllers
             dbContext.SaveChanges();
 
             return Created("", image);
+        }
+
+        [HttpGet("{productId}/photos")]
+        public ActionResult GetProductImages(int productId)
+        {
+            return Ok(dbContext.ProductImages.Where(image => image.ProductId == productId));
         }
     }
 }
