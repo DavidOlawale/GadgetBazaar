@@ -1,1 +1,73 @@
-<p>new-product works!</p>
+
+<div class="d-flex flex-column">
+  <div class="m-auto">
+
+    <form (ngSubmit)="submit(f)" #f="ngForm">
+      <div class="form-group form-inline">
+        <label for="model">Model:</label>
+        <input [(ngModel)]="product.model"
+               name="model"
+               class="form-control"
+               id="model">
+      </div>
+      <div class="form-group form-inline">
+        <label for="brandid">Brand:</label>
+        <select [(ngModel)]="product.brandId"
+                class="form-control"
+                name="brandId"
+                id="brandid">
+          <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
+        </select>
+      </div>
+      <div class="form-group form-inline">
+        <label for="price">Price:</label>
+        <input [(ngModel)]="product.price"
+               type="number"
+               step="500"
+               name="price"
+               class="form-control"
+               id="price">
+      </div>
+
+      <div class="form-group form-inline">
+        <label for="battery">Battery Capacity:</label>
+        <input [(ngModel)]="product.batteryCapacity"
+               name="batteryCapacity"
+               class="form-control"
+               id="battery">
+      </div>
+      <div class="form-group form-inline">
+        <label for="charge">Charging Time:</label>
+        <input [(ngModel)]="product.chargingTime"
+               name="chargeTime"
+               class="form-control"
+               id="charge">
+      </div>
+      <div class="form-group form-inline">
+        <label for="standby">Stand By Time:</label>
+        <input [(ngModel)]="product.standByTime"
+               name="standByTime"
+               class="form-control"
+               id="standby">
+      </div>
+      <div class="form-group form-inline">
+        <label for="color">Colors:</label>
+        <input [(ngModel)]="product.color"
+               name="color"
+               class="form-control"
+               id="color">
+      </div>
+      <div class="form-group form-inline">
+        <label for="size">Size in gram:</label>
+        <input [(ngModel)]="product.sizeInGram"
+               type="number"
+               name="sizeInSize"
+               class="form-control"
+               id="size">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+</div>
+

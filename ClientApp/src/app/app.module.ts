@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './customer/cart/cart.component'
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProductsComponent } from './products/products.component';
-import { CustomerProductDetailsComponent } from './customer/customer-product-details/customer-product-details.component';
 import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
