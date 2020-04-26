@@ -6,7 +6,8 @@ import { CustomerProductsComponent } from './customer-products/customer-products
 import { CustomerProductDetailsComponent } from './customer-product-details/customer-product-details.component';
 import { ProductDisplayComponent} from './product-display/product-display.component'
 import { ProductFilterComponent } from './product-filter/product-filter.component'
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CheckOutComponent } from './check-out/check-out.component'
 
 
 
@@ -18,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     CustomerProductDetailsComponent,
     ProductDisplayComponent,
     ProductFilterComponent,
+    CheckOutComponent,
 
   ],
   imports: [
