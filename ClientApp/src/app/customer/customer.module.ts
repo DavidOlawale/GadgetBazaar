@@ -8,8 +8,12 @@ import { ProductDisplayComponent} from './product-display/product-display.compon
 import { ProductFilterComponent } from './product-filter/product-filter.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckOutComponent } from './check-out/check-out.component'
+import { RouterModule, Route } from '@angular/router';
 
 
+const childRoutes: Route[] = [
+  { path: 'check-out', component: CheckOutComponent }
+]
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { CheckOutComponent } from './check-out/check-out.component'
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule.forRoot(childRoutes)
   ],
   exports: [
     AlterInCartComponent,
@@ -32,7 +37,8 @@ import { CheckOutComponent } from './check-out/check-out.component'
     CustomerProductsComponent,
     CustomerProductDetailsComponent,
     ProductDisplayComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    RouterModule
   ],
   providers: [
     
