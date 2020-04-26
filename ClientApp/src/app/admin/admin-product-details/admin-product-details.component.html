@@ -1,7 +1,33 @@
-<p>{{product | json}}</p>
 
-<div class="d-flex flex-column">
-  <div class="m-auto">
+<div class="row">
+  <div class="col-10 col-sm-8 col-md-6 m-auto">
+    <h3 class="text-center">Product images</h3>
+    <div *ngIf="product">
+      <img *ngFor="let image of product.productImages"
+           [src]="'/images/products/' + image.name"
+           class="w-100"/>
+    </div>
+
+    <h3 class="text-center mt-5">Upload photo</h3>
+    <img [src]="imagePreview" class="w-100 my-1" />
+    <div class="d-flex my-3">
+      <label for="photo" class="btn button">
+        Select Image <fa-icon [icon]="icons.image"></fa-icon>
+        <input (change)="onSelected($event.target.files[0])"
+               class="d-none"
+               type="file"
+               id="photo"
+               accept="image/*" />
+      </label>
+      <button *ngIf="!uploading"
+              [disabled]="isUploading"
+              #uploadBtn
+              (click)="uploadPhoto()"
+              class="btn button ml-auto"
+              >Upload <fa-icon [icon]="isUploading ? icons.spinner : icons.upload"></fa-icon></button>
+
+    </div>
+
     <ul class="list-group">
       <li class="list-group-item">Id: {{product.id}}</li>
       <li class="list-group-item">Model: {{product.model}}</li>
@@ -14,5 +40,7 @@
       <li class="list-group-item">Gram In Size: {{product.sizeInGram}}</li>
     </ul>
     <a [routerLink]="['/products/', product.id, 'edit']" class="btn btn-primary mt-4">Edit</a>
+
+
   </div>
 </div>

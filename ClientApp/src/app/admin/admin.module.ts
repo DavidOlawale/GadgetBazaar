@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
 import { NewProductComponent } from './new-product/new-product.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -20,7 +21,8 @@ import { NewProductComponent } from './new-product/new-product.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   exports: [
     AdminProductsComponent,

@@ -17,6 +17,6 @@ export class PhotoServiceService {
   postProductImage(id: Number, photo) {
     let formData = new FormData()
     formData.append('photo', photo)
-    return this.server.post(`/products/${id}/photos`, formData).toPromise()
+    return this.server.post(`/products/${id}/photos`, formData ).toPromise()
   }
 }

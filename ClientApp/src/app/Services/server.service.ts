@@ -11,8 +11,7 @@ export class ServerService {
   private router: string
   public token: string
   private origin: string = location.origin
-  private headers = {
-    "content-type": "application/json"
+  private defaultHeaders = {
   }
 
   constructor(private http: HttpClient, router: Router) {
@@ -20,36 +19,36 @@ export class ServerService {
   }
   get(uri: string): Observable<any> {
     if (this.token)
-      this.headers['Authorization'] = `Bearer ${this.token}`
+      this.defaultHeaders['Authorization'] = `Bearer ${this.token}`
 
     return this.http.get(`${this.origin}/api${uri}`, {
-      headers: this.token ? {"Authorization": `Bearer ${this.token}`} : null
+      headers: this.token ? this.defaultHeaders : null
     })
   }
 
   post<T>(uri: string, data: any): Observable<any> {
     if (this.token)
-      this.headers['Authorization'] = `Bearer ${this.token}`
+      this.defaultHeaders['Authorization'] = `Bearer ${this.token}`
     return this.http.post<T>(`${this.origin}/api${uri}`, data, {
-      headers: this.headers
+      headers: this.defaultHeaders
     })
   }
 
   put(uri: string, data: any): Observable<any> {
     if (this.token)
-      this.headers['Authorization'] = `Bearer ${this.token}`
+      this.defaultHeaders['Authorization'] = `Bearer ${this.token}`
 
     return this.http.put(`${this.origin}/api${uri}`, data, {
-      headers: this.headers
+      headers: this.defaultHeaders
     })
   }
 
   delete(uri: string): Observable<any> {
     if (this.token)
-      this.headers['Authorization'] = `Bearer ${this.token}`
+      this.defaultHeaders['Authorization'] = `Bearer ${this.token}`
 
     return this.http.delete(`${this.origin}/api${uri}`, {
-      headers: this.headers
+      headers: this.defaultHeaders
     })
   }
 
