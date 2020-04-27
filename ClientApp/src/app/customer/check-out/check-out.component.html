@@ -1,6 +1,6 @@
 <div class="row h-auto">
   <div class="col-md-8 offset-md-2 bg-white cart-component-content p-3 m-auto">
-    <h1 class="text-center mb-3">Check Out</h1>
+    <h1 class="text-center mb-3">Shopping Cart</h1>
     <table class="table table-bordered">
       <tr>
         <th>Name</th>
@@ -10,16 +10,13 @@
       <tr *ngFor="let orderItem of orderItems">
         <td>{{ orderItem.product.model }}</td>
         <td>{{ orderItem.product.price }}</td>
-        <td>
-          <app-alter-in-cart [product]="orderItem.product"></app-alter-in-cart>
-        </td>
+        <td>{{orderItem.quantity}}</td>
       </tr>
     </table>
-
+    <p>Total Price : {{totalPrice}}</p>
     <div class="d-flex mt-5">
-      <button class="btn order-btn m-auto text-bold" routerLink="/check-out">
-        Go to check out
-
+      <button class="btn order-btn m-auto text-bold">
+        Place Order
       </button>
     </div>
   </div>

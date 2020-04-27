@@ -7,6 +7,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
 import { NewProductComponent } from './new-product/new-product.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastyModule } from 'ng2-toasty'
 
 
 
@@ -22,7 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     RouterModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ToastyModule.forRoot()
   ],
   exports: [
     AdminProductsComponent,
