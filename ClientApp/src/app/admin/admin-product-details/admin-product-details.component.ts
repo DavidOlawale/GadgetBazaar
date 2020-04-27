@@ -4,6 +4,7 @@ import { ProductsService } from '../../Services/products-service.service';
 import { Product } from '../../Model/product';
 import { faImage, faUpload, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { PhotoServiceService } from '../../Services/photo-service.service';
+import { ToastyService } from 'ng2-toasty';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class AdminProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private productService: ProductsService,
-    private photoService: PhotoServiceService) {
+    private photoService: PhotoServiceService,
+    private toastyService: ToastyService) {
   }
 
   async ngOnInit() {
@@ -43,10 +45,8 @@ export class AdminProductDetailsComponent implements OnInit {
     let reader = new FileReader()
     reader.onload = (event) => {
       this.imagePreview = reader.result
-      console.log('event', event)
     }
     reader.readAsDataURL(this.selectedImage)
-
   }
 
   async uploadPhoto() {
@@ -54,8 +54,21 @@ export class AdminProductDetailsComponent implements OnInit {
     try {
       var result = await this.photoService.postProductImage(this.product.id, this.selectedImage)
       this.product.productImages.push({ name: this.selectedImage.name })
+      this.toastyService.success({
+        title: 'Succefull',
+        msg: 'Image uploaded successfully',
+        showClose: true,
+        theme: 'bootstrap',
+        timeout: 3000
+      })
     } catch (e) {
-      alert('An error occured')
+      this.toastyService.success({
+        title: 'Error',
+        msg: 'An error occured',
+        showClose: true,
+        theme: 'bootstrap',
+        timeout: 3000
+      })
     }
     this.isUploading = false
     this.imagePreview = null

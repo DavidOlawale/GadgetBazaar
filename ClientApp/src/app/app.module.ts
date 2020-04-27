@@ -15,9 +15,9 @@ import { LoginComponent } from './login/login.component';
 import { AdminModule } from './admin/admin.module';
 import { CustomerModule } from './customer/customer.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastyModule } from 'ng2-toasty';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     AdminModule,
     CustomerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ToastyModule.forRoot()
   ],
   providers: [
     AuthService,

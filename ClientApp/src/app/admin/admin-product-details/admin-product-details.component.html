@@ -19,8 +19,7 @@
                id="photo"
                accept="image/*" />
       </label>
-      <button *ngIf="!uploading"
-              [disabled]="isUploading"
+      <button [disabled]="isUploading || !imagePreview"
               #uploadBtn
               (click)="uploadPhoto()"
               class="btn button ml-auto"
