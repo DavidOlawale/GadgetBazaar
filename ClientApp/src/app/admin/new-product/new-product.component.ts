@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ProductsService } from '../../Services/products-service.service';
 import { Brand } from '../../Model/brand';
 import { ServerService } from '../../Services/server.service';
-import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-new-product',
@@ -14,10 +13,7 @@ import { ToastyService } from 'ng2-toasty';
 export class NewProductComponent implements OnInit {
   private product: Product = new Product()
   private brands: Brand[]
-  constructor(private router: Router,
-    private server: ServerService,
-    private productService: ProductsService,
-    private toastyService: ToastyService) { }
+  constructor(private router: Router, private server: ServerService, private productService: ProductsService) { }
 
   async ngOnInit() {
     this.brands = await this.productService.getProductBrands()
@@ -28,22 +24,11 @@ export class NewProductComponent implements OnInit {
   }
 
   onSubmitSucceded = () => {
-    this.toastyService.success({
-      title: 'Successful',
-      msg: 'product added successfully',
-      theme: 'bootstrap',
-      timeout: 3000
-    })
     this.router.navigate(['/products'])
   }
 
-  onSubmitFailed = () => {
-    this.toastyService.error({
-      title: 'Error',
-      msg: 'An error occured',
-      theme: 'bootstrap',
-      timeout: 3000
-    })
+  onSubmitFailed =() => {
+    alert('failed')
   }
 
 
