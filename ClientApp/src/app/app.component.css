@@ -4,3 +4,16 @@
 .b-radius{
     border-radius: 6px;
 }
+
+.btn-blue {
+  background-color: #002966;
+  color: white;
+}
+
+.bg-slight-dark {
+  background-color: #f2f2f2;
+}
+
+.cart-component-content {
+  border-radius: .5rem;
+}

@@ -10,6 +10,7 @@ export class OrderItemsService {
   private orderItems: OrderItem[] = []
   public orderItemsAltered: EventEmitter<Product> = new EventEmitter<Product>()
   public orderItemQuantityAltered: EventEmitter<Product> = new EventEmitter<Product>()
+  public AllItemsRemoved: EventEmitter<any> = new EventEmitter<any>()
 
   constructor() { }
 
@@ -56,5 +57,10 @@ export class OrderItemsService {
   remove(product: Product){
     this.orderItems =  this.orderItems.filter(item => item.productId != product.id)
     this.orderItemsAltered.emit(product)
+  }
+
+  removeAll() {
+    this.orderItems = []
+    this.AllItemsRemoved.emit()
   }
 }

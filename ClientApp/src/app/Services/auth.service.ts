@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  public customerId: string
   private role: string
   public email: string
   public isLoggedIn: boolean
@@ -16,9 +17,10 @@ export class AuthService {
     let token = localStorage.getItem('token')
     if (token) {
       server.token = token
-      let UserClaims = jwt(token)
-      this.role = UserClaims.role
-      this.email = UserClaims.email
+      let userClaims = jwt(token)
+      this.customerId = userClaims.nameid
+      this.role = userClaims.role
+      this.email = userClaims.email
       this.isLoggedIn = true
     }
   }

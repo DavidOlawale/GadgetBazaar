@@ -83,7 +83,7 @@ namespace MobileStoreApp.Controllers
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+            return CreatedAtAction("orders", new { id = order.Id }, order);
         }
 
         [HttpDelete("{id}")]
