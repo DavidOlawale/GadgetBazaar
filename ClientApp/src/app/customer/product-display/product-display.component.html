@@ -1,6 +1,7 @@
 <div class="b-radius">
-  <div class="product" (click)="productClicked()">
-    <img src="../../assets/iphone 3 dynamic.png" width="100%" alt="" />
+  <div class="product" [routerLink]="['/products', product.id]">
+    <img *ngIf="hasPhoto(product)" [src]="'../../../../images/products/' + displayPhoto(product)" width="100%" alt="" />
+    <img *ngIf="!hasPhoto(product )" src="../../assets/no-image.jpg" width="100%" alt="" />
     <h4 class="text-center">{{ product.model }}</h4>
     <p class="text-center">{{ product.price }}</p>
   </div>

@@ -9,10 +9,14 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckOutComponent } from './check-out/check-out.component'
 import { RouterModule, Route } from '@angular/router';
+import { OrderedComponent } from './ordered/ordered.component';
+import { OrderErrorComponent } from './order-error/order-error.component';
 
 
 const childRoutes: Route[] = [
-  { path: 'check-out', component: CheckOutComponent }
+  { path: 'check-out', component: CheckOutComponent },
+  { path: 'order-success', component: OrderedComponent },
+  { path: 'order-error', component: OrderErrorComponent }
 ]
 
 @NgModule({
@@ -24,6 +28,8 @@ const childRoutes: Route[] = [
     ProductDisplayComponent,
     ProductFilterComponent,
     CheckOutComponent,
+    OrderedComponent,
+    OrderErrorComponent,
 
   ],
   imports: [
