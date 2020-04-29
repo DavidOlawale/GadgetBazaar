@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12 col-sm-10 col-md-8 m-auto d-flex flex-column">
+    <h2 class="text-center">Products</h2>
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th>price</th>
+        <th>Quantity</th>
+        <th>Price x Quantity</th>
+      </tr>
+      <tr *ngFor="let item of order.orderItems">
+        <td>
+          <img *ngIf="!hasPhoto(item.product)" src="../../assets/no-image.jpg" class="prod-img" alt="" />
+          <img *ngIf="hasPhoto(item.product)" [src]="'images/products/' + item.product.productImages[0].name" class="prod-img" alt="" />
+        </td>
+        <td>{{item.product.model}}</td>
+        <td>{{item.product.price}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.quantity * item.product.price}}</td>
+      </tr>
+      <tr>
+        <td colspan="5">Total Price : {{totalPrice}}</td>
+      </tr>
+    </table>
+    <button class="btn btn-blue mt-3 mx-auto">Mark as being Shipped</button>
+  </div>
+  
+</div>

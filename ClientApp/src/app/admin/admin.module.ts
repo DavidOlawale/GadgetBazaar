@@ -9,11 +9,12 @@ import { NewProductComponent } from "./new-product/new-product.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ToastyModule } from "ng2-toasty";
 import { AdminOrdersComponent } from "./admin-orders/admin-orders.component";
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { AdminOrderDetailsComponent } from './admin-order-details/admin-order-details.component';
 
 const routes: Route[] = [
   { path: "products/:id/edit", component: EditProductComponent },
-  { path: "orders", component: AdminOrdersComponent }
+  { path: "orders", component: AdminOrdersComponent },
+  { path: "orders/:id", component: AdminOrderDetailsComponent }
 ];
 
 @NgModule({
@@ -24,7 +25,7 @@ const routes: Route[] = [
     NewProductComponent,
     NewProductComponent,
     AdminOrdersComponent,
-    OrderDetailsComponent
+    AdminOrderDetailsComponent
   ],
   imports: [
     CommonModule,
