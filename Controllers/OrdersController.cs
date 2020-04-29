@@ -43,6 +43,11 @@ namespace MobileStoreApp.Controllers
 
             if (order == null)
                 return NotFound();
+            order.Customer = await _context.Customers.FindAsync(order.CustomerId);
+            order.OrderItems = _context.OrderItems.Where(item => item.OrderId == order.Id)
+                .Include(item => item.Product)
+                .ThenInclude(p => p.ProductImages)
+                .ToList();
 
             return order;
         }
