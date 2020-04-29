@@ -1,15 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AdminProductsComponent } from './admin-products/admin-products.component';
-import { AdminProductDetailsComponent } from './admin-product-details/admin-product-details.component';
-import { RouterModule } from '@angular/router';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { FormsModule } from '@angular/forms';
-import { NewProductComponent } from './new-product/new-product.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ToastyModule } from 'ng2-toasty';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AdminProductsComponent } from "./admin-products/admin-products.component";
+import { AdminProductDetailsComponent } from "./admin-product-details/admin-product-details.component";
+import { RouterModule, Route } from "@angular/router";
+import { EditProductComponent } from "./edit-product/edit-product.component";
+import { FormsModule } from "@angular/forms";
+import { NewProductComponent } from "./new-product/new-product.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { ToastyModule } from "ng2-toasty";
+import { AdminOrdersComponent } from "./admin-orders/admin-orders.component";
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
-
+const routes: Route[] = [
+  { path: "products/:id/edit", component: EditProductComponent },
+  { path: "orders", component: AdminOrdersComponent }
+];
 
 @NgModule({
   declarations: [
@@ -17,11 +22,13 @@ import { ToastyModule } from 'ng2-toasty';
     AdminProductDetailsComponent,
     EditProductComponent,
     NewProductComponent,
-    NewProductComponent
+    NewProductComponent,
+    AdminOrdersComponent,
+    OrderDetailsComponent
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     FormsModule,
     FontAwesomeModule,
     ToastyModule.forRoot()
@@ -29,7 +36,8 @@ import { ToastyModule } from 'ng2-toasty';
   exports: [
     AdminProductsComponent,
     AdminProductDetailsComponent,
-    EditProductComponent
+    EditProductComponent,
+    RouterModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {}

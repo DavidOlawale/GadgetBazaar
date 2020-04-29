@@ -7,7 +7,7 @@ namespace MobileStoreApp.Models
     {
         public int Id { get; set; }
         [Required]
-        public string CustoerId { get; set; }
+        public string CustomerId { get; set; }
         public Customer Customer { get; set; }
         public IEnumerable<OrderItem> OrderItems { get; set; }
 

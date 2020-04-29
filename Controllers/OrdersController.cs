@@ -29,7 +29,11 @@ namespace MobileStoreApp.Controllers
         [Authorize(Roles ="Admin")]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders
+                .Include(order => order.Customer)
+                .Include(order => order.OrderItems)
+                .ThenInclude(item => item.Product)
+                .ToListAsync();
         }
 
         [HttpGet("{id}")]
@@ -48,7 +52,7 @@ namespace MobileStoreApp.Controllers
         public async Task<ActionResult<IEnumerable<Order>>> GetMyOrders()
         {
             var user = await _userManager.GetUserAsync(User);
-            return _context.Orders.Where(order => order.CustoerId == user.Id).ToList();
+            return _context.Orders.Where(order => order.CustomerId == user.Id).ToList();
         }
 
 
