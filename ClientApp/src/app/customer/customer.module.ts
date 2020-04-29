@@ -11,12 +11,14 @@ import { CheckOutComponent } from './check-out/check-out.component'
 import { RouterModule, Route } from '@angular/router';
 import { OrderedComponent } from './ordered/ordered.component';
 import { OrderErrorComponent } from './order-error/order-error.component';
+import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 
 
 const childRoutes: Route[] = [
   { path: 'check-out', component: CheckOutComponent },
   { path: 'order-success', component: OrderedComponent },
-  { path: 'order-error', component: OrderErrorComponent }
+  { path: 'order-error', component: OrderErrorComponent },
+  { path: 'orders', component: CustomerOrdersComponent }
 ]
 
 @NgModule({
@@ -30,6 +32,7 @@ const childRoutes: Route[] = [
     CheckOutComponent,
     OrderedComponent,
     OrderErrorComponent,
+    CustomerOrdersComponent,
 
   ],
   imports: [

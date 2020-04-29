@@ -15,8 +15,7 @@ const routes: Route[] = [
   { path: 'products/new', component: NewProductComponent },
   { path: 'products/:id', component: ProductDetailsComponent, pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'products/:id/edit', component: EditProductComponent }
+  { path: 'login', component: LoginComponent }
 ]
 
 @NgModule({

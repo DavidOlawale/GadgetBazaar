@@ -16,7 +16,7 @@
       </ul>
 
       <!-- The slideshow -->
-      <div class="carousel-inner inherit-width">
+      <div class="carousel-inner ">
         <div class="inherit-width" *ngFor="let image of product.productImages; index as i; first as isFirst"
              [ngClass]="{'carousel-item': true, 'active': isFirst}">
           <img class="product-image inherit-width" [src]="'images/products/' + image.name" >
@@ -34,8 +34,8 @@
   </div>
   <div class="col-md-6 p-5">
     <h2 class="pt-4 text-center font-weight-bold">{{ product.model }}</h2>
-    <p>Brand</p>
-    <h3>{{ product.brand.name }}</h3>
+    <p>Brand <span class="text-bold">{{ product.brand.name }}</span></p>
+    <p>Price <span class="text-bold">{{product.price}}</span></p>
     <app-alter-in-cart [product]="product" *ngIf="product"></app-alter-in-cart>
   </div>
   <div class="col-12 col-md-10 offset-md-1 bg-white mt-4 p-3">
