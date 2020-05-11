@@ -12,6 +12,8 @@ import { RouterModule, Route } from '@angular/router';
 import { OrderedComponent } from './ordered/ordered.component';
 import { OrderErrorComponent } from './order-error/order-error.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
+import { CustomerOrderDetailsComponent } from './customer-order-details/customer-order-details.component';
 
 
 const childRoutes: Route[] = [
@@ -33,6 +35,8 @@ const childRoutes: Route[] = [
     OrderedComponent,
     OrderErrorComponent,
     CustomerOrdersComponent,
+    CustomerOrderComponent,
+    CustomerOrderDetailsComponent,
 
   ],
   imports: [
