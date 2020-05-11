@@ -10,7 +10,7 @@ export class AuthService {
   public customerId: string
   private role: string
   public email: string
-  public isLoggedIn: boolean
+  public isLoggedIn: boolean = false
   public alterLogin: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(private server: ServerService, private router: Router) {
@@ -21,7 +21,7 @@ export class AuthService {
       this.customerId = userClaims.nameid
       this.role = userClaims.role
       this.email = userClaims.email
-      this.isLoggedIn = true
+      this.isLoggedIn = userClaims.exp > Date.now()
     }
   }
 

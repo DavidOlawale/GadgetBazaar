@@ -63,7 +63,8 @@ namespace MobileStoreApp.Services
                     new Claim(ClaimTypes.NameIdentifier, user.Id),
                     new Claim(ClaimTypes.Role, role),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim("AspNet.Identity.SecurityStamp", user.SecurityStamp)
+                    new Claim("AspNet.Identity.SecurityStamp", user.SecurityStamp),
+                    new Claim(ClaimTypes.Expiration, DateTime.Now.AddDays(2).ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
