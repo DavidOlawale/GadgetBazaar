@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductsComponent } from './shared/products/products.component';
+import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 import { CartComponent } from './customer/cart/cart.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './shared/login/login.component';
 import { NewProductComponent } from './admin/new-product/new-product.component';
+import { LogoutComponent } from './shared/logout/logout.component';
 
 
 const routes: Route[] = [
@@ -15,7 +16,8 @@ const routes: Route[] = [
   { path: 'products/new', component: NewProductComponent },
   { path: 'products/:id', component: ProductDetailsComponent, pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent }
 ]
 
 @NgModule({
