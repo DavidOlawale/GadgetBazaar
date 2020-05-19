@@ -66,7 +66,7 @@ namespace MobileStoreApp.Services
                     new Claim("AspNet.Identity.SecurityStamp", user.SecurityStamp),
                     new Claim(ClaimTypes.Expiration, DateTime.Now.AddDays(2).ToString())
                 }),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var tokenHandler = new JwtSecurityTokenHandler();

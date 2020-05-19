@@ -34,9 +34,9 @@ namespace MobileStoreApp.Controllers
         {
             var loginResult = await authService.Login(loginData.UserName, loginData.Password);
             if (!loginResult.UserExists || !loginResult.LoginSuccessfull)
-                return BadRequest("Incorrect User name or password");
+                return BadRequest(new { success = false });
 
-            return Ok(new { message = "Login Succesfull", Token = loginResult.Token });
+            return Ok(new { success = true, Token = loginResult.Token });
 
         }
 

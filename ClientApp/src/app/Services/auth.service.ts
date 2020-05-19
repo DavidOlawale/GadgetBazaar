@@ -18,30 +18,41 @@ export class AuthService {
     if (token) {
       server.token = token
       let userClaims = jwt(token)
-      this.customerId = userClaims.nameid
-      this.role = userClaims.role
-      this.email = userClaims.email
-      this.isLoggedIn = userClaims.exp > Date.now()
+      this.isLoggedIn = new Date(0).setUTCSeconds(userClaims.exp) > Date.now()
+      if (this.isLoggedIn) {
+        this.customerId = userClaims.nameid
+        this.role = userClaims.role
+        this.email = userClaims.email
+      }
     }
   }
 
-  async logIn(email: string, password: string) {
-    var result = await this.server.post<string>('/identity/login', { username: email, password: password }).toPromise()
+  async logIn(email: string, password: string): Promise<boolean> {
+
+    try {
+      var result = await this.server.post<string>('/identity/login', { username: email, password: password }).toPromise()
+    } catch (e) {
+      return false
+    }
+
+    if (!result.success)
     localStorage.setItem('token', result.token)
     this.server.token = result.token
     let decripted = jwt(result.token)
     this.email = decripted.email
     this.role = decripted.role
     this.isLoggedIn = true
-    this.alterLogin.emit()
+    this.alterLogin.emit(true)
     this.router.navigateByUrl('/')
+    return true
   }
 
   logOut() {
     localStorage.removeItem('token')
     delete this.server.token
+    this.router.navigate(['/'])
     this.isLoggedIn = false
-    this.alterLogin.emit()
+    this.alterLogin.emit(false)
   }
 
   get isAdmin(): boolean {
