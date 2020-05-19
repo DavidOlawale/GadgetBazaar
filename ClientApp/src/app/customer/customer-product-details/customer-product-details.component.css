@@ -1,5 +1,6 @@
 .product-image{
-    height: auto
+    height: 400px;
+    width: 100%;
 }
 .inherit-width{
     width: inherit;
