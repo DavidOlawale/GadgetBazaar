@@ -3,6 +3,7 @@
     <h3 class="text-center">Login</h3>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
       <div class="form-group">
+        <label [ngClass]="{'text-danger': true, 'd-none': loginSuccess}">Invalid Username or password</label>
         <label for="email">Email address:</label>
         <input ngModel name="email" type="email" class="form-control" id="email">
       </div>

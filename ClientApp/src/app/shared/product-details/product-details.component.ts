@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../Services/Auth.service';
+import { AuthService } from '../../Services/Auth.service';
 
 @Component({
   selector: 'app-product-details',
