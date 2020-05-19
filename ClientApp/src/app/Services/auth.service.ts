@@ -28,7 +28,6 @@ export class AuthService {
   }
 
   async logIn(email: string, password: string): Promise<boolean> {
-
     try {
       var result = await this.server.post<string>('/identity/login', { username: email, password: password }).toPromise()
     } catch (e) {
@@ -36,6 +35,7 @@ export class AuthService {
     }
 
     if (!result.success)
+      return false
     localStorage.setItem('token', result.token)
     this.server.token = result.token
     let decripted = jwt(result.token)

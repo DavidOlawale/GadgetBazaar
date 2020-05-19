@@ -60,7 +60,6 @@ namespace MobileStoreApp.Controllers
             return _context.Orders.Where(order => order.CustomerId == user.Id).ToList();
         }
 
-
         [HttpPut("{id}")]
         [Authorize("Customer")]
         public async Task<IActionResult> PutOrder(int id, Order order)
@@ -89,7 +88,11 @@ namespace MobileStoreApp.Controllers
         [Authorize(Roles ="Customer")]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            _context.Orders.Add(order);
+            foreach (var item in order.OrderItems)
+            {
+                item.Product = null;
+            }
+            await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("orders", new { id = order.Id }, order);
