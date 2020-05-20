@@ -11,19 +11,19 @@ export class AdminProductsComponent implements OnInit {
   products: Product[] = []
   constructor(private productsService: ProductsService) {
     productsService.getProducts().then((products: Product[]) => {
-
-      // sets the default image for products without any image
-      for (let product of products) {
-        if (!product.productImages.length)
-          product.productImages = [{
-            name: 'default.png'
-          }]
-      }
       this.products = products
     })
   }
 
   ngOnInit() {
+  }
+
+  hasPhoto(product: Product): boolean {
+    return product.productImages && product.productImages.length > 0
+  }
+
+  getPhoto(product: Product): string {
+    return `images/products/${product.productImages[0].name}`
   }
 
 }

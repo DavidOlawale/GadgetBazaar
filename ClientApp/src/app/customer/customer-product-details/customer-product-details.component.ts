@@ -22,12 +22,12 @@ export class CustomerProductDetailsComponent implements OnInit {
   }
 
   hasPhoto(product: Product): boolean {
-    var a = this
-    return this.product.productImages.length != 0
+    return product.productImages && product.productImages.length > 0
   }
 
-  displayPhoto(product: Product): string {
-    return product.productImages[0].name
+  getPhoto(product: Product): string {
+    return `images/products/${product.productImages[0].name}`
   }
+
 
 }

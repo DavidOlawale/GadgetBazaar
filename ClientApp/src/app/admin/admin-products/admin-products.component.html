@@ -11,7 +11,14 @@
     <tr *ngFor="let product of products">
 
       <td>
-      <img  class="img-thumbnail" src="../images/products/{{product.productImages[0].name}}" alt="no default image" /></td>
+        <img *ngIf="!hasPhoto(product)"
+             src="../../assets/no-image.jpg"
+             class="img-thumbnail product-img"
+             />
+        <img *ngIf="hasPhoto(product)"
+             class="img-thumbnail product-img"
+             [src]="getPhoto(product)" />
+      </td>
       <td>
         <a [routerLink]="['/products', product.id]" >{{product.model}}</a>
       </td>

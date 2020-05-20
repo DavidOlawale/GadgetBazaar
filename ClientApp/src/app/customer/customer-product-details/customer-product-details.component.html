@@ -19,7 +19,7 @@
       <div class="carousel-inner ">
         <div class="inherit-width" *ngFor="let image of product.productImages; index as i; first as isFirst"
              [ngClass]="{'carousel-item': true, 'active': isFirst}">
-          <img class="product-image inherit-width" [src]="'images/products/' + image.name" >
+          <img class="product-image inherit-width" [src]="getPhoto(product)" >
         </div>
         </div>
 
