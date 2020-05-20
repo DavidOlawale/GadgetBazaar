@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MobileStoreApp.Data;
 using MobileStoreApp.Models;
+using MobileStoreApp.Models.Dtos;
 
 namespace MobileStoreApp.Controllers
 {
@@ -18,11 +20,13 @@ namespace MobileStoreApp.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public OrdersController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMapper mapper)
         {
             _context = context;
             this._userManager = userManager;
+            this._mapper = mapper;
         }
 
         [HttpGet]
@@ -86,12 +90,9 @@ namespace MobileStoreApp.Controllers
 
         [HttpPost]
         [Authorize(Roles ="Customer")]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<ActionResult<Order>> PostOrder(OrderDto orderDto)
         {
-            foreach (var item in order.OrderItems)
-            {
-                item.Product = null;
-            }
+            var order = _mapper.Map<Order>(orderDto);
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
 

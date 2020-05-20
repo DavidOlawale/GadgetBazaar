@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using MobileStoreApp.Data;
 using MobileStoreApp.Models;
+using MobileStoreApp.Models.Dtos;
 using MobileStoreApp.Services;
 
 namespace MobileStoreApp
@@ -71,6 +73,17 @@ namespace MobileStoreApp
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddScoped<AuthService>();
+
+            services.AddAutoMapper(conf =>
+            {
+                conf.CreateMap<Product, ProductDto>();
+                conf.CreateMap<ProductDto, Product>();
+                conf.CreateMap<Order, OrderDto>();
+                conf.CreateMap<OrderDto, Order>();
+                conf.AddProfile<MappingProfile>();
+
+            }, typeof(Startup));
+
         }
 
         public void Configure(
