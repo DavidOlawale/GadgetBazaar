@@ -11,23 +11,26 @@ export class NavMenuComponent implements OnInit {
   isExpanded = false;
   orderItemsNumber: number
   isLogedIn: boolean
+  sub
 
   constructor(private orderItemsService: OrderItemsService, private auth: AuthService) {
     this.orderItemsNumber = orderItemsService.getOrderItems.length
-    this.isLogedIn = auth.isLoggedIn
+    this.isLogedIn = auth.isLogedIn
     
   }
   ngOnInit(): void {
     this.orderItemsService.orderItemsAltered.subscribe(() => this.orderItemsNumber = this.orderItemsService.getOrderItems().length)
-    this.auth.alterLogin.subscribe((logedIn) => { this.isLogedIn = logedIn })
+    this.auth.alterLogin.subscribe((logedIn) => {
+      this.isLogedIn = logedIn
+    })
   }
 
   collapse() {
-    this.isExpanded = false;
+    this.isExpanded = false
   }
 
   toggle() {
-    this.isExpanded = !this.isExpanded;
+    this.isExpanded = !this.isExpanded
   }
 
   logOut() {

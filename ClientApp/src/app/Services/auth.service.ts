@@ -10,7 +10,7 @@ export class AuthService {
   public customerId: string
   private role: string
   public email: string
-  public isLoggedIn: boolean = false
+  public isLogedIn: boolean = false
   public alterLogin: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(private server: ServerService, private router: Router) {
@@ -18,8 +18,8 @@ export class AuthService {
     if (token) {
       server.token = token
       let userClaims = jwt(token)
-      this.isLoggedIn = new Date(0).setUTCSeconds(userClaims.exp) > Date.now()
-      if (this.isLoggedIn) {
+      this.isLogedIn = new Date(0).setUTCSeconds(userClaims.exp) > Date.now()
+      if (this.isLogedIn) {
         this.customerId = userClaims.nameid
         this.role = userClaims.role
         this.email = userClaims.email
@@ -41,17 +41,20 @@ export class AuthService {
     let decripted = jwt(result.token)
     this.email = decripted.email
     this.role = decripted.role
-    this.isLoggedIn = true
-    this.alterLogin.emit(true)
     this.router.navigateByUrl('/')
+    this.isLogedIn = true
+    this.alterLogin.emit()
     return true
   }
 
   logOut() {
     localStorage.removeItem('token')
     delete this.server.token
-    this.router.navigate(['/'])
-    this.isLoggedIn = false
+    this.role = null;
+    this.email = null;
+    this.customerId = null
+    this.router.navigateByUrl('/')
+    this.isLogedIn = false
     this.alterLogin.emit(false)
   }
 
