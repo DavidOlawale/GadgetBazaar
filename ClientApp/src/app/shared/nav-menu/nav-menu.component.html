@@ -21,6 +21,10 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Products</a>
           </li>
 
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="auth.isLogedIn">
+            <a class="nav-link text-dark" [routerLink]="['/orders']">Orders</a>
+          </li>
+
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!auth.isAdmin">
             <a class="nav-link text-dark" [routerLink]="['/cart']">
               <img src="../../assets/shopping-cart.svg" height="20px" />
@@ -39,8 +43,8 @@
                 <span>{{auth.email }}</span>
               </div>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" routerLink="/profile" >Profile</a>
-                <a class="dropdown-item" (click)="logOut()" > <i class="fa fa-sign-out-alt"></i> Log out</a>
+                <a class="dropdown-item" routerLink="/profile">Profile</a>
+                <a class="dropdown-item" (click)="logOut()"> <i class="fa fa-sign-out-alt"></i> Log out</a>
               </div>
             </div>
 
