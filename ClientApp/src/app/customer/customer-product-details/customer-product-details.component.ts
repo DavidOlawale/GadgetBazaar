@@ -12,16 +12,24 @@ export class CustomerProductDetailsComponent implements OnInit {
   private product: Product
 
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService) {
-  }
-
-  ngOnInit() {
     let productId = this.route.snapshot.paramMap.get('id')
+
     this.productService.getProducts().then((products: Product[]) => {
       this.product = products.find(product => product.id == +productId)
+      if (!this.product) {
+        this.router.navigateByUrl('/404', { skipLocationChange: true })
+      }
     })
   }
 
+  ngOnInit() {
+
+  }
+
   hasPhoto(product: Product): boolean {
+    if (!product) {
+      return false
+    }
     return product.productImages && product.productImages.length > 0
   }
 
