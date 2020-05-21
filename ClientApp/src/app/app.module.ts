@@ -28,10 +28,8 @@ import { ProductsComponent } from './shared/products/products.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     CustomerModule,
     FontAwesomeModule,
-    FormsModule,
     HttpClientModule,
     SharedModule,
-    ToastyModule.forRoot(),
     AdminModule
   ],
   providers: [
