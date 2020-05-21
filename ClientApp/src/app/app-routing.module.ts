@@ -8,6 +8,7 @@ import { CartComponent } from './customer/cart/cart.component';
 import { LoginComponent } from './shared/login/login.component';
 import { NewProductComponent } from './admin/new-product/new-product.component';
 import { LogoutComponent } from './shared/logout/logout.component';
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 
 
 const routes: Route[] = [
@@ -17,7 +18,8 @@ const routes: Route[] = [
   { path: 'products/:id', component: ProductDetailsComponent, pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent }
+  { path: 'logout', component: LogoutComponent },
+  { path: '404', component: NotfoundComponent }
 ]
 
 @NgModule({
