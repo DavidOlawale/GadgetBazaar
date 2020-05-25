@@ -5,11 +5,13 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LogoutComponent } from './logout/logout.component';
-import { AuthService } from '../Services/Auth.service';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductsComponent } from './products/products.component';
 import { ToastyModule } from 'ng2-toasty';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { NavMenuReducer } from '../Store/Reducers/nav-menu.reducers';
+import { environment } from '../../environments/environment.prod';
 
 
 
@@ -24,13 +26,22 @@ import { ToastyModule } from 'ng2-toasty';
     CommonModule,
     FormsModule,
     RouterModule,
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    RouterModule,
+    StoreModule.forRoot({ navMenu: NavMenuReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10,
+      logOnly: environment.production
+    })
+
+
   ],
   exports: [
     LoginComponent,
     NavMenuComponent,
     NotfoundComponent,
-    ToastyModule
+    ToastyModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

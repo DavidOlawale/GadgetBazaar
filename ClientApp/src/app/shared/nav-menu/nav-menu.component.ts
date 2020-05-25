@@ -1,6 +1,8 @@
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Services/Auth.service';
+import { Store } from '@ngrx/store';
+import { navMenuSelector } from '../../Store/Selectors';
 
 @Component({
   selector: 'app-nav-menu',
@@ -11,17 +13,26 @@ export class NavMenuComponent implements OnInit {
   isExpanded = false;
   orderItemsNumber: number
   isLogedIn: boolean
-  sub
+  email: string
 
-  constructor(private orderItemsService: OrderItemsService, private auth: AuthService) {
+  constructor(
+    private orderItemsService: OrderItemsService,
+    private auth: AuthService,
+    private store: Store
+  ) {
     this.orderItemsNumber = orderItemsService.getOrderItems.length
     this.isLogedIn = auth.isLogedIn
+    if (this.isLogedIn)
+      this.email = auth.email
     
   }
   ngOnInit(): void {
     this.orderItemsService.orderItemsAltered.subscribe(() => this.orderItemsNumber = this.orderItemsService.getOrderItems().length)
-    this.auth.alterLogin.subscribe((logedIn) => {
-      this.isLogedIn = logedIn
+    this.store.select(navMenuSelector).subscribe((state) => {
+      this.isLogedIn = state.logedIn
+      if (this.isLogedIn)
+        console.log("yes is logged in with email", state.email);
+        this.email = state.email
     })
   }
 
