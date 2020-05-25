@@ -102,7 +102,7 @@ namespace MobileStoreApp
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             DbInitializer.SeedDatabaseAsync(dbContext, roleManager, authService).Wait();
 
