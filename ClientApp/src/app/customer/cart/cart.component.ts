@@ -2,11 +2,16 @@ import { OrderItem } from '../../Model/order-item';
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit } from '@angular/core';
 import { Subject, merge } from 'rxjs';
+import { trigger, state } from '@angular/animations'
+import { fade } from '../../animations/fade.amination';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class CartComponent implements OnInit {
   private orderItems: OrderItem[]

@@ -8,7 +8,7 @@ export const initialState = {
 
 const reducer = createReducer(initialState,
   on(NavMenuActions.logInAction, (state, action) => ({ logedIn: true, email: action.email })),
-  on(NavMenuActions.logOutAction, state => ({ logedIn: false }))
+  on(NavMenuActions.logOutAction, (state, action) => ({ ...state, logedIn: false }))
 )
 
 

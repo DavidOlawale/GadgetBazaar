@@ -6,11 +6,15 @@ import { Order } from '../../Model/order';
 import { AuthService } from '../../Services/Auth.service';
 import { ToastyService } from 'ng2-toasty';
 import { Router } from '@angular/router';
+import { fade } from '../../animations/fade.amination';
 
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
-  styleUrls: ['./check-out.component.css']
+  styleUrls: ['./check-out.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class CheckOutComponent implements OnInit {
   private orderItems: OrderItem[]

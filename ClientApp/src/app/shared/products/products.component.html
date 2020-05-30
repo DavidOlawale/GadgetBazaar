@@ -1,8 +1,10 @@
-<div *ngIf="auth.isAdmin; else nonAdmin">
-  <app-admin-products></app-admin-products>
+<div @fade>
+  <div *ngIf="auth.isAdmin; else nonAdmin">
+    <app-admin-products></app-admin-products>
+  </div>
+
+  <ng-template #nonAdmin>
+    <app-customer-products></app-customer-products>
+  </ng-template>
+
 </div>
-
-<ng-template #nonAdmin>
-  <app-customer-products></app-customer-products>
-</ng-template>
-

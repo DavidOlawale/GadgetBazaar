@@ -1,7 +1,8 @@
-<app-admin-product-details *ngIf="auth.isAdmin; else customer"></app-admin-product-details>
+<div @fade>
+  <app-admin-product-details *ngIf="auth.isAdmin; else customer"></app-admin-product-details>
 
-<ng-template  #customer>
-  <app-customer-product-details></app-customer-product-details>
-</ng-template>
+  <ng-template #customer>
+    <app-customer-product-details></app-customer-product-details>
+  </ng-template>
 
-
+</div>
