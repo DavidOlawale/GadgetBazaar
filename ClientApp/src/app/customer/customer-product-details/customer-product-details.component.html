@@ -35,7 +35,7 @@
   <div class="col-md-6 p-5">
     <h2 class="pt-4 text-center font-weight-bold">{{ product.model }}</h2>
     <p>Brand <span class="text-bold">{{ product.brand.name }}</span></p>
-    <p>Price <span class="text-bold">{{product.price}}</span></p>
+    <p>Price <span class="text-bold">₦ {{product.price}}</span></p>
     <app-alter-in-cart [product]="product" *ngIf="product"></app-alter-in-cart>
   </div>
   <div class="col-12 col-md-10 offset-md-1 bg-white mt-4 p-3">

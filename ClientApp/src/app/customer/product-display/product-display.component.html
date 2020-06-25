@@ -2,8 +2,8 @@
   <div class="product" [routerLink]="['/products', product.id]">
     <img *ngIf="hasPhoto(product)" [src]="getPhoto(product)" class="product-image"/>
     <img *ngIf="!hasPhoto(product )" src="../../assets/no-image.jpg" class="product-image"  />
-    <h4 class="text-center product-model">{{ product.model }} </h4>
-    <p class="text-center">{{ product.price }}</p>
+    <h4 class="mt-2 product-model">{{ product.model }} </h4>
+    <p class="">₦ {{ product.price }}</p>
   </div>
   <app-alter-in-cart [product]="product"></app-alter-in-cart>
 </div>

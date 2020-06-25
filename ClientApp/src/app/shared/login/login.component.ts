@@ -3,7 +3,6 @@ import { AuthService } from '../../Services/auth.service';
 import { NgForm } from '@angular/forms';
 import { fade } from '../../animations/fade.amination';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-login',
