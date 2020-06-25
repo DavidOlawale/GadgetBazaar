@@ -1,14 +1,16 @@
 <div class="h-100 d-flex" @fade>
-  <div class=" w-50 m-auto p-4 b-radius-1" style="background-color: #A8A8A8">
-    <h3 class="text-center">Login</h3>
+  <div class=" col-10 col-sm-6 col-md-4 m-auto p-4 rounded login-content" style="background-color: #e6e6e6">
+    <h1 class="text-center py-2">Login</h1>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+
+      <p [ngClass]="{'text-danger': true, 'd-none': !isLoginFailed}">Invalid Username or password</p>
+      <fa-icon *ngIf="isLoading" [icon]="faSpinner" size="lg"  pulse="true"></fa-icon>
       <div class="form-group">
-        <label [ngClass]="{'text-danger': true, 'd-none': loginSuccess}">Invalid Username or password</label>
         <label for="email">Email address:</label>
         <input ngModel name="email" type="email" class="form-control" id="email">
       </div>
       <div class="form-group">
-        <label for="pwd">Password:</label>
+        <label for="pwd">Password:</label>  
         <input ngModel name="password" type="password" class="form-control" id="pwd">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>

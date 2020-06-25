@@ -2,3 +2,7 @@
 label{
     display: block;
 }
+
+.login-content {
+  box-shadow: 0px 0px 5px rgba(27, 31, 35, 0.44);
+}
