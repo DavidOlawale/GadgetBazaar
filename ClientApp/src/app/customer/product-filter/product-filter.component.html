@@ -1,38 +1,34 @@
 <div>
   <div class="form-group">
     <label for="brand">Select brand</label>
-    <select
-    class="custom-select custom-select-sm"
-    id="brand"
-    #brandSelect
-    (change)="onBrandChange(brandSelect.value)"
-    >
+    <select class="custom-select custom-select-sm"
+            id="brand"
+            #brandSelect>
       <option value="0">All</option>
-      <option *ngFor="let brand of brands" [value]="brand.id">{{
+      <option *ngFor="let brand of brands" [value]="brand.id">
+        {{
         brand.name
-      }}</option>
+        }}
+      </option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="min">Min price</label>
     <input type="number"
-    step="1000"
-    min="0"
-    class="form-control"
-    #minPriceInput
-    (change)="onMinPriceChange(minPriceInput.value)"
-    >
+           step="1000"
+           min="0"
+           class="form-control"
+           #minPriceInput>
   </div>
 
   <div class="form-group">
     <label for="max">Max price</label>
     <input type="number"
-    step="1000"
-    min="0"
-    class="form-control"
-    #maxPriceInput
-    (change)="onMaxPriceChange(maxPriceInput.value)"
-    >
+           step="1000"
+           min="0"
+           class="form-control"
+           #maxPriceInput>
   </div>
+  <button class="btn btn-secondary" (click)="onProductsFiltered()">Apply</button>
 </div>

@@ -25,22 +25,10 @@ export class CustomerProductsComponent implements OnInit {
     
   }
 
-  fitlerProducts() {
-    let filteredByBrand = this.products.filter(p => this.selectedBrandId == 0 || p.brandId == this.selectedBrandId)
-    let filteredByMinPrice = filteredByBrand.filter(p => !this.minPrice || p.price >= Number(this.minPrice))
-    let filteredByMaxPrice = filteredByMinPrice.filter(p => !this.maxPrice || p.price <= Number(this.maxPrice))
-  }
-
-  onBrandChanged(brandId) {
-    this.selectedBrandId = brandId
-  }
-
-  onMinPriceChanged(min) {
-    this.minPrice = min
-  }
-
-  onMaxPriceChanged(max) {
-    this.maxPrice = max
+  onProductsFiltered(value: { min: number, max: number, brandId: number }) {
+    this.minPrice = value.min
+    this.maxPrice = value.max
+    this.selectedBrandId = value.brandId
   }
 
   get getFilteredProducts() {
@@ -50,5 +38,4 @@ export class CustomerProductsComponent implements OnInit {
     return filteredByMaxPrice
 
   }
-
 }

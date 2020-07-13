@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Brand } from '../../Model/brand';
 import { BrandService } from '../../Services/brand.service';
 
@@ -10,16 +10,19 @@ import { BrandService } from '../../Services/brand.service';
 export class ProductFilterComponent implements OnInit {
 private brands: Brand[]
   constructor(private brandService: BrandService) { }
-  @Output() brandChanged = new EventEmitter<string>()
-  @Output() minPriceChanged = new EventEmitter<number>()
-  @Output() maxPriceChanged = new EventEmitter<number>()
+
+  @Output() productsFiltered = new EventEmitter<{ min: number, max: number, brandId: number }>()
+
+  @ViewChild('brandSelect', { static: true }) brandSelect
+  @ViewChild('minPriceInput', { static: true }) minPriceInput
+  @ViewChild('maxPriceInput', { static: true }) maxPriceInput
+
 
   ngOnInit() {
     this.brandService.getBrands().subscribe(brands => this.brands = brands)
   }
 
-  onBrandChange = (brandId) => this.brandChanged.emit(brandId)
-
-  onMinPriceChange = (price: number) => this.minPriceChanged.emit(price)
-  onMaxPriceChange = (price: number) =>this.maxPriceChanged.emit(price)
+  onProductsFiltered() {
+    this.productsFiltered.emit({ min: this.minPriceInput.nativeElement.value, max: this.maxPriceInput.nativeElement.value, brandId: this.brandSelect.nativeElement.value })
+  }
 }
