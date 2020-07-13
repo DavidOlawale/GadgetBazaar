@@ -1,8 +1,6 @@
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
-import { Store } from '@ngrx/store';
-import { navMenuSelector } from '../../Store/Selectors';
 
 @Component({
   selector: 'app-nav-menu',
@@ -18,7 +16,6 @@ export class NavMenuComponent implements OnInit {
   constructor(
     private orderItemsService: OrderItemsService,
     private auth: AuthService,
-    private store: Store
   ) {
     this.orderItemsNumber = orderItemsService.getOrderItems.length
     this.isLogedIn = auth.isLogedIn
@@ -28,11 +25,16 @@ export class NavMenuComponent implements OnInit {
   }
   ngOnInit(): void {
     this.orderItemsService.orderItemsAltered.subscribe(() => this.orderItemsNumber = this.orderItemsService.getOrderItems().length)
-    this.store.select(navMenuSelector).subscribe((state) => {
-      this.isLogedIn = state.logedIn
-      if (this.isLogedIn)
-        this.email = state.email
+
+    this.auth.LogedIn.subscribe(() => {
+      this.isLogedIn = true
+      this.email = this.auth.email
     })
+
+    this.auth.logedOut.subscribe(() => {
+      this.isLogedIn = false
+    })
+      
   }
 
   collapse() {

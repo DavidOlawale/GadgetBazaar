@@ -2,8 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { ServerService } from './server.service';
 import * as jwt from 'jwt-decode'
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { logInAction, logOutAction } from '../Store/Actions/nav-menu.actions';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,10 +12,11 @@ export class AuthService {
   private role: string
   public email: string
   public isLogedIn: boolean = false
+  public LogedIn = new EventEmitter<any>()
+  public logedOut = new EventEmitter<any>()
 
   constructor(private server: ServerService,
     private router: Router,
-    private store: Store<{ NavMenu: { logedIn: boolean, email: string } }>
   ) {
     let token = localStorage.getItem('token')
     if (token) {
@@ -27,7 +27,6 @@ export class AuthService {
         this.customerId = userClaims.nameid
         this.role = userClaims.role
         this.email = userClaims.email
-        this.store.dispatch(logInAction({ email: this.email }))
       }
     }
   }
@@ -47,7 +46,7 @@ export class AuthService {
     this.email = decripted.email
     this.role = decripted.role
     this.isLogedIn = true
-    this.store.dispatch(logInAction({ email: this.email }))
+    this.LogedIn.emit()
     this.router.navigateByUrl('/')
     return true
   }
@@ -59,8 +58,8 @@ export class AuthService {
     this.email = null;
     this.customerId = null
     this.isLogedIn = false
+    this.logedOut.emit()
     this.router.navigateByUrl('/')
-    this.store.dispatch(logOutAction())
   }
 
   public get isAdmin(): boolean {

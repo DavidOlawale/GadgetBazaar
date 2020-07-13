@@ -7,14 +7,7 @@ import { RouterModule } from '@angular/router';
 import { LogoutComponent } from './logout/logout.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ToastyModule } from 'ng2-toasty';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-
-import { NavMenuReducer } from '../Store/Reducers/nav-menu.reducers';
-import { environment } from '../../environments/environment.prod';
-
 
 
 @NgModule({
@@ -30,14 +23,7 @@ import { environment } from '../../environments/environment.prod';
     RouterModule,
     ToastyModule.forRoot(),
     RouterModule,
-    StoreModule.forRoot({ navMenu: NavMenuReducer }),
     FontAwesomeModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 10,
-      logOnly: environment.production
-    })
-
-
   ],
   exports: [
     LoginComponent,
