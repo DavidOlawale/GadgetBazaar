@@ -46,9 +46,9 @@ export class AuthService {
     let decripted = jwt(result.token)
     this.email = decripted.email
     this.role = decripted.role
-    this.router.navigateByUrl('/')
     this.isLogedIn = true
     this.store.dispatch(logInAction({ email: this.email }))
+    this.router.navigateByUrl('/')
     return true
   }
 
@@ -58,16 +58,16 @@ export class AuthService {
     this.role = null;
     this.email = null;
     this.customerId = null
-    this.router.navigateByUrl('/')
     this.isLogedIn = false
+    this.router.navigateByUrl('/')
     this.store.dispatch(logOutAction())
   }
 
-  get isAdmin(): boolean {
+  public get isAdmin(): boolean {
     return this.role == "Admin"
   }
 
-  get isCustomer() {
+  public get isCustomer() {
     return this.role == "Customer"
   }
 }

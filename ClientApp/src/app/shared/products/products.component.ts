@@ -1,7 +1,5 @@
-import { Product } from '../../Model/product';
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../../Services/Auth.service';
-import { ProductsService } from '../../Services/products-service.service';
+import { AuthService } from '../../Services/auth.service';
 import { fade } from '../../animations/fade.amination';
 
 @Component({

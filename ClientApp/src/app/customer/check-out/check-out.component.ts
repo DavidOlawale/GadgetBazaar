@@ -3,8 +3,7 @@ import { OrderItem } from '../../Model/order-item';
 import { OrderItemsService } from '../../Services/order-items.service';
 import { ServerService } from '../../Services/server.service';
 import { Order } from '../../Model/order';
-import { AuthService } from '../../Services/Auth.service';
-import { ToastyService } from 'ng2-toasty';
+import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
 import { fade } from '../../animations/fade.amination';
 

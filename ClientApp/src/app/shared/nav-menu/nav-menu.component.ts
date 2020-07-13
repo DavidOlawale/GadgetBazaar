@@ -1,6 +1,6 @@
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../Services/Auth.service';
+import { AuthService } from '../../Services/auth.service';
 import { Store } from '@ngrx/store';
 import { navMenuSelector } from '../../Store/Selectors';
 
@@ -31,7 +31,6 @@ export class NavMenuComponent implements OnInit {
     this.store.select(navMenuSelector).subscribe((state) => {
       this.isLogedIn = state.logedIn
       if (this.isLogedIn)
-        console.log("yes is logged in with email", state.email);
         this.email = state.email
     })
   }

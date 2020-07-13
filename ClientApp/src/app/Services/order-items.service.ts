@@ -1,7 +1,6 @@
 import { Product } from './../Model/product';
 import { Injectable, EventEmitter } from '@angular/core';
 import { OrderItem } from '../Model/order-item';
-import { error } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class OrderItemsService {
   }
   addOrderItem(product: Product): void{
     if(this.containsProduct(product)){
-      throw error('Item already in cart')
+      return
     }
     let orderItem = new OrderItem()
     orderItem.productId = product.id
