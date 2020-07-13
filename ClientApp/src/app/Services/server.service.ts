@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -17,12 +17,13 @@ export class ServerService {
   constructor(private http: HttpClient, router: Router) {
     this.token = localStorage.getItem('token')
   }
-  get(uri: string): Observable<any> {
+  get(uri: string, params?: HttpParams): Observable<any> {
     if (this.token)
       this.defaultHeaders['Authorization'] = `Bearer ${this.token}`
 
     return this.http.get(`${this.origin}/api${uri}`, {
-      headers: this.token ? this.defaultHeaders : null
+      headers: this.token ? this.defaultHeaders : null,
+      params
     })
   }
 

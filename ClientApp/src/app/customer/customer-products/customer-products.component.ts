@@ -10,10 +10,6 @@ import { AuthService } from '../../Services/auth.service';
 })
 export class CustomerProductsComponent implements OnInit {
   products: Product[] = []
-  productsToDisplay: Product[]
-  selectedBrandId: number = 0
-  minPrice: number
-  maxPrice: number
 
   constructor(private productsService: ProductsService, private auth: AuthService) {
     productsService.getProducts().then(products => {
@@ -25,17 +21,8 @@ export class CustomerProductsComponent implements OnInit {
     
   }
 
-  onProductsFiltered(value: { min: number, max: number, brandId: number }) {
-    this.minPrice = value.min
-    this.maxPrice = value.max
-    this.selectedBrandId = value.brandId
+  async onProductsFiltered(value: { min: string, max: string, brandId: string }) {
+    this.products = await this.productsService.getFilteredProducts(value.min, value.max, value.brandId)
   }
 
-  get getFilteredProducts() {
-    let filteredByBrand = this.products.filter(p => this.selectedBrandId == 0 || p.brandId == this.selectedBrandId)
-    let filteredByMinPrice = filteredByBrand.filter(p => !this.minPrice || p.price >= Number(this.minPrice))
-    let filteredByMaxPrice = filteredByMinPrice.filter(p => !this.maxPrice || p.price <= Number(this.maxPrice))
-    return filteredByMaxPrice
-
-  }
 }

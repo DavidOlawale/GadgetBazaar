@@ -2,33 +2,31 @@ import { Product } from './../Model/product';
 import { Injectable } from '@angular/core';
 import { Brand } from '../Model/brand';
 import { ServerService } from './server.service';
+import { HttpRequest, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  products: Product[]
-  brands: Brand[]
   constructor(private server: ServerService) {
   }
 
   async getProducts(): Promise<Product[]>{
-    return this.products ? this.products : await this.loadProducts()
+    return await this.server.get('/products').toPromise()
   }
 
-  async getProductBrands() {
-    return this.brands ? this.brands : await this.loadBrands()
+  async getFilteredProducts(minPrice: string, maxPrice: string, brandId: string): Promise<Product[]> {
+    let params = new HttpParams()
+    .set('minPrice', minPrice)
+    .set('maxPrice', maxPrice)
+    .set('brandId', brandId)
+
+    return await this.server.get('/products', params).toPromise()
   }
 
-  async loadProducts(): Promise<Product[]> {
-    this.products = await this.server.get('/products').toPromise()
-    return this.products
+  async getProductBrands(): Promise<Brand[]> {
+    return await this.server.get('/brands').toPromise()
   }
 
-
-  async loadBrands(): Promise<Brand[]> {
-    this.brands = await this.server.get('/brands').toPromise()
-    return this.brands
-  }
 }

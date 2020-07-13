@@ -24,12 +24,22 @@ namespace MobileStoreApp.Controllers
 
         // GET: api/Products
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public ActionResult<IEnumerable<Product>> GetProducts(int minPrice, int maxPrice , int brandId)
         {
-            return await _context.Products
+            var products = _context.Products
                 .Include(p => p.Brand)
-                .Include(p => p.ProductImages)
-                .ToListAsync();
+                .Include(p => p.ProductImages) as IQueryable<Product>;
+
+            if (minPrice != 0)
+                products = products.Where(p => p.Price >= minPrice);
+
+            if (maxPrice != 0)
+                products = products.Where(p => p.Price <= maxPrice);
+
+            if (brandId!= 0)
+                products = products.Where(p => p.Brand.Id == brandId);
+
+            return products.ToList();
         }
 
         // GET: api/Products/5
