@@ -9,8 +9,9 @@ namespace MobileStoreApp.Models.Dtos
     public class OrderDto
     {
         public int Id { get; set; }
+
         [Required]
         public string CustomerId { get; set; }
-        public IEnumerable<OrderItemDto> OrderItems { get; set; }
+        public IEnumerable<OrderItem> OrderItems { get; set; }
     }
 }
