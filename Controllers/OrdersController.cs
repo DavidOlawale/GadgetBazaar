@@ -93,7 +93,14 @@ namespace MobileStoreApp.Controllers
         public async Task<ActionResult<Order>> PostOrder(OrderDto orderDto)
         {
             var order = _mapper.Map<Order>(orderDto);
-            await _context.Orders.AddAsync(order);
+
+            foreach (var orderItem in order.OrderItems)
+            {
+                // Ensure ef doesn't try to create a new product
+                orderItem.Product = _context.Products.Find(orderItem.ProductId);
+            }
+
+            _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("orders", new { id = order.Id }, order);
