@@ -1,6 +1,6 @@
 <div class="row h-auto" @fade>
-  <div class="col-md-8 offset-md-2 bg-white cart-component-content p-3 m-auto">
-    <h1 class="text-center mb-3">Check out</h1>
+  <div class="col-md-8 offset-md-2 bg-white cart-component-content p-4 m-auto box-shadow">
+    <h1 class="text-center mb-4">Check out</h1>
     <table class="table table-bordered">
       <tr>
         <th>Name</th>
@@ -16,7 +16,7 @@
     <p>Total Price : {{totalPrice}}</p>
 
     <div class="d-flex mt-5">
-      <button (click)="placeOrder()" class="btn btn-blue m-auto text-bold">Place Order </button>
+      <button (click)="placeOrder()" class="btn btn-blue m-auto text-bold" disabled="orderItems.length == 0">Place Order </button>
     </div>
   </div>
 </div>

@@ -28,7 +28,6 @@ export class CheckOutComponent implements OnInit {
   }
 
   placeOrder() {
-    console.log('clicked')
     let order = new Order()
     order.customerId = this.auth.customerId
     order.orderItems = this.orderItems

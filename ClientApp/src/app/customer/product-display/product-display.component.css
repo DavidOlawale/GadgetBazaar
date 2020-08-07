@@ -1,8 +1,12 @@
+
 .product{
+    box-shadow: 0 0 6px #ccc;
+}
+.product__content{
     padding: 1rem;
     background-color: #fff;
     border-radius: 5px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .product-image{

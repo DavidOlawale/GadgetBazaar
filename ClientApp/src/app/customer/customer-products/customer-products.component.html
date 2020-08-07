@@ -2,8 +2,8 @@
   <div class="col-sm-3">
     <app-product-filter (productsFiltered)="onProductsFiltered($event)"></app-product-filter>
   </div>
-  <div class="col-sm-9 products p-3">
-    <div class="row">
+  <div class="col-sm-9 products p-3 products-display">
+    <div class="row ">
       <app-product-display *ngFor="let product of products" [product]="product" class="col-6 col-sm-4 mb-4">
       </app-product-display>
     </div>

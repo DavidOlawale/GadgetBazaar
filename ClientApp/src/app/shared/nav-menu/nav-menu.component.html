@@ -27,8 +27,8 @@
 
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!auth.isAdmin">
             <a class="nav-link text-dark" [routerLink]="['/cart']">
-              <img src="../../assets/shopping-cart.svg" height="20px" />
-              <span class="pl-2">
+              <i class="fa fa-shopping-cart"></i>
+              <span>
                 My Cart
                 <span *ngIf="orderItemsNumber > 0"
                       class="badge badge-primary">{{ orderItemsNumber }}</span>
@@ -50,7 +50,10 @@
           </li>
           <ng-template #login>
             <li class="nav-item" [routerLinkActive]="['link-active']">
-              <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
+              <a class="nav-link text-dark" [routerLink]="['/login']">
+                <i class="fa fa-sign-in-alt"></i>
+                <span class="ml-2">Login</span>
+              </a>
             </li>
           </ng-template>
 
