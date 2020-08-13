@@ -5,7 +5,7 @@ import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-alter-in-cart',
   templateUrl: './alter-in-cart.component.html',
-  styleUrls: ['./alter-in-cart.component.css']
+  styleUrls: ['./alter-in-cart.component.scss']
 })
 export class AlterInCartComponent implements OnInit {
 

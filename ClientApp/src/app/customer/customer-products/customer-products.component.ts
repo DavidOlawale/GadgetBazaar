@@ -6,7 +6,7 @@ import { AuthService } from '../../Services/auth.service';
 @Component({
   selector: 'app-customer-products',
   templateUrl: './customer-products.component.html',
-  styleUrls: ['./customer-products.component.css']
+  styleUrls: ['./customer-products.component.scss']
 })
 export class CustomerProductsComponent implements OnInit {
   products: Product[] = []

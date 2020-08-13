@@ -9,7 +9,7 @@ import { ToastyService } from 'ng2-toasty';
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.css']
+  styleUrls: ['./new-product.component.scss']
 })
 export class NewProductComponent implements OnInit {
   private product: Product = new Product()

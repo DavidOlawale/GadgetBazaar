@@ -15,7 +15,7 @@ namespace MobileStoreApp.Data
             RoleManager<IdentityRole> roleManager,
             AuthService authService)
         {
-            if (dbContext.Users.Any())
+            if (!dbContext.Users.Any())
                 return;
             _ = await roleManager.CreateAsync(new IdentityRole(RoleNames.Admin));
             _ = await roleManager.CreateAsync(new IdentityRole(RoleNames.Customer));
@@ -25,7 +25,7 @@ namespace MobileStoreApp.Data
                 LastName = "David",
                 Email = "olawaledavid11@gmail.com",
                 PhoneNumber = "+2349016838771",
-                UserName = "olawaledavid"
+                UserName = "olawaledavid11@gmail.com"
             };
             var customer = new Customer
             {
@@ -33,7 +33,7 @@ namespace MobileStoreApp.Data
                 LastName = "Achoja",
                 Email = "efe@gmail.com",
                 PhoneNumber = "+2349012345678",
-                UserName = "jahswill"
+                UserName = "efe@gmail.com"
             };
             _ = await authService.SignUp(admin, "123abc", RoleNames.Admin);
             _ = await authService.SignUp(customer, "123abc", RoleNames.Customer);

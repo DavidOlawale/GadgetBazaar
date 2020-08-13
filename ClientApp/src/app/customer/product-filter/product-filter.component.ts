@@ -5,7 +5,7 @@ import { BrandService } from '../../Services/brand.service';
 @Component({
   selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',
-  styleUrls: ['./product-filter.component.css']
+  styleUrls: ['./product-filter.component.scss']
 })
 export class ProductFilterComponent implements OnInit {
 private brands: Brand[]

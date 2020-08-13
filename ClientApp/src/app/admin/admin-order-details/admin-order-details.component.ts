@@ -8,7 +8,7 @@ import { Product } from '../../Model/product';
 @Component({
   selector: 'app-admin-order-details',
   templateUrl: './admin-order-details.component.html',
-  styleUrls: ['./admin-order-details.component.css']
+  styleUrls: ['./admin-order-details.component.scss']
 })
 export class AdminOrderDetailsComponent implements OnInit {
   private order: Order

@@ -1,5 +1,4 @@
 
-
 label {
   display: block;
 }
@@ -11,21 +10,23 @@ label {
   overflow: hidden;
   margin-top: 2rem;
   margin-bottom: 2rem;
+
+  &__image {
+    background: linear-gradient( rgba(0, 7, 62, 0.66), rgba(0, 7, 62, 0.66)), url("../../../assets/sign-up.jpg");
+    background-size: cover;
+    padding: 0 !important;
+    width: 50%;
+    overflow: hidden
+  }
+
+
+  &__content {
+    padding: 1rem 1.5rem;
+    width: 50%;
+  }
 }
 
-.sign-up__image {
-  background: linear-gradient( rgba(0, 7, 62, 0.66), rgba(0, 7, 62, 0.66)), url("../../../assets/sign-up.jpg");
-  background-size: cover;
-  padding: 0 !important;
-  width: 50%;
-  overflow: hidden
-}
 
-
-.sign-up__content {
-  padding: 1rem 1.5rem;
-  width: 50%;
-}
 
 @media screen and (max-width: 650px){
     .sign-up__image{

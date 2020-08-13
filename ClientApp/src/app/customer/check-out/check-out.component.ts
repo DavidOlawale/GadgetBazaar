@@ -10,7 +10,7 @@ import { fade } from '../../animations/fade.amination';
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
-  styleUrls: ['./check-out.component.css'],
+  styleUrls: ['./check-out.component.scss'],
   animations: [
     fade
   ]

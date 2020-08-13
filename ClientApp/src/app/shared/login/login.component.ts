@@ -7,7 +7,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   animations: [
     fade
   ]

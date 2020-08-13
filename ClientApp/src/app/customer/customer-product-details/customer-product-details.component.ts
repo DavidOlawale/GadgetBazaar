@@ -6,7 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-customer-product-details',
   templateUrl: './customer-product-details.component.html',
-  styleUrls: ['./customer-product-details.component.css']
+  styleUrls: ['./customer-product-details.component.scss']
 })
 export class CustomerProductDetailsComponent implements OnInit {
   private product: Product

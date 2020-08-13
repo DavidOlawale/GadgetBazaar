@@ -5,7 +5,7 @@ import { fade } from '../../animations/fade.amination';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css'],
+  styleUrls: ['./product-details.component.scss'],
   animations: [
     fade
   ]

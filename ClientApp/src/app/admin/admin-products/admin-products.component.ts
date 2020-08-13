@@ -5,7 +5,7 @@ import { Product } from '../../Model/product';
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.css']
+  styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnInit {
   products: Product[] = []
