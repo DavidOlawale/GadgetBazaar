@@ -36,8 +36,7 @@ const childRoutes: Route[] = [
     OrderErrorComponent,
     CustomerOrdersComponent,
     CustomerOrderComponent,
-    CustomerOrderDetailsComponent,
-
+    CustomerOrderDetailsComponent
   ],
   imports: [
     CommonModule,

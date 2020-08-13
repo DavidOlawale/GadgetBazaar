@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LogoutComponent } from './logout/logout.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ToastyModule } from 'ng2-toasty';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     NavMenuComponent,
     LogoutComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ToastyModule.forRoot(),
     RouterModule,
     FontAwesomeModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginComponent,

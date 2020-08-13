@@ -31,6 +31,23 @@ export class AuthService {
     }
   }
 
+  signUp(signUpData) {
+    this.server.post<string>('/identity/signup', signUpData).subscribe(
+      result => {
+        localStorage.setItem('token', result.token)
+        this.server.token = result.token
+        let decripted = jwt(result.token)
+        this.email = decripted.email
+        this.role = decripted.role
+        this.isLogedIn = true
+        this.LogedIn.emit()
+        this.router.navigateByUrl('/')
+      },
+        error => {
+          
+        })
+  }
+
   async logIn(email: string, password: string): Promise<boolean> {
     try {
       var result = await this.server.post<string>('/identity/login', { username: email, password: password }).toPromise()

@@ -1,0 +1,41 @@
+<div class="h-100 d-flex" @fade>
+  <div class=" col-sm-10 col-md-9 mx-auto rounded sign-up" style="background-color: #e6e6e6">
+    <div class="sign-up__image"></div>
+    <div class="sign-up__content">
+      <h1 class="p-2">Sign  Up</h1>
+      <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+        <fa-icon *ngIf="isLoading" [icon]="faSpinner" size="lg" pulse="true"></fa-icon>
+
+        <div formGroupName="customer">
+          <div class="form-group">
+            <label for="pwd">First Name</label>
+            <input formControlName="firstName" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label for="pwd">Last Name</label>
+            <input formControlName="lastName" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input formControlName="email" class="form-input">
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <input formControlName="address" class="form-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input formControlName="password" autocomplete="off" type="password" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Submit</button>
+      </form>
+    </div>
+    
+  </div>
+</div>
+

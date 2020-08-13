@@ -1,0 +1,62 @@
+
+
+label {
+  display: block;
+}
+
+.sign-up {
+  box-shadow: 0px 0px 5px rgba(27, 31, 35, 0.44);
+  padding: 0 !important;
+  display: flex;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sign-up__image {
+  background: linear-gradient( rgba(0, 7, 62, 0.66), rgba(0, 7, 62, 0.66)), url("../../../assets/sign-up.jpg");
+  background-size: cover;
+  padding: 0 !important;
+  width: 50%;
+  overflow: hidden
+}
+
+
+.sign-up__content {
+  padding: 1rem 1.5rem;
+  width: 50%;
+}
+
+@media screen and (max-width: 650px){
+    .sign-up__image{
+        width: 0%;
+    }
+    .sign-up__content{
+        width: 100%;
+    }
+}
+
+.form-input {
+    font-family: inherit;
+    display: block;
+    box-shadow: 0 0 #eee 3px ;
+    border-radius: 3px;
+    padding: .3rem .5rem;
+    border: none;
+    width: 100%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color .4s;
+}
+
+input:focus{
+    border-bottom-color: grey;
+    outline: none
+}
+
+input.ng-touched.ng-invalid { 
+  border-bottom-color:  red;
+}
+
+input.ng-touched.ng-valid{
+    border-bottom-color:  green;
+}

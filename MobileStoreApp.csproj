@@ -50,6 +50,14 @@
     <Compile Remove="Migrations\20200414221725_Add-Image-class.Designer.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\Model\customer.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Model\customer.ts" />
+  </ItemGroup>
+
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

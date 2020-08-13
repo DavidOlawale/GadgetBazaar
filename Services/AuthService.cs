@@ -40,17 +40,17 @@ namespace MobileStoreApp.Services
             }
             return result;
         }
-        public async Task<LoginResult> Login(string username, string password)
+        public async Task<LoginResult> Login(string email, string password)
         {
             var result = new LoginResult();
-            var user = dbContext.Users.SingleOrDefault(user => user.UserName == username);
+            var user = dbContext.Users.SingleOrDefault(user => user.Email == email);
             if (user == null)
             {
                 result.UserExists = false;
                 return result;
             }
 
-            var signInResult = await signInManager.PasswordSignInAsync(username, password, false, false);
+            var signInResult = await signInManager.PasswordSignInAsync(email, password, false, false);
             if (signInResult.Succeeded)
                 result.LoginSuccessfull = true;
             

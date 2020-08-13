@@ -9,7 +9,6 @@ namespace MobileStoreApp.Models
         public string FirstName { get; set; }
         
         [Required]
-        public string MiddleName { get; set; }
         public string LastName { get; set; }
 
         [EmailAddress]

@@ -21,20 +21,18 @@ namespace MobileStoreApp.Data
             _ = await roleManager.CreateAsync(new IdentityRole(RoleNames.Customer));
             var admin = new Admin
             {
-                FirstName = "Olaniran",
-                MiddleName = "olawale",
+                FirstName = "Olawale",
                 LastName = "David",
                 Email = "olawaledavid11@gmail.com",
-                PhoneNumber = "09016838771",
+                PhoneNumber = "+2349016838771",
                 UserName = "olawaledavid"
             };
             var customer = new Customer
             {
-                FirstName = "Achoja",
-                MiddleName = "jahswill",
-                LastName = "efe",
+                FirstName = "Jahswill",
+                LastName = "Achoja",
                 Email = "efe@gmail.com",
-                PhoneNumber = "09012345678",
+                PhoneNumber = "+2349012345678",
                 UserName = "jahswill"
             };
             _ = await authService.SignUp(admin, "123abc", RoleNames.Admin);
