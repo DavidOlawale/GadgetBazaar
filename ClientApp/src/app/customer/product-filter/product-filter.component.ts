@@ -1,11 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Brand } from '../../Model/brand';
 import { BrandService } from '../../Services/brand.service';
+import { fade } from '../../animations/fade.amination';
 
 @Component({
   selector: 'app-product-filter',
   templateUrl: './product-filter.component.html',
-  styleUrls: ['./product-filter.component.scss']
+  styleUrls: ['./product-filter.component.scss'],
+  animations: [fade]
 })
 export class ProductFilterComponent implements OnInit {
 private brands: Brand[]

@@ -1,4 +1,29 @@
-.product-img {
-  height: 100px;
-  min-width: 100px;
+
+.products {
+  margin: 2rem auto;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  &__new{
+         margin: 1.5rem;
+         align-self: flex-end;
+     }
+}
+
+.product {
+
+    &__image-container{
+        display: flex;
+    }
+
+
+    &__img {
+    height: 100px;
+    min-width: 100px;
+    max-width: 150px;
+    margin: auto;
+    display: inline-block;
+  }
 }

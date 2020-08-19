@@ -13,6 +13,14 @@
     width: 100%;
     height: 150px;
 }
+@media screen and (max-width: 750px) and (min-width: 577px){
+    .product-image{
+        height: 110px;
+    }
+    .product__content{
+        padding: .4rem;
+    }
+}
 
 .product-model {
   white-space: nowrap;

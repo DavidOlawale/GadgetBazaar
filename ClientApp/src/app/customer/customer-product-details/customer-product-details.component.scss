@@ -2,6 +2,63 @@
     height: 400px;
     width: 100%;
 }
+@media screen and (max-width: 840px){
+    .product-image{
+        height: 300px;
+    }
+}
+
+.product__content {
+  margin: 0 auto;
+  background-color: #fff;
+  margin-top: 1.5rem;
+  padding: 2rem;
+}
+.similar-products {
+  display: flex;
+  position: relative;
+  padding: 5px;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+
+  &__image {
+    width: 100%;
+    max-height: 150px;
+  }
+
+  &__scroll {
+    position: absolute;
+    top: 40%;
+    border-radius: 100px;
+    padding: 10px 15px;
+    color: white;
+    background-color: rgba(#808080, .6);
+
+    &:hover {
+      background-color: rgba(#808080, .9);
+    }
+  }
+
+  &__item {
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 4px;
+
+    &:hover {
+      box-shadow: 0 0 5px #bbb;
+    }
+  }
+}
+
+.scroll-left {
+  left: 1rem;
+}
+
+.scroll-right {
+  right: 1rem;
+}
+
 .inherit-width{
     width: inherit;
 }

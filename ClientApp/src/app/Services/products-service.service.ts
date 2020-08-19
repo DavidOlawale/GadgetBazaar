@@ -12,8 +12,12 @@ export class ProductsService {
   constructor(private server: ServerService) {
   }
 
+  async getProduct(id): Promise<Product> {
+    return await this.server.get(`/products/${id}`).toPromise()
+  }
+
   async getProducts(): Promise<Product[]>{
-    return await this.server.get('/products').toPromise()
+    return await this.server.get(`/products`).toPromise()
   }
 
   async getFilteredProducts(minPrice: string, maxPrice: string, brandId: string): Promise<Product[]> {
@@ -23,6 +27,10 @@ export class ProductsService {
     .set('brandId', brandId)
 
     return await this.server.get('/products', params).toPromise()
+  }
+
+  async getSimilarProducts(productId): Promise<Product[]> {
+    return await this.server.get(`/products/${productId}/similar`).toPromise()
   }
 
   async getProductBrands(): Promise<Brand[]> {

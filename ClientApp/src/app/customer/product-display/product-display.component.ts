@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../Model/product';
 import { Router } from '@angular/router';
+import { fade } from '../../animations/fade.amination';
 
 @Component({
   selector: 'app-product-display',
   templateUrl: './product-display.component.html',
-  styleUrls: ['./product-display.component.scss']
+  styleUrls: ['./product-display.component.scss'],
+  animations: [fade]
 })
 export class ProductDisplayComponent implements OnInit {
   @Input() product: Product

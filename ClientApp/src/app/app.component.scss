@@ -1,8 +1,21 @@
+html{
+    font-size: 100%;
+}
+@media screen and (max-width: 750px){
+    html{
+        font-size: 85%;
+    }
+}
+
+.footer{
+    margin-top: 5px;
+}
+
 .bg-slight-dark{
     background-color: #e6e6e6;
 }
 .b-radius{
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
 .btn-blue {
@@ -17,17 +30,12 @@
   background-color: #f2f2f2;
 }
 
-.cart-component-content {
-  border-radius: .5rem;
-}
-
 footer{
     padding: 20px;
     height: 50px;
     background-color: #081b38;
     color: white;
     text-align: center;
-
 }
 
 .box-shadow {

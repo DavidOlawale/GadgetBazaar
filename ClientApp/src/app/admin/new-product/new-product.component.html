@@ -1,16 +1,18 @@
 
 <div class="d-flex flex-column">
-  <div class="m-auto">
+  <div class="col-10 col-md-6 content">
+
+    <h1 class="content__heading">New Product</h1>
 
     <form (ngSubmit)="submit(f)" #f="ngForm">
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="model">Model:</label>
         <input [(ngModel)]="product.model"
                name="model"
                class="form-control"
                id="model">
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="brandid">Brand:</label>
         <select [(ngModel)]="product.brandId"
                 class="form-control"
@@ -19,7 +21,7 @@
           <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
         </select>
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="price">Price:</label>
         <input [(ngModel)]="product.price"
                type="number"
@@ -29,35 +31,35 @@
                id="price">
       </div>
 
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="battery">Battery Capacity:</label>
         <input [(ngModel)]="product.batteryCapacity"
                name="batteryCapacity"
                class="form-control"
                id="battery">
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="charge">Charging Time:</label>
         <input [(ngModel)]="product.chargingTime"
                name="chargeTime"
                class="form-control"
                id="charge">
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="standby">Stand By Time:</label>
         <input [(ngModel)]="product.standByTime"
                name="standByTime"
                class="form-control"
                id="standby">
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="color">Colors:</label>
         <input [(ngModel)]="product.color"
                name="color"
                class="form-control"
                id="color">
       </div>
-      <div class="form-group form-inline">
+      <div class="form-group">
         <label for="size">Size in gram:</label>
         <input [(ngModel)]="product.sizeInGram"
                type="number"

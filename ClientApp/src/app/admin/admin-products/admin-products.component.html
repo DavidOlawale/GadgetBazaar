@@ -1,29 +1,31 @@
-<h1>Products</h1>
-<a routerLink="/products/new" class="btn btn-primary mt-2">New Product</a>
-<div class="d-flex flex-column mt-5">
-  <table class="table table-bordered table-responsive m-auto col-10 col-md-6">
-    <tr>
-      <th></th>
-      <th>Model</th>
-      <th>Price</th>
-      <th>Brand</th>
-    </tr>
-    <tr *ngFor="let product of products">
 
-      <td>
-        <img *ngIf="!hasPhoto(product)"
-             src="../../assets/no-image.jpg"
-             class="img-thumbnail product-img"
-             />
-        <img *ngIf="hasPhoto(product)"
-             class="img-thumbnail product-img"
-             [src]="getPhoto(product)" />
-      </td>
-      <td>
-        <a [routerLink]="['/products', product.id]" >{{product.model}}</a>
-      </td>
-      <td>{{product.price}} </td>
-      <td>{{product.brand.name}}</td>
-    </tr>
-  </table>
-</div>
+  <div class="d-flex flex-column mt-5">
+    <div class="col-11 col-md-10 products box-shadow border-radius">
+      <h1 class="text-center">Products</h1>
+      <a routerLink="/products/new" class="btn btn-primary products__new">New Product</a>
+      <table class="table table-bordered">
+        <tr class="product">
+          <th></th>
+          <th>Model</th>
+          <th>Price</th>
+          <th>Brand</th>
+        </tr>
+        <tr *ngFor="let product of products">
+
+          <td class="product__image-container">
+            <img *ngIf="!hasPhoto(product)"
+                 src="../../assets/no-image.jpg"
+                 class="product__img" />
+            <img *ngIf="hasPhoto(product)"
+                 class="product__img"
+                 [src]="getPhoto(product)" />
+          </td>
+          <td>
+            <a [routerLink]="['/products', product.id]">{{product.model}}</a>
+          </td>
+          <td>{{product.price}} </td>
+          <td>{{product.brand.name}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>

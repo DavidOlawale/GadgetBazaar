@@ -46,14 +46,27 @@ namespace MobileStoreApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products
+                .Include(p => p.Brand)
+                .Include(p => p.ProductImages)
+                .SingleOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
-            {
                 return NotFound();
-            }
 
             return product;
+        }
+
+        [HttpGet("{id}/similar")]
+        public async Task<IEnumerable<Product>> GetSimilarProductsAsync(int id)
+        {
+            var productToCompare = await _context.Products.FindAsync(id);
+            var similarProducts = _context.Products
+                .Where(product => product.Price >= productToCompare.Price / 2 || product.Price <= productToCompare.Price * 2 || product.BrandId == productToCompare.BrandId)
+                .Take(10)
+                .Include(product => product.ProductImages);
+
+            return similarProducts;
         }
 
         [Authorize(Roles ="Admin")]
