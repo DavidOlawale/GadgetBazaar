@@ -42,4 +42,8 @@ export class CheckOutComponent implements OnInit {
     this.router.navigate(['order-error'])
   }
 
+  get canPlaceOrder(): boolean {
+    return this.orderItems.length == 0 && this.auth.isLogedIn
+  }
+
 }

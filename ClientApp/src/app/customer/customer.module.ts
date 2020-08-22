@@ -19,8 +19,7 @@ import { CustomerOrderDetailsComponent } from './customer-order-details/customer
 const childRoutes: Route[] = [
   { path: 'check-out', component: CheckOutComponent },
   { path: 'order-success', component: OrderedComponent },
-  { path: 'order-error', component: OrderErrorComponent },
-  { path: 'orders', component: CustomerOrdersComponent }
+  { path: 'order-error', component: OrderErrorComponent }
 ]
 
 @NgModule({
@@ -50,6 +49,12 @@ const childRoutes: Route[] = [
     CustomerProductDetailsComponent,
     ProductDisplayComponent,
     ProductFilterComponent,
+    CheckOutComponent,
+    OrderedComponent,
+    OrderErrorComponent,
+    CustomerOrdersComponent,
+    CustomerOrderComponent,
+    CustomerOrderDetailsComponent,
     RouterModule
   ],
   providers: [

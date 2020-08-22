@@ -25,7 +25,7 @@ const routes: Route[] = [
     NewProductComponent,
     NewProductComponent,
     AdminOrdersComponent,
-    AdminOrderDetailsComponent
+    AdminOrderDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,10 @@ const routes: Route[] = [
     AdminProductsComponent,
     AdminProductDetailsComponent,
     EditProductComponent,
-    RouterModule
+    NewProductComponent,
+    NewProductComponent,
+    AdminOrdersComponent,
+    AdminOrderDetailsComponent,
   ]
 })
 export class AdminModule {}

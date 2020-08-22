@@ -10,6 +10,7 @@ import { NewProductComponent } from './admin/new-product/new-product.component';
 import { LogoutComponent } from './shared/logout/logout.component';
 import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { SignUpComponent } from './shared/sign-up/sign-up.component';
+import { OrdersComponent } from './shared/orders/orders.component';
 
 
 const routes: Route[] = [
@@ -21,7 +22,8 @@ const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: '404', component: NotfoundComponent },
-  { path: 'signup', component: SignUpComponent }
+  { path: 'signup', component: SignUpComponent },
+  { path: 'orders', component: OrdersComponent }
 ]
 
 @NgModule({

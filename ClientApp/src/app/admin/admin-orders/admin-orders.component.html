@@ -1,18 +1,18 @@
-<div>
-  <div class="row">
-    <div class="col-10 col-sm-8 col-md-6 m-auto">
-      <h1 class="text-center">Orders</h1>
-      <table class="table table-responsive">
-        <tr>
-          <td>Customer</td>
-          <td>No of items</td>
-        </tr>
-        <tr *ngFor="let order of orders" [routerLink]="'/orders/' + order.id">
-          <td>{{order.customer.firstName}} {{order.customer.middleName}}</td>
-          <td>{{order.orderItems.length}}</td>
-        </tr>
-      </table>
-    </div>
-    
+<div class="row">
+  <div class="col-10 col-sm-10 col-md-9 orders">
+    <h1 class="text-center mb-4">Orders</h1>
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th>Order Id</th>
+        <th>Customer</th>
+        <th>No of items</th>
+      </tr>
+      <tr *ngFor="let order of orders">
+        <td><a [routerLink]="['/orders', order.id]">{{order.id}}</a></td>
+        <td>{{order.customer.firstName}} {{order.customer.middleName}}</td>
+        <td>{{order.orderItems.length}}</td>
+      </tr>
+    </table>
   </div>
+
 </div>

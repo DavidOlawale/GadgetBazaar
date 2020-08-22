@@ -14,12 +14,14 @@ import { SharedModule } from './shared/shared.module';
 import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 import { ProductsComponent } from './shared/products/products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrdersComponent } from './shared/orders/orders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductDetailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -31,9 +31,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   exports: [
     LoginComponent,
     NavMenuComponent,
+    LogoutComponent,
     NotfoundComponent,
-    ToastyModule,
-    RouterModule
+    SignUpComponent,
+    ToastyModule
   ]
 })
 export class SharedModule { }

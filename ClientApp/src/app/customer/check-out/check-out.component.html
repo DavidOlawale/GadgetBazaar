@@ -16,7 +16,7 @@
     <p>Total Price : {{totalPrice}}</p>
 
     <div class="d-flex mt-5">
-      <button (click)="placeOrder()" class="btn btn-blue m-auto text-bold" disabled="orderItems.length == 0">Place Order </button>
+      <button (click)="placeOrder()" class="btn btn-blue m-auto text-bold" [disabled]="canPlaceOrder">Place Order </button>
     </div>
   </div>
 </div>
