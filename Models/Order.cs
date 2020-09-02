@@ -10,6 +10,8 @@ namespace MobileStoreApp.Models
         public string CustomerId { get; set; }
         public Customer Customer { get; set; }
         public IEnumerable<OrderItem> OrderItems { get; set; }
+        public int StatusId { get; set; }
+        public OrderStatus Status { get; set; }
 
     }
 }

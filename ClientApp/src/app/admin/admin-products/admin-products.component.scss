@@ -2,12 +2,12 @@
 .products {
   margin: 2rem auto;
   background-color: #fff;
-  padding: 1.5rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
 
   &__new{
-         margin: 1.5rem;
+         margin: 1.5rem 0;
          align-self: flex-end;
      }
 }

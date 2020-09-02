@@ -1,5 +1,5 @@
-<div class="h-100 d-flex login" @fade>
-  <div class=" col-10 col-sm-6 col-md-3 m-auto p-4 rounded login__content">
+<div class="h-100" @fade>
+  <div class=" col-10 col-sm-6 col-md-4 rounded login__content">
     <i class="fa fa-3x fa-user login__icon"></i>
     <h1 class="text-center py-2">Login</h1>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
@@ -7,7 +7,7 @@
       <p [ngClass]="{'text-danger': true, 'd-none': !isLoginFailed}">Invalid Username or password</p>
       <fa-icon *ngIf="isLoading" [icon]="faSpinner" size="lg"  pulse="true"></fa-icon>
       <div class="form-group">
-        <label for="email">Email address:</label>
+        <label for="email">Email address: </label>
         <input ngModel name="email" type="email" class="form-control" id="email">
       </div>
       <div class="form-group">
