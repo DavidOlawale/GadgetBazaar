@@ -24,5 +24,15 @@ namespace MobileStoreApp.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // seed order statuses
+            builder.Entity<OrderStatus>()
+                .HasData(new OrderStatus(1, OrderStatusStrings.Ordered), new OrderStatus(2, OrderStatusStrings.Delivered));
+        }
     }
+
 }

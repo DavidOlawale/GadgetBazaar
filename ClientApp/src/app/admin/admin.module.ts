@@ -4,7 +4,7 @@ import { AdminProductsComponent } from "./admin-products/admin-products.componen
 import { AdminProductDetailsComponent } from "./admin-product-details/admin-product-details.component";
 import { RouterModule, Route } from "@angular/router";
 import { EditProductComponent } from "./edit-product/edit-product.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NewProductComponent } from "./new-product/new-product.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ToastyModule } from "ng2-toasty";
@@ -32,7 +32,7 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     FormsModule,
     FontAwesomeModule,
-    ToastyModule.forRoot()
+    ReactiveFormsModule
   ],
   exports: [
     AdminProductsComponent,

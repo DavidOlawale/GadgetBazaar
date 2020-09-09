@@ -13,11 +13,13 @@ import { Product } from '../../Model/product';
 export class AdminOrderDetailsComponent implements OnInit {
   private order: Order
   private totalPrice: Number
+  private updatingOrderStatus: boolean
   constructor(private server: ServerService, private route: ActivatedRoute) { }
 
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id')
     this.order = await this.server.get('/orders/' + id).toPromise()
+    console.log(this.order);
     this.calcTotalPrice()
   }
 
@@ -36,5 +38,15 @@ export class AdminOrderDetailsComponent implements OnInit {
       total += item.product.price * item.quantity
     }
     this.totalPrice = total
+  }
+
+  markAsDelivered() {
+    this.updatingOrderStatus = true
+    let thisComponet = this
+    this.server.put(`/orders/MarkAsDelivered/${this.order.id}`, {}).subscribe(function () {
+      this.updatingOrderStatus = false;
+      this.order.status.value = "Delivered"
+
+    }.bind(this))
   }
 }

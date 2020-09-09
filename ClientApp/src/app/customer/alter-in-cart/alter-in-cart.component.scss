@@ -1,6 +1,6 @@
 .quantity-control{
-    padding: 5px;
-    background-color: #d9d9d9;
+    padding: 3px 5px;
+    background-color: #eee;
 }
 .quantity-control button{
     padding: 5px 10px;
@@ -10,4 +10,9 @@
     .quantity-control button{
         padding: 3px 5px;
     }
+}
+
+.btn-alter-quantity {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
 }

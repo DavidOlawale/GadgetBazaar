@@ -3,17 +3,17 @@
     class="d-flex justify-content-between quantity-control font-weight-bold"
   >
   <button *ngIf="numberInCart > 1"
-          class="btn btn-sm btn-secondary"
+          class="btn btn-alter-quantity btn-secondary"
           (click)="decreaseInCart()">
     <fa-icon [icon]="icons.minus"></fa-icon>
   </button>
     <button *ngIf="numberInCart == 1"
-            class="btn btn-sm btn-secondary"
+            class="btn btn-alter-quantity btn-secondary"
             (click)="removeFromCart()">
       <fa-icon [icon]="icons.times"></fa-icon>
     </button>
     <span class="m-auto">{{ numberInCart }}</span>
-    <button class="btn btn-sm btn-secondary" (click)="increaseInCart()">
+    <button class="btn btn-alter-quantity btn-secondary" (click)="increaseInCart()">
       <fa-icon [icon]="icons.plus" ></fa-icon>
     </button>
   </div>

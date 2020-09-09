@@ -4,70 +4,63 @@
 
     <h1 class="content__heading">New Product</h1>
 
-    <form (ngSubmit)="submit(f)" #f="ngForm">
+    <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="form-group">
         <label for="model">Model:</label>
-        <input [(ngModel)]="product.model"
-               name="model"
-               class="form-control"
+        <input formControlName="model"
+               class="form-control form-control-validate"
                id="model">
       </div>
       <div class="form-group">
         <label for="brandid">Brand:</label>
-        <select [(ngModel)]="product.brandId"
-                class="form-control"
-                name="brandId"
+        <select formControlName="brandId"
+                class="form-control form-control-validate"
                 id="brandid">
           <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
         </select>
       </div>
       <div class="form-group">
         <label for="price">Price:</label>
-        <input [(ngModel)]="product.price"
+        <input formControlName="price"
                type="number"
                step="500"
-               name="price"
-               class="form-control"
+               class="form-control form-control-validate"
                id="price">
       </div>
 
       <div class="form-group">
         <label for="battery">Battery Capacity:</label>
-        <input [(ngModel)]="product.batteryCapacity"
-               name="batteryCapacity"
-               class="form-control"
+        <input formControlName="batteryCapacity"
+               class="form-control form-control-validate"
                id="battery">
       </div>
       <div class="form-group">
         <label for="charge">Charging Time:</label>
-        <input [(ngModel)]="product.chargingTime"
+        <input formControlName="chargingTime"
                name="chargeTime"
-               class="form-control"
+               class="form-control form-control-validate"
                id="charge">
       </div>
       <div class="form-group">
         <label for="standby">Stand By Time:</label>
-        <input [(ngModel)]="product.standByTime"
-               name="standByTime"
-               class="form-control"
+        <input formControlName="standByTime"
+               class="form-control form-control-validate"
                id="standby">
       </div>
       <div class="form-group">
         <label for="color">Colors:</label>
-        <input [(ngModel)]="product.color"
-               name="color"
-               class="form-control"
+        <input formControlName="color"
+               class="form-control form-control-validate"
                id="color">
       </div>
       <div class="form-group">
         <label for="size">Size in gram:</label>
-        <input [(ngModel)]="product.sizeInGram"
+        <input formControlName="sizeInGram"
                type="number"
-               name="sizeInSize"
-               class="form-control"
+               class="form-control form-control-validate"
                id="size">
       </div>
-      <button type="submit" class="btn btn-outline-primary">Submit</button>
+      <button [disabled]="form.invalid" type="submit" class="btn btn-outline-secondary">Submit</button>
     </form>
 
   </div>

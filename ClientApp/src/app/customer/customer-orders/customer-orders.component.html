@@ -1,1 +1,28 @@
-<p>customer-orders works!</p>
+<div class="row">
+  <div class="col-10 col-sm-10 col-md-9 orders box-shadow rounded">
+    <h1 class="text-center font-weight-bold mb-4">Orders</h1>
+
+    <table *ngIf="orders.length > 0; else noOrder"
+           class="table table-bordered table-hover">
+      <tr>
+        <th>Order Id</th>
+        <th>Customer</th>
+        <th>No of items</th>
+      </tr>
+      <tr *ngFor="let order of orders">
+        <td><a [routerLink]="['/myorder', order.id]">{{order.id}}</a></td>
+        <td>{{order.customer.firstName}} {{order.customer.middleName}}</td>
+        <td>{{order.orderItems.length}}</td>
+      </tr>
+    </table>
+
+    <ng-template #noOrder>
+      <div class="no-order">
+        <i class="fa fa-shopping-cart fa-5x"></i>
+        <p class="mt-4">Orders you have placed will be displayed here</p>
+      </div>
+    </ng-template>
+    
+  </div>
+
+</div>

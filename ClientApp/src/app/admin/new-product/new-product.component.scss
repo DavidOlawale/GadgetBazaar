@@ -4,10 +4,33 @@
     padding: 3.5rem 5.5rem;
     box-shadow: 0px 0px 5px rgba(27, 31, 35, 0.44);
     background-color: #fff;
-    color: #4a4a4a;
+    color: #222;
 
     &__heading{
-        font-weight: bold;
+        font-weight: bolder;
         margin-bottom: 2.5rem;
+        color: #000;
     }
+}
+
+
+.form-control-validate {
+  font-family: inherit;
+  border-radius: 3px;
+  padding: .3rem .5rem;
+  border-bottom-width: 2px;
+  transition: border-bottom-color .4s;
+}
+
+input:focus {
+  border-bottom-color: grey;
+  outline: none
+}
+
+input.ng-touched.ng-invalid {
+  border-bottom-color: red;
+}
+
+input.ng-touched.ng-valid {
+  border-bottom-color: green;
 }

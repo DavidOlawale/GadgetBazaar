@@ -12,14 +12,14 @@ import { RouterModule, Route } from '@angular/router';
 import { OrderedComponent } from './ordered/ordered.component';
 import { OrderErrorComponent } from './order-error/order-error.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
-import { CustomerOrderComponent } from './customer-order/customer-order.component';
 import { CustomerOrderDetailsComponent } from './customer-order-details/customer-order-details.component';
 
 
 const childRoutes: Route[] = [
   { path: 'check-out', component: CheckOutComponent },
   { path: 'order-success', component: OrderedComponent },
-  { path: 'order-error', component: OrderErrorComponent }
+  { path: 'order-error', component: OrderErrorComponent },
+  { path: 'myorder/:id', component: CustomerOrderDetailsComponent }
 ]
 
 @NgModule({
@@ -34,7 +34,6 @@ const childRoutes: Route[] = [
     OrderedComponent,
     OrderErrorComponent,
     CustomerOrdersComponent,
-    CustomerOrderComponent,
     CustomerOrderDetailsComponent
   ],
   imports: [
@@ -53,7 +52,6 @@ const childRoutes: Route[] = [
     OrderedComponent,
     OrderErrorComponent,
     CustomerOrdersComponent,
-    CustomerOrderComponent,
     CustomerOrderDetailsComponent,
     RouterModule
   ],

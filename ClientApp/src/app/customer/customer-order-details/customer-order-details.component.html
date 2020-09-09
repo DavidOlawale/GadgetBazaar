@@ -1,1 +1,33 @@
-<p>customer-order-details works!</p>
+<div class="row">
+  <div class="col-12 col-sm-10 col-md-8 order-details b-radius box-shadow">
+    <h2 class="text-center font-weight-bold mb-3">Order Details</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th colspan="5">Products</th>
+      </tr>
+      <tr>
+        <td></td>
+        <th>Product</th>
+        <th>price</th>
+        <th>Quantity</th>
+        <th>Price x Quantity</th>
+      </tr>
+      <tr *ngFor="let item of order.orderItems">
+        <td>
+          <img *ngIf="!hasPhoto(item.product)" src="../../assets/no-image.jpg" class="prod-img" alt="" />
+          <img *ngIf="hasPhoto(item.product)" [src]="'images/products/' + item.product.productImages[0].name" class="prod-img" alt="" />
+        </td>
+        <td>{{item.product.model}}</td>
+        <td>{{item.product.price}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.quantity * item.product.price}}</td>
+      </tr>
+      <tr>
+        <td colspan="5">Total Price : {{totalPrice}}</td>
+      </tr>
+    </table>
+    <p>Status: {{order.status.value}}</p>
+
+  </div>
+
+</div>

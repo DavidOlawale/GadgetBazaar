@@ -14,19 +14,15 @@ import { fade } from '../../animations/fade.amination';
 })
 export class CartComponent implements OnInit {
   private orderItems: OrderItem[]
-  private totalPrice: number = 0
+  private totalPrice: number
 
   constructor(private orderItemsService: OrderItemsService) {}
 
   ngOnInit() {
     this.orderItems = this.orderItemsService.getOrderItems()
+    this.totalPrice = this.getTotalPrice()
 
     this.orderItemsService.orderItemsAltered.subscribe(item => this.orderItems = this.orderItemsService.getOrderItems())
-
-    // change total price when order items change or when an order item's quantity change
-    merge(this.orderItemsService.orderItemQuantityAltered, this.orderItemsService.orderItemsAltered).subscribe(() => {
-      this.totalPrice = this.getTotalPrice()
-    })
 
   }
 
@@ -36,10 +32,10 @@ export class CartComponent implements OnInit {
 
 
   getTotalPrice(): number {
-    if (this.orderItems.length == 0) {
+    if (this.orderItemsService.getOrderItems().length == 0) {
       return 0
     }
-    return this.orderItems
+    return this.orderItemsService.getOrderItems()
       .map(item => item.product.price * item.quantity) // returns an array of the prices
       .reduce((first, second) => first + second)  // returns an addition of all prices
   }

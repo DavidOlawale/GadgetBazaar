@@ -38,7 +38,7 @@ export class CheckOutComponent implements OnInit {
     this.router.navigate(['order-success'])
     this.orderItemsService.removeAll()
   }
-  onPlaceOrderError = () => {
+  onPlaceOrderError = (error) => {
     this.router.navigate(['order-error'])
   }
 

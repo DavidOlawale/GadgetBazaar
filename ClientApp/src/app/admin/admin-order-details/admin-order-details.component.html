@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col-12 col-sm-10 col-md-8 order-details b-radius box-shadow">
-    <h2 class="text-center">Products</h2>
+    <h2 class="text-center font-weight-bold mb-3">Order Details</h2>
     <table class="table table-bordered">
       <tr>
-        <th></th>
+        <th colspan="5">Products</th>
+      </tr>
+      <tr>
+        <td></td>
         <th>Product</th>
         <th>price</th>
         <th>Quantity</th>
@@ -23,7 +26,15 @@
         <td colspan="5">Total Price : {{totalPrice}}</td>
       </tr>
     </table>
-    <button class="btn btn-outline-secondary mt-3 mx-auto">Mark as being Shipped</button>
+    <p>Status: {{order.status.value}}</p>
+    
+    <button *ngIf="order.status.value == 'Ordered'"
+            (click)="markAsDelivered()"
+            [disabled]="updatingOrderStatus"
+            class="btn btn-outline-secondary mt-3 mx-auto">
+      <i *ngIf="updatingOrderStatus" class="fa fa-spinner fa-spin"></i>
+      Mark as Delivered
+    </button>
   </div>
   
 </div>
