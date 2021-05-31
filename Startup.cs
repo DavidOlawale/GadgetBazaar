@@ -31,7 +31,7 @@ namespace MobileStoreApp
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("Default"));
+                options.UseSqlServer(Configuration.GetConnectionString("Default")).EnableDetailedErrors();
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => {
