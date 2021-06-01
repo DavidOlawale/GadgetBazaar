@@ -6,13 +6,14 @@ import { Brand } from '../../Model/brand';
 import { ServerService } from '../../Services/server.service';
 import { ToastyService } from 'ng2-toasty';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.scss']
 })
-export class NewProductComponent implements OnInit {
+export class NewProductComponent extends BaseComponent implements OnInit {
   private product: Product = new Product()
   private brands: Brand[]
   private form: FormGroup
@@ -20,7 +21,9 @@ export class NewProductComponent implements OnInit {
   constructor(private router: Router,
     private server: ServerService,
     private productService: ProductsService,
-    private toastyService: ToastyService) { }
+    private toastyService: ToastyService) {
+    super()
+  }
 
   async ngOnInit() {
     this.form = new FormGroup({

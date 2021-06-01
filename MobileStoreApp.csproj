@@ -51,11 +51,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\Model\customer.ts" />
+    <None Remove="ClientApp\src\app\core\Model\customer.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\Model\customer.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\Model\customer.ts" />
   </ItemGroup>
 
 

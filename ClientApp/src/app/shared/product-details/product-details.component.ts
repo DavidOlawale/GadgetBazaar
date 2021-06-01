@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-product-details',
@@ -10,9 +11,11 @@ import { fade } from '../../animations/fade.amination';
     fade
   ]
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent extends BaseComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {
+    super()
+  }
 
   ngOnInit() {
   }

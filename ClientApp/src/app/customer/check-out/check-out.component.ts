@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderItem } from '../../Model/order-item';
+import { OrderItem } from '../../core/Model/order-item';
 import { OrderItemsService } from '../../Services/order-items.service';
 import { ServerService } from '../../Services/server.service';
-import { Order } from '../../Model/order';
+import { Order } from '../../core/Model/order';
 import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-check-out',
@@ -15,13 +16,15 @@ import { fade } from '../../animations/fade.amination';
     fade
   ]
 })
-export class CheckOutComponent implements OnInit {
+export class CheckOutComponent extends BaseComponent implements OnInit {
   private orderItems: OrderItem[]
 
   constructor(private orderItemsService: OrderItemsService,
     private server: ServerService,
     private auth: AuthService,
-    private router: Router) { }
+    private router: Router) {
+    super()
+  }
 
   ngOnInit() {
     this.orderItems = this.orderItemsService.getOrderItems()

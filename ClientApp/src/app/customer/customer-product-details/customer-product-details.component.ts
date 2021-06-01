@@ -1,8 +1,9 @@
 import { ProductsService } from '../../Services/products-service.service';
-import { Product } from '../../Model/product';
+import { Product } from '../../core/Model/product';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-customer-product-details',
@@ -10,13 +11,13 @@ import { fade } from '../../animations/fade.amination';
   styleUrls: ['./customer-product-details.component.scss'],
   animations: [fade]
 })
-export class CustomerProductDetailsComponent implements OnInit {
+export class CustomerProductDetailsComponent extends BaseComponent implements OnInit {
   private product: Product
   private similarProducts: Product[]
   @ViewChild('similarProductsContainer', { static: true }) similarProductsContainer: ElementRef
 
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService) {
-    
+    super()
   }
 
   ngOnInit() {

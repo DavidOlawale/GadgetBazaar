@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from '../../Model/order';
+import { Order } from '../../core/Model/order';
 import { ServerService } from '../../Services/server.service';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../Model/product';
+import { Product } from '../../core/Model/product';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-customer-order-details',
   templateUrl: './customer-order-details.component.html',
   styleUrls: ['./customer-order-details.component.scss']
 })
-export class CustomerOrderDetailsComponent implements OnInit {
+export class CustomerOrderDetailsComponent extends BaseComponent implements OnInit {
   private order: Order
   private totalPrice: Number
   private updatingOrderStatus: boolean
-  constructor(private server: ServerService, private route: ActivatedRoute) { }
+  constructor(private server: ServerService, private route: ActivatedRoute) {
+    super()
+  }
 
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id')

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '../../core/base/base.component';
 import { AuthService } from '../../Services/auth.service';
 
 @Component({
@@ -6,9 +7,11 @@ import { AuthService } from '../../Services/auth.service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent extends BaseComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    super()
+  }
 
   ngOnInit() {
   }

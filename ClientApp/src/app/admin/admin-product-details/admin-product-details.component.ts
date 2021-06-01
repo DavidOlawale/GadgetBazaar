@@ -5,6 +5,8 @@ import { Product } from '../../Model/product';
 import { faImage, faUpload, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
+import { BaseComponent } from '../../core/base/base.component';
+import { basename } from 'path';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { ToastyService } from 'ng2-toasty';
   templateUrl: './admin-product-details.component.html',
   styleUrls: ['./admin-product-details.component.scss']
 })
-export class AdminProductDetailsComponent implements OnInit {
+export class AdminProductDetailsComponent extends BaseComponent implements OnInit {
 
   @ViewChild('uploadBtn', { static: false }) uploadBtn: ElementRef
   private product: Product
@@ -31,6 +33,7 @@ export class AdminProductDetailsComponent implements OnInit {
     private productService: ProductsService,
     private photoService: PhotoServiceService,
     private toastyService: ToastyService) {
+    super()
   }
 
   async ngOnInit() {

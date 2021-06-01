@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
-import { Brand } from '../../Model/brand';
+import { Brand } from '../../core/Model/brand';
 import { BrandService } from '../../Services/brand.service';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
 
 @Component({
   selector: 'app-product-filter',
@@ -11,7 +11,9 @@ import { fade } from '../../animations/fade.amination';
 })
 export class ProductFilterComponent implements OnInit {
 private brands: Brand[]
-  constructor(private brandService: BrandService) { }
+  constructor(private brandService: BrandService) {
+    super()
+  }
 
   @Output() productsFiltered = new EventEmitter<{ min: number, max: number, brandId: number }>()
 

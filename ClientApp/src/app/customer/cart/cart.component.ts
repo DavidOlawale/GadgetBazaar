@@ -1,8 +1,8 @@
-import { OrderItem } from '../../Model/order-item';
+import { OrderItem } from '../../core/Model/order-item';
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit } from '@angular/core';
-import { merge } from 'rxjs';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,11 +12,13 @@ import { fade } from '../../animations/fade.amination';
     fade
   ]
 })
-export class CartComponent implements OnInit {
+export class CartComponent extends BaseComponent implements OnInit {
   private orderItems: OrderItem[]
   private totalPrice: number
 
-  constructor(private orderItemsService: OrderItemsService) {}
+  constructor(private orderItemsService: OrderItemsService) {
+    super()
+  }
 
   ngOnInit() {
     this.orderItems = this.orderItemsService.getOrderItems()

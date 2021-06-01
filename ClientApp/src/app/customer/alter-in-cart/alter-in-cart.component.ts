@@ -1,13 +1,14 @@
 import { OrderItemsService } from '../../Services/order-items.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../../Model/product';
+import { Product } from '../../core/Model/product';
 import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { BaseComponent } from '../../core/base/base.component';
 @Component({
   selector: 'app-alter-in-cart',
   templateUrl: './alter-in-cart.component.html',
   styleUrls: ['./alter-in-cart.component.scss']
 })
-export class AlterInCartComponent implements OnInit {
+export class AlterInCartComponent extends BaseComponent implements OnInit {
 
   @Input() public product: Product
   private isInCart: boolean
@@ -19,6 +20,7 @@ export class AlterInCartComponent implements OnInit {
   }
 
   constructor(private orderItemsService: OrderItemsService) {
+    super()
    }
 
   ngOnInit() {

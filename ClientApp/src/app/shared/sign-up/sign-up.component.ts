@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { BaseComponent } from '../../core/base/base.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,9 +11,11 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./sign-up.component.scss'],
   animations: [fade]
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent extends BaseComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    super()
+  }
   faSpinner = faSpinner
   isLoading = false
 

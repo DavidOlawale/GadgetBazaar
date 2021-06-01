@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { NgForm } from '@angular/forms';
-import { fade } from '../../animations/fade.amination';
+import { fade } from '../../core/animations/fade.amination';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
