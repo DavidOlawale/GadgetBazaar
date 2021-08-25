@@ -26,6 +26,7 @@ namespace MobileStoreApp.Controllers
         public async Task<ActionResult<IEnumerable<Brand>>> GetBrands()
         {
             return await _context.Brands.ToListAsync();
+            
         }
 
         // GET: api/Brands/5

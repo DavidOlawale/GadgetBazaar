@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../Services/products-service.service';
-import { Product } from '../../Model/product';
+import { Product } from '../../core/Model/product';
 import { faImage, faUpload, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
 import { BaseComponent } from '../../core/base/base.component';
-import { basename } from 'path';
-
 
 @Component({
   selector: 'app-admin-product-details',

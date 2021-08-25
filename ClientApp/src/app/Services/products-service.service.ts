@@ -1,6 +1,6 @@
-import { Product } from './../Model/product';
+import { Product } from './../core/Model/product';
 import { Injectable } from '@angular/core';
-import { Brand } from '../Model/brand';
+import { Brand } from '../core/Model/brand';
 import { ServerService } from './server.service';
 import { HttpRequest, HttpParams } from '@angular/common/http';
 

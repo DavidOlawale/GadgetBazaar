@@ -1,6 +1,6 @@
-import { Product } from './../Model/product';
+import { Product } from './../core/Model/product';
 import { Injectable, EventEmitter } from '@angular/core';
-import { OrderItem } from '../Model/order-item';
+import { OrderItem } from '../core/Model/order-item';
 
 @Injectable({
   providedIn: 'root'

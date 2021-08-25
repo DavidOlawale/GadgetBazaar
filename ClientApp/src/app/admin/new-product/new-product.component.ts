@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../Model/product';
+import { Product } from '../../core/Model/product';
 import { Router } from '@angular/router';
 import { ProductsService } from '../../Services/products-service.service';
-import { Brand } from '../../Model/brand';
+import { Brand } from '../../core/Model/brand';
 import { ServerService } from '../../Services/server.service';
 import { ToastyService } from 'ng2-toasty';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

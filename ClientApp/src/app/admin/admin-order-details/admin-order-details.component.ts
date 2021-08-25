@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Order } from '../../Model/order';
+import { Order } from '../../core/Model/order';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServerService } from '../../Services/server.service';
-import { Product } from '../../Model/product';
+import { Product } from '../../core/Model/product';
 import { BaseComponent } from '../../core/base/base.component';
 
 @Component({

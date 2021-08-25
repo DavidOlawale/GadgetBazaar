@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/cor
 import { Brand } from '../../core/Model/brand';
 import { BrandService } from '../../Services/brand.service';
 import { fade } from '../../core/animations/fade.amination';
+import { BaseComponent } from 'src/app/core/base/base.component';
 
 @Component({
   selector: 'app-product-filter',
@@ -9,7 +10,7 @@ import { fade } from '../../core/animations/fade.amination';
   styleUrls: ['./product-filter.component.scss'],
   animations: [fade]
 })
-export class ProductFilterComponent implements OnInit {
+export class ProductFilterComponent extends BaseComponent implements OnInit {
 private brands: Brand[]
   constructor(private brandService: BrandService) {
     super()
