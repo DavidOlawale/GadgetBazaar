@@ -7,6 +7,7 @@ import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
 import { BaseComponent } from '../../core/base/base.component';
 
+
 @Component({
   selector: 'app-admin-product-details',
   templateUrl: './admin-product-details.component.html',

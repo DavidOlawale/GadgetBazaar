@@ -9,6 +9,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ToastyModule } from 'ng2-toasty';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { CustomerLayoutComponent } from './customer-layout/customer-layout.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     NavMenuComponent,
     LogoutComponent,
     NotfoundComponent,
-    SignUpComponent
+    SignUpComponent,
+    AdminLayoutComponent,
+    CustomerLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +38,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     LogoutComponent,
     NotfoundComponent,
     SignUpComponent,
+    AdminLayoutComponent,
+    CustomerLayoutComponent,
     ToastyModule
   ]
 })

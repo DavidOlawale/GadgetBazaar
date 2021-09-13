@@ -4,20 +4,26 @@
     <h1 class="text-center py-2">Login</h1>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
 
-      <p [ngClass]="{'text-danger': true, 'd-none': !isLoginFailed}">Invalid Username or password</p>
-      <fa-icon *ngIf="isLoading" [icon]="faSpinner" size="lg"  pulse="true"></fa-icon>
+      <div *ngIf="isLoginFailed" class="alert alert-danger alert-dismissible fade show" role="alert">
+        Incorrect Username or password
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
       <div class="form-group">
         <label for="email">Email address: </label>
         <input ngModel name="email" type="email" class="form-control" id="email">
       </div>
       <div class="form-group">
-        <label for="pwd">Passw  ord:</label>  
+        <label for="pwd">Password:</label>  
         <input ngModel name="password" type="password" class="form-control" id="pwd">
       </div>
-      <button type="submit" class="btn btn-primary">
-        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon> -->
-
-        Submit
+      <button type="submit" class="btn btn-primary btn--submit" [disabled]="isLoading">
+        <fa-icon *ngIf="isLoading; else submitText" [icon]="faSpinner" size="lg"  pulse="true"></fa-icon>
+        <ng-template #submitText>
+          Submit
+        </ng-template>
       </button>
     </form>
   </div>

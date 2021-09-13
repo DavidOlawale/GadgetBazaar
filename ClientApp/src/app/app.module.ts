@@ -11,17 +11,11 @@ import { CustomerModule } from './customer/customer.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
-import { ProductDetailsComponent } from './shared/product-details/product-details.component';
-import { ProductsComponent } from './shared/products/products.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { OrdersComponent } from './shared/orders/orders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductDetailsComponent,
-    ProductsComponent,
-    OrdersComponent
   ],
   imports: [
     BrowserAnimationsModule,

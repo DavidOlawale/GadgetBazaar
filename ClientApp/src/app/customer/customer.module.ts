@@ -13,6 +13,7 @@ import { OrderedComponent } from './ordered/ordered.component';
 import { OrderErrorComponent } from './order-error/order-error.component';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CustomerOrderDetailsComponent } from './customer-order-details/customer-order-details.component';
+import { MaterialModule } from '../material.module';
 
 
 const childRoutes: Route[] = [
@@ -39,6 +40,7 @@ const childRoutes: Route[] = [
   imports: [
     CommonModule,
     FontAwesomeModule,
+    MaterialModule,
     RouterModule.forRoot(childRoutes)
   ],
   exports: [

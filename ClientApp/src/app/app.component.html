@@ -1,7 +1,4 @@
-<app-nav-menu></app-nav-menu>
-<div class="container-fluid flex-grow-1">
-  <router-outlet></router-outlet>
-</div>
-<footer class="footer">
-  <p>My ecommerce web app &copy; 2020</p>
-</footer>
+<app-customer-layout *ngIf="!auth.isAdmin; else customerLayout"></app-customer-layout>
+<ng-template #customerLayout>
+  <app-admin-layout></app-admin-layout>
+</ng-template>

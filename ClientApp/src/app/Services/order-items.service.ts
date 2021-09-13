@@ -1,4 +1,4 @@
-import { Product } from './../core/Model/product';
+import { Product } from '../core/Model/product';
 import { Injectable, EventEmitter } from '@angular/core';
 import { OrderItem } from '../core/Model/order-item';
 

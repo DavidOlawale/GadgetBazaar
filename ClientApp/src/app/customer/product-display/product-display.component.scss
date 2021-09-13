@@ -1,13 +1,20 @@
 
 .product{
     box-shadow: 0 0 6px #ccc;
+    max-width: 300px;
+
+    &__content{
+        padding: 1rem;
+        background-color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    &__price{
+        color: #ef324e;
+    }
 }
-.product__content{
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .product-image{
     width: 100%;

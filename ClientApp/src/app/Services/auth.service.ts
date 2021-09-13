@@ -64,7 +64,6 @@ export class AuthService {
     this.role = decripted.role
     this.isLogedIn = true
     this.LogedIn.emit()
-    this.router.navigateByUrl('/')
     return true
   }
 

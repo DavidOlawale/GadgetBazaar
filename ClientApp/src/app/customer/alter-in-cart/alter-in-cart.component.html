@@ -3,22 +3,23 @@
     class="d-flex justify-content-between quantity-control font-weight-bold"
   >
   <button *ngIf="numberInCart > 1"
-          class="btn btn-alter-quantity btn-secondary"
+          class="btn btn-alter-quantity"
           (click)="decreaseInCart()">
-    <fa-icon [icon]="icons.minus"></fa-icon>
+    <mat-icon inline="true" >remove</mat-icon>
+
   </button>
     <button *ngIf="numberInCart == 1"
-            class="btn btn-alter-quantity btn-secondary"
+            class="btn btn-alter-quantity "
             (click)="removeFromCart()">
-      <fa-icon [icon]="icons.times"></fa-icon>
+            <mat-icon inline="true">clear</mat-icon>
     </button>
     <span class="m-auto">{{ numberInCart }}</span>
-    <button class="btn btn-alter-quantity btn-secondary" (click)="increaseInCart()">
-      <fa-icon [icon]="icons.plus" ></fa-icon>
+    <button class="btn btn-alter-quantity" (click)="increaseInCart()">
+      <mat-icon inline="true">add</mat-icon>
     </button>
   </div>
   <ng-template #add>
-    <button (click)="addToCart()" class="btn btn-sm btn-secondary w-100 p-1">
+    <button (click)="addToCart()" class="btn btn-secondary w-100 p-1">
       <i class="fa fa-cart-plus mr-3"></i>
       Add to cart
     </button>

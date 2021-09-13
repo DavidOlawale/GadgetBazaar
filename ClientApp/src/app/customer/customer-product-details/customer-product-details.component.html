@@ -1,7 +1,7 @@
 <div class="row" @fade>
   <div class="col-10 col-md-10 mx-auto row box-shadow b-radius bg-white">
     <div class="col-md-6 b-radius py-3">
-      <img *ngIf="!hasPhoto(product )" src="../../assets/no-image.jpg" class="product-image" alt="product image" />
+      <img *ngIf="!hasPhoto(product )" src="../../assets/images/image-not-found.jpg" class="product-image" alt="product image" />
 
       <!--carousel-->
       <div *ngIf="hasPhoto(product)" id="photos" class="carousel slide inherit-width" data-ride="carousel">

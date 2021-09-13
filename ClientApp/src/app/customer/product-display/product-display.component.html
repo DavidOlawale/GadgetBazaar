@@ -1,9 +1,9 @@
 <div class="product" @fade>
   <div class="product__content" [routerLink]="['/products', product.id]">
     <img *ngIf="hasPhoto(product)" [src]="getPhoto(product)" class="product-image"/>
-    <img *ngIf="!hasPhoto(product )" src="../../assets/no-image.jpg" class="product-image"  />
+    <img *ngIf="!hasPhoto(product )" src="../../assets/images/image-not-found.jpg" class="product-image"  />
     <h4 class="mt-2 product-model">{{ product.model }} </h4>
-    <p class="">₦ {{ product.price }}</p>
+    <span class="product__price">₦ {{ product.price }}</span>
   </div>
   <app-alter-in-cart [product]="product"></app-alter-in-cart>
 </div>

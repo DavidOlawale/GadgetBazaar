@@ -1,7 +1,7 @@
 import { ProductsService } from '../../Services/products-service.service';
 import { Product } from '../../core/Model/product';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { fade } from '../../core/animations/fade.amination';
 import { BaseComponent } from '../../core/base/base.component';
 
