@@ -1,0 +1,40 @@
+.page-container{
+    display: flex;
+    height: 100vh;
+}
+  
+.sidebar{
+    width: 250px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+
+    &__item{
+        display: block;
+        color: black;
+        padding: 16px;
+        text-decoration: none;
+        padding-left: 60px;
+
+        .active{
+            background-color: #efefef;
+        
+        }
+    }
+}
+
+.logo-container{
+    height: 80px;
+    border-bottom: 1px solid #00000012;
+
+    a{
+        font-weight: 700;
+        font-size: 22px;
+        padding: 1.2rem 1.5rem;;
+    }
+}
+
+.page-content{
+    flex-grow: 1;
+    padding: 1rem;
+}
