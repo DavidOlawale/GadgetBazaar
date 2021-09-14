@@ -1,19 +1,93 @@
-
 <div class="page-container">
   <div class="sidebar">
     <div class="logo-container">
       <a class="navbar-brand text-uppercase"> Gadget Bazaar</a>
     </div>
-    <a class="sidebar__item active" href="#home">Home</a>
-    <a class="sidebar__item" href="#news">News</a>
-    <a class="sidebar__item" href="#contact">Contact</a>
-    <a class="sidebar__item" href="#about">About</a>
+    <a class="sidebar__item" routerLink="/admin/products" [routerLinkActive]="['active']">
+      <div class="icon">
+        <img src="../../../assets/images/menu/shopping-cart.svg" alt="" />
+      </div>
+      Products
+    </a>
+    <a class="sidebar__item" routerLink="/admin/orders" [routerLinkActive]="['active']">
+      <div class="icon">
+        <img src="../../../assets/images/menu/order.svg" alt="" />
+      </div>
+      Orders
+    </a>
+    <a class="sidebar__item" routerLink="/admin/brands" [routerLinkActive]="['active']">
+      <div class="icon">
+        <img src="../../../assets/images/menu/shopping-cart.svg" alt="" />
+      </div>
+      Brands
+    </a>
+    <a class="sidebar__item" routerLink="/admin/customers" [routerLinkActive]="['active']">
+      <div class="icon">
+        <img src="../../../assets/images/menu/customer.svg" alt="" />
+      </div>
+      Customers
+    </a>
+
+    <span class="sidebar__heading">My Account</span>
+    <a class="sidebar__item" (click)="logOut()">
+        <div class="icon"> <img src="../../../assets/images/menu/logout.svg" alt=""> </div>
+      Log out
+    </a>
     <footer class="footer">
-        <p>My ecommerce web app &copy; 2020</p>
-      </footer>
+      <p>My ecommerce web app &copy; 2020</p>
+    </footer>
   </div>
 
   <div class="page-content">
+    <header class="page-content__heading">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white ">
+          <div class="container">
+            <a class="navbar-brand d-sm-none text-uppercase" [routerLink]="['/']"> Gadget Bazaar</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target=".navbar-collapse"
+                    aria-label="Toggle navigation"
+                    [attr.aria-expanded]="isExpanded"
+                    (click)="toggle()">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+                 [ngClass]="{ show: isExpanded }">
+              <ng-template>
+      
+              </ng-template>
+              <ul class="navbar-nav flex-grow">
+                <li class="nav-item nav-item__sm" [routerLinkActive]="['link-active']">
+                  <a class="nav-link text-dark" routerLink="/admin/products">Products</a>
+                </li>
+      
+                <li class="nav-item nav-item__sm" [routerLinkActive]="['link-active']" >
+                  <a class="nav-link text-dark" [routerLink]="['/orders']">Orders</a>
+                </li>
+      
+                <li class="nav-item">
+                  <div class="dropdown btn">
+                    <div class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-user mr-2"></i>
+                      <span>{{auth.email }}</span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" routerLink="/profile">Profile</a>
+                      <a class="dropdown-item" (click)="logOut()"> <i class="fa fa-sign-out-alt"></i> Log out</a>
+                    </div>
+                  </div>
+      
+                </li>
+                
+      
+              </ul>
+      
+            </div>
+          </div>
+        </nav>
+      </header>
+      
     <router-outlet></router-outlet>
   </div>
 </div>

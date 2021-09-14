@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { CustomerLayoutComponent } from './customer-layout/customer-layout.component';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CustomerLayoutComponent } from './customer-layout/customer-layout.compo
     ToastyModule.forRoot(),
     RouterModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     LoginComponent,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-layout.component.scss']
 })
 export class AdminLayoutComponent implements OnInit {
-
-  constructor() { }
+  isExpanded = false;
+  constructor(private auth:AuthService) { }
 
   ngOnInit() {
+  }
+
+  toggle() {
+    this.isExpanded = !this.isExpanded
   }
 
 }

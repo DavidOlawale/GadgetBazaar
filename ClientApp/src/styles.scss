@@ -66,3 +66,10 @@ box-shadow: 0 2px 6px rgb(170, 170, 170);
 ::-webkit-scrollbar-thumb:hover {
   background: #00000047; 
 }
+
+.btn{
+  padding: .7rem 1rem;
+}
+.btn-primary{
+  background-color: var(--primary-blue);
+}
