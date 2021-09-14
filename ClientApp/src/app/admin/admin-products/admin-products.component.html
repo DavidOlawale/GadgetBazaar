@@ -1,36 +1,46 @@
-<section class="page-content products" @fade>
+<section class="page-content" @fade>
 
-  <h1 class="font-weight-bold">Products</h1>
+  <h1 class="page-title">Products</h1>
 
-  <a routerLink="/admin/products/new" class="btn btn-primary products__new">
-    <i class="fa fa-plus-circle mr-2"></i> New Product
-  </a>
+  <div class="d-flex my-4">
+    <a routerLink="/admin/products/new" class="btn btn-primary">
+      <i class="fa fa-plus-circle mr-2"></i> New Product
+    </a>
+  </div>
   
-  <table class="table">
-    <tr class="product">
-      <th></th>
-      <th>Model</th>
-      <th>Price</th>
-      <th>Brand</th>
-    </tr>
-    <tr *ngFor="let product of products">
-      <td class="product__image-container">
-        <img
-          *ngIf="!hasPhoto(product)"
-          src="../../../assets/no-image.jpg"
-          class="product__img"
-        />
-        <img
-          *ngIf="hasPhoto(product)"
-          class="product__img"
-          [src]="getPhoto(product)"
-        />
-      </td>
-      <td>
-        <a [routerLink]="['/products', product.id]">{{ product.model }}</a>
-      </td>
-      <td>{{ product.price }}</td>
-      <td>{{ product.brand.name }}</td>
-    </tr>
+  
+  <table class="table table-borderless ">
+    <thead>
+      <tr >
+        <th>Product ID</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Brand</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{product.id}}</td>
+        <td>
+          <a [routerLink]="['/admin', 'products', product.id]">{{ product.model }}</a>
+        </td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.brand.name }}</td>
+        <td class="pt-0" >
+          <img
+            *ngIf="!hasPhoto(product)"
+            src="../../../assets/images/image-not-found.jpg"
+            class="product__img"
+          />
+          <img
+            *ngIf="hasPhoto(product)"
+            class="product__img"
+            [src]="getPhoto(product)"
+          />
+        </td>
+      </tr>
+    </tbody>
+    
   </table>
 </section>

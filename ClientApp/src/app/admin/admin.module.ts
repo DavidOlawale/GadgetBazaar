@@ -14,6 +14,7 @@ import { MaterialModule } from "../material.module";
 const routes: Route[] = [
   {path: '', component: AdminProductsComponent, pathMatch: 'full'},
   {path: 'products', component: AdminProductsComponent, pathMatch: 'full'},
+  { path: "products/:id", component: AdminProductDetailsComponent },
   { path: "products/:id/edit", component: EditProductComponent },
   { path: "orders", component: AdminOrdersComponent },
   { path: "orders/:id", component: AdminOrderDetailsComponent },

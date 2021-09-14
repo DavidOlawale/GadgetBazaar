@@ -1,14 +1,13 @@
 
-<div class="row">
-  <div class="col-10 col-sm-8 col-md-6 m-auto">
-    <h3 class="text-center">Product images</h3>
+  <div class="page-content" @fade>
+
     <div *ngIf="product">
       <img *ngFor="let image of product.productImages"
            [src]="'/images/products/' + image.name"
            class="w-100"/>
     </div>
 
-    <h3 class="text-center mt-5">Upload photo</h3>
+    <!-- <h3 class="text-center mt-5">Upload photo</h3>
     <img [src]="imagePreview" class="w-100 my-1" />
     <div class="d-flex my-3">
       <label for="photo" class="btn button">
@@ -25,7 +24,7 @@
               class="btn button ml-auto"
               >Upload <fa-icon [icon]="isUploading ? icons.spinner : icons.upload"></fa-icon></button>
 
-    </div>
+    </div> -->
 
     <ul class="list-group">
       <li class="list-group-item">Id: {{product.id}}</li>
@@ -42,4 +41,3 @@
 
 
   </div>
-</div>

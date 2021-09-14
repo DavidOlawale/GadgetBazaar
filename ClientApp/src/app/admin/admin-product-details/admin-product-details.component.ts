@@ -6,12 +6,14 @@ import { faImage, faUpload, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
 import { BaseComponent } from '../../core/base/base.component';
+import { fade } from 'src/app/core/animations/fade.amination';
 
 
 @Component({
   selector: 'app-admin-product-details',
   templateUrl: './admin-product-details.component.html',
-  styleUrls: ['./admin-product-details.component.scss']
+  styleUrls: ['./admin-product-details.component.scss'],
+  animations: [fade]
 })
 export class AdminProductDetailsComponent extends BaseComponent implements OnInit {
 

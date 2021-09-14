@@ -1,14 +1,15 @@
-
-.products {
-  display: flex;
-  flex-direction: column;
-
-  &__new{
-         margin: 1.5rem 0;
-         align-self: flex-end;
-     }
+.page-content{
+  max-width: 1500px;
 }
-
+tr{
+  margin-bottom: .8rem;
+}
+th{
+  padding: 35px .75rem;
+  color: rgba(#000, 0.7);
+  font-weight: 900;
+  text-transform: uppercase;
+}
 .product {
 
     &__image-container{
