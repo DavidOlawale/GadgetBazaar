@@ -1,68 +1,98 @@
-
-<div class="d-flex flex-column">
-  <div class="col-11 col-md-9 content">
-
-    <h1 class="content__heading">New Product</h1>
+<section class="col-11 col-md-9 page-content" @fade>
+  <div class="form-container">
+    <h1 class="page-content__heading">New Product</h1>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="form-group">
-        <label for="model">Model:</label>
-        <input formControlName="model"
-               class="form-control form-control-validate"
-               id="model">
+        <label for="model">Model</label>
+        <input
+          formControlName="model"
+          class="form-control form-control-validate"
+          id="model"
+        />
       </div>
+
       <div class="form-group">
-        <label for="brandid">Brand:</label>
-        <select formControlName="brandId"
-                class="form-control form-control-validate"
-                id="brandid">
-          <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
+        <label for="brandid">Brand</label>
+        <select
+          formControlName="brandId"
+          class="form-control form-control-validate"
+          id="brandid"
+        >
+          <option *ngFor="let brand of brands" [value]="brand.id">
+            {{ brand.name }}
+          </option>
         </select>
       </div>
+
       <div class="form-group">
-        <label for="price">Price:</label>
-        <input formControlName="price"
-               type="number"
-               step="500"
-               class="form-control form-control-validate"
-               id="price">
+        <label for="price">Price</label>
+        <input
+          formControlName="price"
+          type="number"
+          step="500"
+          class="form-control form-control-validate"
+          id="price"
+        />
       </div>
 
       <div class="form-group">
-        <label for="battery">Battery Capacity:</label>
-        <input formControlName="batteryCapacity"
-               class="form-control form-control-validate"
-               id="battery">
+        <label for="battery">Battery Capacity</label>
+        <input
+          formControlName="batteryCapacity"
+          class="form-control form-control-validate"
+          id="battery"
+        />
       </div>
+
       <div class="form-group">
-        <label for="charge">Charging Time:</label>
-        <input formControlName="chargingTime"
-               name="chargeTime"
-               class="form-control form-control-validate"
-               id="charge">
+        <label for="charge">Charging Time</label>
+        <input
+          formControlName="chargingTime"
+          name="chargeTime"
+          class="form-control form-control-validate"
+          id="charge"
+        />
       </div>
+
       <div class="form-group">
-        <label for="standby">Stand By Time:</label>
-        <input formControlName="standByTime"
-               class="form-control form-control-validate"
-               id="standby">
+        <label for="standby">Stand By Time</label>
+        <input
+          formControlName="standByTime"
+          class="form-control form-control-validate"
+          id="standby"
+        />
       </div>
+
       <div class="form-group">
-        <label for="color">Colors:</label>
-        <input formControlName="color"
-               class="form-control form-control-validate"
-               id="color">
+        <label for="color">Colors</label>
+        <input
+          formControlName="color"
+          class="form-control form-control-validate"
+          id="color"
+        />
       </div>
+
       <div class="form-group">
-        <label for="size">Size in gram:</label>
-        <input formControlName="sizeInGram"
-               type="number"
-               class="form-control form-control-validate"
-               id="size">
+        <label for="size">Size in gram</label>
+        <input
+          formControlName="sizeInGram"
+          type="number"
+          class="form-control form-control-validate"
+          id="size"
+        />
       </div>
-      <button [disabled]="form.invalid" type="submit" class="btn btn-outline-secondary">Submit</button>
+      
+      <div class="form-group">
+        <button
+        [disabled]="form.invalid"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+      </div>
+      
     </form>
-
   </div>
-</div>
-
+</section>

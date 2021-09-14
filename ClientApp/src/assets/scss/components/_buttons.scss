@@ -1,0 +1,20 @@
+.btn-blue {
+    background-color: #002966;
+    color: rgb(234, 233, 233);
+    }
+    .btn-blue:hover{
+      color: white
+    }
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+button:disabled, button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

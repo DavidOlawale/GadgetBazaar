@@ -7,11 +7,13 @@ import { ServerService } from '../../Services/server.service';
 import { ToastyService } from 'ng2-toasty';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BaseComponent } from '../../core/base/base.component';
+import { fade } from 'src/app/core/animations/fade.amination';
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.scss']
+  styleUrls: ['./new-product.component.scss'],
+  animations: [fade ]
 })
 export class NewProductComponent extends BaseComponent implements OnInit {
   private product: Product = new Product()
@@ -51,20 +53,19 @@ export class NewProductComponent extends BaseComponent implements OnInit {
       msg: 'Product added successfully',
       showClose: true,
       theme: 'bootstrap',
-      timeout: 3000
+      timeout: 5000
     })
-    this.router.navigate(['/products'])
+    this.router.navigate(['/admin/products'])
   }
 
   onSubmitFailed = () => {
     this.toastyService.success({
-      title: 'Error',
-      msg: 'An error occured',
+      title: 'oops',
+      msg: 'An error occured while adding new product',
       showClose: true,
       theme: 'bootstrap',
-      timeout: 3000
+      timeout: 5000
     })
   }
-
 
 }

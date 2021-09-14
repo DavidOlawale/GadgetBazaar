@@ -1,4 +1,5 @@
 <app-customer-layout *ngIf="!auth.isAdmin; else customerLayout"></app-customer-layout>
 <ng-template #customerLayout>
   <app-admin-layout></app-admin-layout>
+  <ng2-toasty></ng2-toasty>
 </ng-template>

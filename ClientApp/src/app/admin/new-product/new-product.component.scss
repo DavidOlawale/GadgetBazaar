@@ -1,23 +1,16 @@
 
-.content {
-    margin: 2rem auto;
-    padding: 3.5rem 5.5rem;
-    box-shadow: 0px 0px 5px rgba(27, 31, 35, 0.44);
-    background-color: #fff;
-    color: #222;
-
-    &__heading{
-        font-weight: bolder;
-        margin-bottom: 2.5rem;
-        color: #000;
-    }
+.form-container{
+  max-width: 800px;
+  margin: 0 auto;
 }
-
-
+.form-control{
+  background-color: rgba(55, 114, 255, 0.03);
+  // padding: 1.6rem 2rem;
+  height: 60px;
+}
 .form-control-validate {
   font-family: inherit;
   border-radius: 3px;
-  padding: .3rem .5rem;
   border-bottom-width: 2px;
   transition: border-bottom-color .4s;
 }
@@ -27,10 +20,10 @@ input:focus {
   outline: none
 }
 
-input.ng-touched.ng-invalid {
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
   border-bottom-color: red;
 }
 
-input.ng-touched.ng-valid {
+input.ng-touched.ng-valid, select.ng-touched.ng-valid {
   border-bottom-color: green;
 }

@@ -23,27 +23,8 @@ html{
   border-radius: 5px;
 }
 
-.btn-blue {
-background-color: #002966;
-color: rgb(234, 233, 233);
-}
-.btn-blue:hover{
-  color: white
-}
-
-.bg-slight-dark {
-background-color: #f5f5f5;
-}
-
 .box-shadow {
 box-shadow: 0 2px 6px rgb(170, 170, 170);
-}
-
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
 }
 
 ::-webkit-scrollbar {
@@ -76,4 +57,8 @@ box-shadow: 0 2px 6px rgb(170, 170, 170);
 
 .page-content{
   padding: 1.8rem;
+
+  &__heading{
+    margin-bottom: 2rem;
+  }
 }

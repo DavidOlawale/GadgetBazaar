@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
 
 const materialModules = [
-  MatIconModule
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule
 ]
 @NgModule({
   declarations: [],

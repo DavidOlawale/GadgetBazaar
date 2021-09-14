@@ -9,6 +9,7 @@ import { NewProductComponent } from "./new-product/new-product.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AdminOrdersComponent } from "./admin-orders/admin-orders.component";
 import { AdminOrderDetailsComponent } from './admin-order-details/admin-order-details.component';
+import { MaterialModule } from "../material.module";
 
 const routes: Route[] = [
   {path: '', component: AdminProductsComponent, pathMatch: 'full'},
@@ -34,7 +35,8 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     FormsModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     AdminProductsComponent,
