@@ -7,7 +7,7 @@ import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
 import { BaseComponent } from '../../core/base/base.component';
 import { fade } from 'src/app/core/animations/fade.amination';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Brand } from 'src/app/core/Model/brand';
 import { ServerService } from 'src/app/Services/server.service';
 
@@ -25,6 +25,7 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
   private brands: Brand[]
   private imagePreview
   private form: FormGroup
+  private isFullyLoaded: boolean
 
   private selectedImage: File
   icons = {
@@ -39,27 +40,26 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
     private productService: ProductsService,
     private photoService: PhotoServiceService,
     private toastyService: ToastyService,
-    private server: ServerService) {
+    private server: ServerService,
+    private fb: FormBuilder) {
     super()
   }
 
   async ngOnInit() {
-    let productId = this.route.snapshot.paramMap.get('id')
+    let productId = this.route.snapshot.params.id
     this.product = (await this.productService.getProducts()).find(product => product.id == +productId)
 
     this.product.productImages = await this.photoService.getProductImages(this.product.id)
 
-    console.log("ish")
-    console.log(this.product)
-    this.form = new FormGroup({
-      model: new FormControl(this.product.model, [Validators.required, Validators.min(5), Validators.max(15)]),
-      brandId: new FormControl(this.product.brandId, Validators.required),
-      price: new FormControl(this.product.price, Validators.required),
-      batteryCapacity: new FormControl(this.product.batteryCapacity, Validators.required),
-      chargingTime: new FormControl(this.product.chargingTime, Validators.required),
-      standByTime: new FormControl(this.product.standByTime, Validators.required),
-      color: new FormControl(this.product.color, Validators.required),
-      sizeInGram: new FormControl(this.product.sizeInGram, Validators.required)
+    this.form = this.fb.group({
+      model: [this.product.model, [Validators.required, Validators.min(5), Validators.max(15)]],
+      brandId: [this.product.brandId, Validators.required],
+      price: [this.product.price, Validators.required],
+      batteryCapacity: [this.product.batteryCapacity, Validators.required],
+      chargingTime: [this.product.chargingTime, Validators.required],
+      standByTime: [this.product.standByTime, Validators.required],
+      color: [this.product.color, Validators.required],
+      sizeInGram: [this.product.sizeInGram, Validators.required]
     })
 
     this.brands = await this.productService.getProductBrands()
