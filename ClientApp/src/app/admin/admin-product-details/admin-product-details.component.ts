@@ -7,6 +7,9 @@ import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
 import { BaseComponent } from '../../core/base/base.component';
 import { fade } from 'src/app/core/animations/fade.amination';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Brand } from 'src/app/core/Model/brand';
+import { ServerService } from 'src/app/Services/server.service';
 
 
 @Component({
@@ -19,7 +22,9 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
 
   @ViewChild('uploadBtn', { static: false }) uploadBtn: ElementRef
   private product: Product
-  imagePreview
+  private brands: Brand[]
+  private imagePreview
+  private form: FormGroup
 
   private selectedImage: File
   icons = {
@@ -33,7 +38,8 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
     private router: Router,
     private productService: ProductsService,
     private photoService: PhotoServiceService,
-    private toastyService: ToastyService) {
+    private toastyService: ToastyService,
+    private server: ServerService) {
     super()
   }
 
@@ -42,6 +48,21 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
     this.product = (await this.productService.getProducts()).find(product => product.id == +productId)
 
     this.product.productImages = await this.photoService.getProductImages(this.product.id)
+
+    console.log("ish")
+    console.log(this.product)
+    this.form = new FormGroup({
+      model: new FormControl(this.product.model, [Validators.required, Validators.min(5), Validators.max(15)]),
+      brandId: new FormControl(this.product.brandId, Validators.required),
+      price: new FormControl(this.product.price, Validators.required),
+      batteryCapacity: new FormControl(this.product.batteryCapacity, Validators.required),
+      chargingTime: new FormControl(this.product.chargingTime, Validators.required),
+      standByTime: new FormControl(this.product.standByTime, Validators.required),
+      color: new FormControl(this.product.color, Validators.required),
+      sizeInGram: new FormControl(this.product.sizeInGram, Validators.required)
+    })
+
+    this.brands = await this.productService.getProductBrands()
   }
 
   onSelected(file) {
@@ -77,5 +98,40 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
     this.isUploading = false
     this.imagePreview = null
     
+  }
+
+  hasPhoto(product: Product): boolean {
+    if (!product) {
+      return false
+    }
+    return product.productImages && product.productImages.length > 0
+  }
+
+  getPhoto(product: Product): string {
+    return `images/products/${product.productImages[0].name}`
+  }
+
+  submitUpdate() {
+    this.server.put(`/products/${this.product.id}`, this.product).subscribe(res => {
+      this.product.brand.name = this.form.value.brand
+      this.product.batteryCapacity = this.form.value.batteryCapacity
+      this.product.brandId = this.form.value.brandId
+      this.product.chargingTime = this.form.value.chargingTime
+      this.product.batteryCapacity = this.form.value.batteryCapacity
+      this.product.color = this.form.value.color
+      this.product.model = this.form.value.model
+      this.product.price = this.form.value.price
+      this.product.sizeInGram = this.form.value.sizeInGram
+      this.product.standByTime = this.form.value.standByTime
+
+      this.toastyService.success({
+        title: 'Success',
+        msg: 'Product successfully updated',
+        showClose: true,
+        theme: 'bootstrap',
+        timeout: 5000
+      })
+      //do something
+    })
   }
 }

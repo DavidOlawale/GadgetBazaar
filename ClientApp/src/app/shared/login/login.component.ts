@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       }
         
       
-    }, 1000)
+    }, 2000)
     
   }
 

@@ -1,43 +1,210 @@
-
   <div class="page-content" @fade>
 
-    <div *ngIf="product">
-      <img *ngFor="let image of product.productImages"
-           [src]="'/images/products/' + image.name"
-           class="w-100"/>
-    </div>
+    <h1 class="mb-3">{{product.model}}</h1>
+    <mat-tab-group>
+      <mat-tab label="Product Info">
+          <div class="d-flex">
+            <div class="col-8 p-4">
+              <h1 class="mb-3">Statistics</h1>
+              <div class="row">
+                <div class="col-4">
+                  <span class="stat-heading"> <img src="../../../assets/images/sales.svg" class="icon"> Sales</span>
+                  <span class="stat-value">25</span>
+                  <span class="stat-summary">Total sales</span>
+                </div>
+  
+                <div class="col-4">
+                  <span class="stat-heading"> <img src="../../../assets/images/now-in-stock.svg" class="icon"> In Stock</span>
+                  <span class="stat-value">25</span>
+                  <span class="stat-summary">Items in stock</span>
+                </div>
+  
+                <div class="col-4">
+                  <span class="stat-heading"> <img src="../../../assets/images/wishlist.svg" class="icon"> Wish Lists</span>
+                  <span class="stat-value">25</span>
+                  <span class="stat-summary">Wish lists</span>
+                </div>
+             
+              </div>
+            </div>
+        </div>
 
-    <!-- <h3 class="text-center mt-5">Upload photo</h3>
-    <img [src]="imagePreview" class="w-100 my-1" />
-    <div class="d-flex my-3">
-      <label for="photo" class="btn button">
-        Select Image <fa-icon [icon]="icons.image"></fa-icon>
-        <input (change)="onSelected($event.target.files[0])"
-               class="d-none"
-               type="file"
-               id="photo"
-               accept="image/*" />
-      </label>
-      <button [disabled]="isUploading || !imagePreview"
-              #uploadBtn
-              (click)="uploadPhoto()"
-              class="btn button ml-auto"
-              >Upload <fa-icon [icon]="isUploading ? icons.spinner : icons.upload"></fa-icon></button>
+        <div class="d-flex mt-5">
+          <div class="col-8">
+            <div class="">
+              <img *ngIf="!hasPhoto(product )" src="../../assets/images/image-not-found.jpg" class="w-100" alt="product image" />
+        
+              <!--carousel-->
+              <div *ngIf="hasPhoto(product)" id="photos" class="carousel slide inherit-width" data-ride="carousel">
+        
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                  <li *ngFor="let image of product.productImages; index as i; first as isFirst"
+                      data-target="#photos"
+                      data-slide-to="i"
+                      [ngClass]="{'active': isFirst }">
+                  </li>
+                </ul>
+        
+                <!-- The slideshow -->
+                <div class="carousel-inner ">
+                  <div class="inherit-width" *ngFor="let image of product.productImages; index as i; first as isFirst"
+                       [ngClass]="{'carousel-item': true, 'active': isFirst}">
+                    <img class="product-image inherit-width" [src]="getPhoto(product)">
+                  </div>
+                </div>
+        
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#photos" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#photos" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="">
+              <div class="product-detail">
+                <span class="product-detail__header">Model</span>
+                <span class="product-detail__value">{{product.model}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">Brand</span>
+                <span class="product-detail__value">{{product.brand.name}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">Price</span>
+                <span class="product-detail__value">₦{{product.price}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">Battery Capacity</span>
+                <span class="product-detail__value">{{product.batteryCapacity}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">Charging Time</span>
+                <span class="product-detail__value">{{product.chargingTime}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">StandBy Time</span>
+                <span class="product-detail__value">{{product.standByTime}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">Color</span>
+                <span class="product-detail__value">{{product.color}}</span>
+              </div>
+              <div class="product-detail">
+                <span class="product-detail__header">Gram In Size</span>
+                <span class="product-detail__value">{{product.sizeInGram}}</span>
+              </div>
+          </div>
+          </div>
+        </div>
+      </mat-tab>
 
-    </div> -->
+      <mat-tab label="Update Product">
 
-    <ul class="list-group">
-      <li class="list-group-item">Id: {{product.id}}</li>
-      <li class="list-group-item">Model: {{product.model}}</li>
-      <li class="list-group-item">Brand: {{product.brand.name}}</li>
-      <li class="list-group-item">Price: {{product.price}}</li>
-      <li class="list-group-item">Battery Capacity: {{product.batteryCapacity}}</li>
-      <li class="list-group-item">Charging Time: {{product.chargingTime}}</li>
-      <li class="list-group-item">StandBy Time: {{product.standByTime}}</li>
-      <li class="list-group-item">Color: {{product.color}}</li>
-      <li class="list-group-item">Gram In Size: {{product.sizeInGram}}</li>
-    </ul>
-    <a [routerLink]="['/products/', product.id, 'edit']" class="btn btn-primary mt-4">Edit</a>
+        <div class="form-container mt-4">      
+          <form [formGroup]="form" (ngSubmit)="submitUpdate()">
+            <div class="form-group">
+              <label for="model">Model</label>
+              <input
+                formControlName="model"
+                class="form-control form-control-validate"
+                id="model"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="brandid">Brand</label>
+              <select
+                formControlName="brandId"
+                class="form-control form-control-validate"
+                id="brandid"
+              >
+                <option *ngFor="let brand of brands" [value]="brand.id">
+                  {{ brand.name }}
+                </option>
+              </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input
+                formControlName="price"
+                type="number"
+                step="500"
+                class="form-control form-control-validate"
+                id="price"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="battery">Battery Capacity</label>
+              <input
+                formControlName="batteryCapacity"
+                class="form-control form-control-validate"
+                id="battery"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="charge">Charging Time</label>
+              <input
+                formControlName="chargingTime"
+                name="chargeTime"
+                class="form-control form-control-validate"
+                id="charge"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="standby">Stand By Time</label>
+              <input
+                formControlName="standByTime"
+                class="form-control form-control-validate"
+                id="standby"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="color">Colors</label>
+              <input
+                formControlName="color"
+                class="form-control form-control-validate"
+                id="color"
+              />
+            </div>
+      
+            <div class="form-group">
+              <label for="size">Size in gram</label>
+              <input
+                formControlName="sizeInGram"
+                type="number"
+                class="form-control form-control-validate"
+                id="size"
+              />
+            </div>
+            
+            <div class="form-group">
+              <button
+              [disabled]="form.invalid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+            </div>
+            
+          </form>
+        </div>
+      </mat-tab>
+      
+      <mat-tab label="Actions">
+
+      </mat-tab>
+    </mat-tab-group>
 
 
   </div>

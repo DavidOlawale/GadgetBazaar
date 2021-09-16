@@ -1,4 +1,77 @@
-.button{
-    background-color: rgb(21, 21, 69);
-    color: white
+
+[class^="stat-"]{
+    display:block;
 }
+.stat-heading{
+    font-weight: 500;
+    color: #0000008a;
+}
+.stat-value{
+    font-weight: 800;
+    font-size: 45px;
+}
+.stat-summary{
+    color: #0000008a;
+    font-size: .8rem;
+}
+.icon{
+    height: 1rem;
+    margin-right: 5px;
+}
+
+.product-image{
+    height: 400px;
+    width: 100%;
+}
+
+.product-detail{
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 1rem;
+
+    &__header{
+        display: block;
+        color: #8b919b;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    &__value{
+        display: block;
+        font-weight: 500;
+        font-size: 22px;
+        color: #232323;
+        padding-bottom: 3px;
+    }
+}
+
+
+// edit product
+
+.form-container{
+    max-width: 800px;
+    margin: 2rem;
+  }
+  .form-control{
+    background-color: rgba(55, 114, 255, 0.03);
+    // padding: 1.6rem 2rem;
+    height: 60px;
+  }
+  .form-control-validate {
+    font-family: inherit;
+    border-radius: 3px;
+    border-bottom-width: 2px;
+    transition: border-bottom-color .4s;
+  }
+  
+  input:focus {
+    border-bottom-color:  grey;
+    outline: none
+  }
+  
+  input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+    border-bottom-color: red;
+  }
+  
+  input.ng-touched.ng-valid, select.ng-touched.ng-valid {
+    border-bottom-color: green;
+  }
+  

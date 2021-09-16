@@ -71,13 +71,8 @@ namespace MobileStoreApp.Controllers
 
         [Authorize(Roles ="Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<ActionResult<Product>> PutProduct(int id, Product product)
         {
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
-
             _context.Entry(product).State = EntityState.Modified;
 
             try
@@ -96,7 +91,7 @@ namespace MobileStoreApp.Controllers
                 }
             }
 
-            return NoContent();
+            return product;
         }
 
         [Authorize(Roles ="Admin")]
