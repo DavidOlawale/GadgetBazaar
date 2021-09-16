@@ -113,7 +113,6 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
 
   submitUpdate() {
     this.server.put(`/products/${this.product.id}`, this.product).subscribe(res => {
-      this.product.brand.name = this.form.value.brand
       this.product.batteryCapacity = this.form.value.batteryCapacity
       this.product.brandId = this.form.value.brandId
       this.product.chargingTime = this.form.value.chargingTime
@@ -123,6 +122,7 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
       this.product.price = this.form.value.price
       this.product.sizeInGram = this.form.value.sizeInGram
       this.product.standByTime = this.form.value.standByTime
+      this.product.brand.name = this.brands.find(b => b.id == this.form.value.brandId).name
 
       this.toastyService.success({
         title: 'Success',
@@ -131,7 +131,7 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
         theme: 'bootstrap',
         timeout: 5000
       })
-      //do something
+
     })
   }
 }
