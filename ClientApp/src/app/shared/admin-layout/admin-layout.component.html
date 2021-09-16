@@ -5,32 +5,34 @@
     </div>
     <a class="sidebar__item" routerLink="/admin/products" [routerLinkActive]="['active']">
       <div class="icon">
-        <img src="../../../assets/images/menu/shopping-cart.svg" alt="" />
+        <i class="bi bi-shop" style="color: #002366;"></i>
       </div>
       Products
     </a>
     <a class="sidebar__item" routerLink="/admin/orders" [routerLinkActive]="['active']">
       <div class="icon">
-        <img src="../../../assets/images/menu/order.svg" alt="" />
+        <i class="bi bi-cart-check" style="color: #002366;"></i>
       </div>
       Orders
     </a>
     <a class="sidebar__item" routerLink="/admin/brands" [routerLinkActive]="['active']">
       <div class="icon">
-        <img src="../../../assets/images/menu/shopping-cart.svg" alt="" />
+        <i class="bi bi-tag" style="color: #002366;"></i>
       </div>
       Brands
     </a>
     <a class="sidebar__item" routerLink="/admin/customers" [routerLinkActive]="['active']">
       <div class="icon">
-        <img src="../../../assets/images/menu/customer.svg" alt="" />
+        <i class="bi bi-person-check" style="color: #002366;"></i>
       </div>
       Customers
     </a>
 
     <span class="sidebar__heading">My Account</span>
-    <a class="sidebar__item" (click)="logOut()">
-        <div class="icon"> <img src="../../../assets/images/menu/logout.svg" alt=""> </div>
+    <a class="sidebar__item" (click)="auth.logOut()">
+        <div class="icon"> 
+          <i class="bi bi-box-arrow-right" style="color: #002366;"></i> 
+        </div>
       Log out
     </a>
     <footer class="footer">
@@ -74,7 +76,7 @@
                     </div>
                     <div class="dropdown-menu dropdown-menu-right">
                       <a class="dropdown-item" routerLink="/profile">Profile</a>
-                      <a class="dropdown-item" (click)="logOut()"> <i class="fa fa-sign-out-alt"></i> Log out</a>
+                      <a class="dropdown-item" (click)="auth.logOut()"> <i class="fa fa-sign-out-alt"></i> Log out</a>
                     </div>
                   </div>
       
