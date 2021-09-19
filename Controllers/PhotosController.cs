@@ -29,7 +29,6 @@ namespace MobileStoreApp.Controllers
         [HttpPost("{productId}/photos")]
         public ActionResult PostProductImage(int productId, IFormFile photo)
         {
-            // wwwwroot/images
             var imagesDirectory = Path.Combine(hostEnvironment.WebRootPath, "Images", "Products");
             if (!Directory.Exists(imagesDirectory))
                 Directory.CreateDirectory(imagesDirectory);
@@ -41,7 +40,7 @@ namespace MobileStoreApp.Controllers
             {
                 photo.CopyTo(stream);
             }
-            var image = new ProductImage { Name = newImageName, ProductId = productId };
+            var image = new ProductImage { Name = $"/images/products/{newImageName}", ProductId = productId };
             dbContext.ProductImages.Add(image);
             dbContext.SaveChanges();
 

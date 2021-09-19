@@ -7,7 +7,7 @@ import { PhotoServiceService } from '../../Services/photo-service.service';
 import { ToastyService } from 'ng2-toasty';
 import { BaseComponent } from '../../core/base/base.component';
 import { fade } from 'src/app/core/animations/fade.amination';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Brand } from 'src/app/core/Model/brand';
 import { ServerService } from 'src/app/Services/server.service';
 
@@ -20,20 +20,14 @@ import { ServerService } from 'src/app/Services/server.service';
 })
 export class AdminProductDetailsComponent extends BaseComponent implements OnInit {
 
-  @ViewChild('uploadBtn', { static: false }) uploadBtn: ElementRef
+  @ViewChild('uploadBtn', { static: false }) private uploadBtn: ElementRef
   private product: Product
   private brands: Brand[]
-  private imagePreview
   private form: FormGroup
-  private isFullyLoaded: boolean
-
   private selectedImage: File
-  icons = {
-    image: faImage,
-    upload: faUpload,
-    spinner: faSpinner
-  }
   isUploading: boolean = false
+  private uploadImagePreview
+  @ViewChild('uploadImageInput', {static: false}) private uploadImageInput: ElementRef
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -65,20 +59,26 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
     this.brands = await this.productService.getProductBrands()
   }
 
-  onSelected(file) {
+  onImageSelected(file) {
     this.selectedImage = file
     let reader = new FileReader()
-    reader.onload = (event) => {
-      this.imagePreview = reader.result
+    reader.onload = (e) => {
+      this.uploadImagePreview = reader.result
     }
     reader.readAsDataURL(this.selectedImage)
+  }
+
+  onImageUnselected(){
+    this.selectedImage = null
+    this.uploadImagePreview = null
   }
 
   async uploadPhoto() {
     this.isUploading = true
     try {
-      var result = await this.photoService.postProductImage(this.product.id, this.selectedImage)
-      this.product.productImages.push({ name: this.selectedImage.name })
+      let result = await this.photoService.postProductImage(this.product.id, this.selectedImage)
+      console.log('ersult', result)
+      this.product.productImages.push({ name: result.name })
       this.toastyService.success({
         title: 'Succefull',
         msg: 'Image uploaded successfully',
@@ -87,7 +87,8 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
         timeout: 3000
       })
     } catch (e) {
-      this.toastyService.success({
+      console.log("error", e)
+      this.toastyService.error({
         title: 'Error',
         msg: 'An error occured',
         showClose: true,
@@ -96,19 +97,13 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
       })
     }
     this.isUploading = false
-    this.imagePreview = null
+    this.uploadImagePreview = null
     
   }
 
   hasPhoto(product: Product): boolean {
-    if (!product) {
-      return false
-    }
+    if (!product) return false
     return product.productImages && product.productImages.length > 0
-  }
-
-  getPhoto(product: Product): string {
-    return `images/products/${product.productImages[0].name}`
   }
 
   submitUpdate() {
@@ -134,4 +129,5 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
 
     })
   }
+
 }
