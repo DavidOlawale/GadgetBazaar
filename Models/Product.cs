@@ -16,5 +16,6 @@ namespace MobileStoreApp.Models
         public string Color { get; set; }
         public double SizeInGram { get; set; }
         public IEnumerable<ProductImage> ProductImages { get; set; }
+        public bool IsArchived { get; set; }
     }
 }

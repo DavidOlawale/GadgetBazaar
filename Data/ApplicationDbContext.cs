@@ -14,7 +14,7 @@ namespace MobileStoreApp.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
         {
-            this.Database.EnsureCreated();
+            this.Database.Migrate();
         }
 
         public DbSet<Admin> Admins { get; set; }
