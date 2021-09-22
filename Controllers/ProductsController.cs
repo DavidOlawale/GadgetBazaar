@@ -15,18 +15,18 @@ namespace MobileStoreApp.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext db;
 
         public ProductsController(ApplicationDbContext context)
         {
-            _context = context;
+            db = context;
         }
 
         // GET: api/Products
         [HttpGet]
         public ActionResult<IEnumerable<Product>> GetProducts(int minPrice, int maxPrice , int brandId)
         {
-            var products = _context.Products
+            var products = db.Products
                 .Include(p => p.Brand)
                 .Include(p => p.ProductImages) as IQueryable<Product>;
 
@@ -46,7 +46,7 @@ namespace MobileStoreApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await _context.Products
+            var product = await db.Products
                 .Include(p => p.Brand)
                 .Include(p => p.ProductImages)
                 .SingleOrDefaultAsync(p => p.Id == id);
@@ -60,8 +60,8 @@ namespace MobileStoreApp.Controllers
         [HttpGet("{id}/similar")]
         public async Task<IEnumerable<Product>> GetSimilarProductsAsync(int id)
         {
-            var productToCompare = await _context.Products.FindAsync(id);
-            var similarProducts = _context.Products
+            var productToCompare = await db.Products.FindAsync(id);
+            var similarProducts = db.Products
                 .Where(product => product.Price >= productToCompare.Price / 2 || product.Price <= productToCompare.Price * 2 || product.BrandId == productToCompare.BrandId)
                 .Take(10)
                 .Include(product => product.ProductImages);
@@ -73,11 +73,11 @@ namespace MobileStoreApp.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Product>> PutProduct(int id, Product product)
         {
-            _context.Entry(product).State = EntityState.Modified;
+            db.Entry(product).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -98,8 +98,8 @@ namespace MobileStoreApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            db.Products.Add(product);
+            await db.SaveChangesAsync();
 
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
@@ -109,21 +109,45 @@ namespace MobileStoreApp.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            db.Products.Remove(product);
+            await db.SaveChangesAsync();
 
             return product;
         }
 
+        [Authorize(Roles ="Admin")]
+        [HttpGet("{id}/archive")]
+        public async Task<ActionResult<Product>> ArchiveProduct(int id)
+        {
+            var product = await db.Products.FindAsync(id);
+            if (product == null) return NotFound();
+            product.IsArchived = true;
+            db.Products.Update(product);
+            await db.SaveChangesAsync();
+            return Ok(product);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("{id}/unarchive")]
+        public async Task<ActionResult<Product>> UnArchiveProduct(int id)
+        {
+            var product = await db.Products.FindAsync(id);
+            if (product == null) return NotFound();
+            product.IsArchived = false;
+            db.Products.Update(product);
+            await db.SaveChangesAsync();
+            return Ok(product);
+        }
+
         private bool ProductExists(int id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return db.Products.Any(e => e.Id == id);
         }
     }
 }
