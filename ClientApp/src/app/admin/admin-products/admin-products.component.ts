@@ -27,7 +27,7 @@ export class AdminProductsComponent extends BaseComponent implements OnInit {
   }
 
   getPhoto(product: Product): string {
-    return `images/products/${product.productImages[0].name}`
+    return product.productImages[0].name
   }
 
 }
