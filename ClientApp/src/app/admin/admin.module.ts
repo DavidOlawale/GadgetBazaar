@@ -14,11 +14,11 @@ import { MaterialModule } from "../material.module";
 const routes: Route[] = [
   {path: '', component: AdminProductsComponent, pathMatch: 'full'},
   {path: 'products', component: AdminProductsComponent, pathMatch: 'full'},
+  { path: 'products/new', component: NewProductComponent },
   { path: "products/:id", component: AdminProductDetailsComponent },
   { path: "products/:id/edit", component: EditProductComponent },
   { path: "orders", component: AdminOrdersComponent },
   { path: "orders/:id", component: AdminOrderDetailsComponent },
-  { path: 'products/new', component: NewProductComponent },
 ];
 
 @NgModule({
