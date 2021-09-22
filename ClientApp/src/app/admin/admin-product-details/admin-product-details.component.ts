@@ -25,7 +25,7 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
   private brands: Brand[]
   private form: FormGroup
   private selectedImage: File
-  isUploading: boolean = false
+  private isUploading: boolean = false
   private uploadImagePreview
   @ViewChild('uploadImageInput', {static: false}) private uploadImageInput: ElementRef
 
