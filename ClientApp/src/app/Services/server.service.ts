@@ -17,6 +17,7 @@ export class ServerService {
   constructor(private http: HttpClient, router: Router) {
     this.token = localStorage.getItem('token')
   }
+
   get(uri: string, params?: HttpParams): Observable<any> {
     if (this.token)
       this.defaultHeaders['Authorization'] = `Bearer ${this.token}`

@@ -130,4 +130,36 @@ export class AdminProductDetailsComponent extends BaseComponent implements OnIni
     })
   }
 
+  async archiveProduct() {
+    try {
+      let product = await this.server.get(`/products/${this.product.id}/archive`).toPromise()
+      this.product.isArchived = (product as Product).isArchived
+      this.toastyService.success({ title: '', msg: `${this.product.model} has been archived`, theme: 'bootstrap' })
+    } catch (e) {
+      this.toastyService.error({ title: '', msg: `Could not archive ${this.product.model}`, theme: 'bootstrap' })
+    }
+  }
+
+  async unArchiveProduct() {
+    try {
+      let product = await this.server.get(`/products/${this.product.id}/unarchive`).toPromise()
+      this.product.isArchived = (product as Product).isArchived
+      this.toastyService.success({ title: '', msg: `${this.product.model} has been restored from  archive`, theme: 'bootstrap' })
+    } catch (e) {
+      this.toastyService.error({ title: '', msg: `Could not restore ${this.product.model} from archive`, theme: 'bootstrap' })
+    }
+
+  }
+
+  async deleteProduct() {
+    try {
+      let result = await this.server.delete(`/products/${this.product.id}`).toPromise()
+      this.toastyService.success({ title: '', msg: `${this.product.model} has been deleted`, theme: 'bootstrap' })
+      this.router.navigate(['/admin/products'])
+    } catch (e) {
+      this.toastyService.error({ title: '', msg: `Could not delete ${this.product.model}`, theme: 'bootstrap' })
+    }
+    
+  }
+
 }

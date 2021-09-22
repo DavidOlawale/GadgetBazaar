@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,13 +18,14 @@ namespace MobileStoreApp.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext db;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(IWebHostEnvironment hostEnvironment, ApplicationDbContext context)
         {
+            this.hostEnvironment = hostEnvironment;
             db = context;
         }
 
-        // GET: api/Products
         [HttpGet]
         public ActionResult<IEnumerable<Product>> GetProducts(int minPrice, int maxPrice , int brandId)
         {
@@ -104,21 +107,23 @@ namespace MobileStoreApp.Controllers
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
-        // DELETE: api/Products/5
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Product>> DeleteProduct(int id)
+        public async Task<ActionResult<bool>> DeleteProduct(int id)
         {
             var product = await db.Products.FindAsync(id);
-            if (product == null)
+            if (product == null) return NotFound();
+            try
             {
-                return NotFound();
+                foreach (var image in db.ProductImages.Where(i => i.ProductId == product.Id))
+                {
+                    System.IO.File.Delete($"{hostEnvironment.WebRootPath}{image.Name}");
+                }
             }
-
+            catch { }
             db.Products.Remove(product);
             await db.SaveChangesAsync();
-
-            return product;
+            return true;
         }
 
         [Authorize(Roles ="Admin")]

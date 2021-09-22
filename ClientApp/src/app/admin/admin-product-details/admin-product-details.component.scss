@@ -1,4 +1,4 @@
-
+  
 [class^="stat-"]{
     display:block;
 }
@@ -20,10 +20,16 @@
 }
 
 .product-image{
-    height: 400px;
+    height: 600px;
     width: 100%;
     object-fit: cover;
 }
+
+/*@media only  screen and (max-width: 991px){
+    .product-image{
+        height: 300px;
+    }
+}*/
 
 .product-detail{
     border-bottom: 1px solid #efefef;
@@ -93,4 +99,3 @@
   }
 }
 
-  

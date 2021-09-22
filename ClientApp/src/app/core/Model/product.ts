@@ -10,6 +10,7 @@ export class Product {
   standByTime: string
   color: string
   sizeInGram: string
+  isArchived: Boolean
   productImages: ProductImage[]
 }
 
