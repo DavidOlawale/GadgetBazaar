@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
   async onSubmit(data: NgForm) {
     this.isLoading = true;
     this.isLoginFailed = false
-    var success = await this.auth.logIn(data.value.email, data.value.password)
 
-    setTimeout(() => {
+    setTimeout(async () => {
+      let success = await this.auth.logIn(data.value.email, data.value.password)
       if (!success){
         this.isLoginFailed = true 
         this.isLoading = false
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       }
         
       
-    }, 2000)
+    }, 1000)
     
   }
 
