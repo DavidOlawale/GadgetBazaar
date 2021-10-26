@@ -5,17 +5,17 @@
   <button *ngIf="numberInCart > 1"
           class="btn btn-alter-quantity"
           (click)="decreaseInCart()">
-    <mat-icon inline="true" >remove</mat-icon>
+    <i class="bi bi-dash-lg"></i>
 
   </button>
     <button *ngIf="numberInCart == 1"
             class="btn btn-alter-quantity "
             (click)="removeFromCart()">
-            <mat-icon inline="true">clear</mat-icon>
+      <i class="bi bi-x-lg"></i>
     </button>
     <span class="m-auto">{{ numberInCart }}</span>
     <button class="btn btn-alter-quantity" (click)="increaseInCart()">
-      <mat-icon inline="true">add</mat-icon>
+      <i class="bi bi-plus-lg"></i>
     </button>
   </div>
   <ng-template #add>
