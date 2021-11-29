@@ -1,6 +1,6 @@
 import { OnInit } from '@angular/core';
 
-export class BaseComponent implements OnInit {
+export class BaseComponent {
 
   constructor() { }
 
