@@ -11,9 +11,9 @@ import { BaseComponent } from '../../core/base/base.component';
 export class AlterInCartComponent extends BaseComponent implements OnInit {
 
   @Input() public product: Product
-  private isInCart: boolean
-  private numberInCart: Number
-  private icons = {
+  isInCart: boolean
+  numberInCart: Number
+  icons = {
     plus: faPlus,
     minus: faMinus,
     times: faTimes
