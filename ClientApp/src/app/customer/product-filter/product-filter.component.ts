@@ -11,7 +11,7 @@ import { BaseComponent } from '../../core/base/base.component';
   animations: [fade]
 })
 export class ProductFilterComponent extends BaseComponent implements OnInit {
-private brands: Brand[]
+  brands: Brand[]
   constructor(private brandService: BrandService) {
     super()
   }
