@@ -16,9 +16,9 @@ import { fade } from 'src/app/core/animations/fade.amination';
   animations: [fade ]
 })
 export class NewProductComponent extends BaseComponent implements OnInit {
-  private product: Product = new Product()
-  private brands: Brand[]
-  private form: FormGroup
+  product: Product = new Product()
+  brands: Brand[]
+  form: FormGroup
 
   constructor(private router: Router,
     private server: ServerService,

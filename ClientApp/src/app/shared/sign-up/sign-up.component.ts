@@ -18,8 +18,7 @@ export class SignUpComponent extends BaseComponent implements OnInit {
   }
   faSpinner = faSpinner
   isLoading = false
-
-  private signUpForm: FormGroup
+  signUpForm: FormGroup
 
   ngOnInit() {
     this.signUpForm = new FormGroup({

@@ -10,7 +10,7 @@ import { BaseComponent } from '../../core/base/base.component';
 })
 export class CustomerOrdersComponent extends BaseComponent implements OnInit {
 
-  private orders: Order[]
+  orders: Order[]
   constructor(private server: ServerService) {
     super()
   }

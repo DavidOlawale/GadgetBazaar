@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class AdminLayoutComponent implements OnInit {
   isExpanded = false;
-  constructor(private auth:AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }

@@ -12,8 +12,8 @@ import { BaseComponent } from '../../core/base/base.component';
   animations: [fade]
 })
 export class CustomerProductDetailsComponent extends BaseComponent implements OnInit {
-  private product: Product
-  private similarProducts: Product[]
+  product: Product
+  similarProducts: Product[]
   @ViewChild('similarProductsContainer', { static: true }) similarProductsContainer: ElementRef
 
   constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService) {
