@@ -49,4 +49,13 @@ export class CheckOutComponent extends BaseComponent implements OnInit {
     return this.orderItems.length == 0 && this.auth.isLogedIn
   }
 
+  get totalPrice() {
+    let total = 0
+    this.orderItems.forEach((item) => {
+      total += item.product.price * item.quantity
+    })
+
+    return total
+  }
+
 }
