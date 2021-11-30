@@ -17,7 +17,7 @@ import { BaseComponent } from '../../core/base/base.component';
   ]
 })
 export class CheckOutComponent extends BaseComponent implements OnInit {
-  private orderItems: OrderItem[]
+  orderItems: OrderItem[]
 
   constructor(private orderItemsService: OrderItemsService,
     private server: ServerService,
