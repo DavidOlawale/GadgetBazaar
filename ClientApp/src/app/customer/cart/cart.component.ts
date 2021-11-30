@@ -13,8 +13,8 @@ import { BaseComponent } from '../../core/base/base.component';
   ]
 })
 export class CartComponent extends BaseComponent implements OnInit {
-  private orderItems: OrderItem[]
-  private totalPrice: number
+  orderItems: OrderItem[]
+  totalPrice: number
 
   constructor(private orderItemsService: OrderItemsService) {
     super()
