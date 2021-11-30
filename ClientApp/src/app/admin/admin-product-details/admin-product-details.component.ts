@@ -21,12 +21,12 @@ import { ServerService } from 'src/app/Services/server.service';
 export class AdminProductDetailsComponent extends BaseComponent implements OnInit {
 
   @ViewChild('uploadBtn', { static: false }) private uploadBtn: ElementRef
-  private product: Product
-  private brands: Brand[]
-  private form: FormGroup
-  private selectedImage: File
-  private isUploading: boolean = false
-  private uploadImagePreview
+  product: Product
+  brands: Brand[]
+  form: FormGroup
+  selectedImage: File
+  isUploading: boolean = false
+  uploadImagePreview
   @ViewChild('uploadImageInput', {static: false}) private uploadImageInput: ElementRef
 
   constructor(private route: ActivatedRoute,
