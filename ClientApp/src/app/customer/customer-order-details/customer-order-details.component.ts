@@ -11,9 +11,9 @@ import { BaseComponent } from '../../core/base/base.component';
   styleUrls: ['./customer-order-details.component.scss']
 })
 export class CustomerOrderDetailsComponent extends BaseComponent implements OnInit {
-  private order: Order
-  private totalPrice: Number
-  private updatingOrderStatus: boolean
+  public order: Order
+  public totalPrice: Number
+  public updatingOrderStatus: boolean
   constructor(private server: ServerService, private route: ActivatedRoute) {
     super()
   }

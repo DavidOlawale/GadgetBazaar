@@ -16,7 +16,7 @@ export class NavMenuComponent extends BaseComponent implements OnInit {
 
   constructor(
     private orderItemsService: OrderItemsService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) {
     super()
     this.orderItemsNumber = orderItemsService.getOrderItems.length
