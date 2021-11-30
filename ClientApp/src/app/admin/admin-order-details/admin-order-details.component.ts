@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Order } from '../../core/Model/order';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ServerService } from '../../Services/server.service';
 import { Product } from '../../core/Model/product';
 import { BaseComponent } from '../../core/base/base.component';
@@ -12,9 +11,9 @@ import { BaseComponent } from '../../core/base/base.component';
   styleUrls: ['./admin-order-details.component.scss']
 })
 export class AdminOrderDetailsComponent extends BaseComponent implements OnInit {
-  private order: Order
-  private totalPrice: Number
-  private updatingOrderStatus: boolean
+  order: Order
+  totalPrice: Number
+  updatingOrderStatus: boolean
   constructor(private server: ServerService, private route: ActivatedRoute) {
     super()
   }
